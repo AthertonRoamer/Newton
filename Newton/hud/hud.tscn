@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://32h5aq1noaa8"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_bynxb"]
+[ext_resource type="PackedScene" uid="uid://bhrqr2au42xmx" path="res://hud/health_display/health_display.tscn" id="2_yhtg2"]
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("health_display")]
+script = ExtResource("1_bynxb")
+health_display = NodePath("Control/HealthDisplay")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthDisplay" parent="Control" instance=ExtResource("2_yhtg2")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.502
+anchor_top = 14.0
+anchor_right = 2.502
+anchor_bottom = 14.0
+offset_left = -29.08
+offset_top = -28.0001
+offset_right = 106.92
+offset_bottom = 27.9999
+grow_horizontal = 0
+grow_vertical = 0

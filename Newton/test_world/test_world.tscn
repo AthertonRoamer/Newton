@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://w06y3prgnygb"]
+
+[ext_resource type="PackedScene" uid="uid://vo4tbm4u65yf" path="res://test_world/test_map.tscn" id="1_tw7wp"]
+[ext_resource type="PackedScene" uid="uid://city0pwx48l16" path="res://player/player.tscn" id="2_3631f"]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="TestMap" parent="." instance=ExtResource("1_tw7wp")]
+
+[node name="Player" parent="." instance=ExtResource("2_3631f")]
+position = Vector2(450, 489)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://city0pwx48l16"]
+
+[ext_resource type="Texture2D" uid="uid://lwmd3mfopiru" path="res://icon.svg" id="1_by2s4"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_q0i30"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v0p5"]
+radius = 18.0
+height = 62.0
+
+[node name="Player" type="CharacterBody2D" groups=["damageable", "knockable"]]
+script = ExtResource("1_q0i30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.28125, 0.5)
+texture = ExtResource("1_by2s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2v0p5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
