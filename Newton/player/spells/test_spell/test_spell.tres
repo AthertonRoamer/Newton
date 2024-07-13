@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellMenuData" load_steps=3 format=3 uid="uid://c3o2t7vlm2c2f"]
+
+[ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="1_btar7"]
+[ext_resource type="Texture2D" uid="uid://derdge255ii6q" path="res://player/spells/test_spell/test_spell_menu_image.png" id="2_m46gv"]
+
+[resource]
+script = ExtResource("1_btar7")
+texture = ExtResource("2_m46gv")
+name = "Test Spell"
+description = "A useless spell"
