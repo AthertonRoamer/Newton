@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4ids8a5t4ka"]
+
+[ext_resource type="Script" path="res://hud/spell_display_manager/spell_display_manager.gd" id="1_0x56n"]
+[ext_resource type="PackedScene" uid="uid://c5i6jq0j1qily" path="res://hud/spell_display/spell_display.tscn" id="2_s68cq"]
+
+[node name="SpellDisplayManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_0x56n")
+spell_display_scene = ExtResource("2_s68cq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

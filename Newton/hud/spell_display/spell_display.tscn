@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5i6jq0j1qily"]
+
+[ext_resource type="Script" path="res://hud/spell_display/spell_display.gd" id="1_0x56n"]
+[ext_resource type="Texture2D" uid="uid://duxl2eo07rqk5" path="res://hud/spell_display/filler_spell_display_background.png" id="1_yo8ts"]
+
+[node name="SpellDisplay" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_yo8ts")
+script = ExtResource("1_0x56n")
+
+[node name="SpellTextureHolder" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

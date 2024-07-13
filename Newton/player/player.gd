@@ -21,6 +21,7 @@ var health : int = max_health:
 		if health < 0:
 			die()
 
+@export var spell_manager : SpellManager
 
 func reset() -> void:
 	Hud.health_display.health = health
@@ -29,6 +30,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	reset()
+	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 
 
 func take_damage(damage : int) -> void:
@@ -85,4 +87,14 @@ func _physics_process(_delta) -> void:
 	
 	if position.y > death_altitude:
 		take_damage(max_health)
+	
+
+func equip_spell(spell_scene : PackedScene) -> void:
+	var spell : Spell = spell_scene.instantiate()
+	for equiped_spell in spell_manager.get_children():
+		if equiped_spell.id == spell.id:
+			push_warning("Trying to equip spell that is already equipped")
+			return
+	Hud.spell_display_manager.add_spell(spell)
+	spell_manager.add_child(spell)
 	
