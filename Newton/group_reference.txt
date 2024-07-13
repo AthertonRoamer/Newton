@@ -1,0 +1,6 @@
+Group Reference:
+================
+
+damageable - guarantees take_damage(damage : int) -> void
+
+knockable - guarantees take_knockback(knockback : Vector2) -> void

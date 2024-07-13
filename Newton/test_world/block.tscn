@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://fs6myl3u0kt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jl8"]
+size = Vector2(500, 50)
+
+[node name="Block" type="StaticBody2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8jl8")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0784314, 0.0901961, 0.164706, 1)
+polygon = PackedVector2Array(-250, -25, 250, -25, 250, 25, -250, 25)
