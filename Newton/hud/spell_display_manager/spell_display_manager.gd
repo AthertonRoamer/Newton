@@ -7,7 +7,7 @@ var spells : Array[Spell] = []
 
 
 func add_spell(spell : Spell) -> void:
-	print(str(spell.menu_data)) #removing this comment breaks the game
+	var _useless_variable = spell.menu_data #removing this line breaks the game
 	spells.append(spell)
 	var new_display : SpellDisplay = spell_display_scene.instantiate()
 	new_display.spell = spell
