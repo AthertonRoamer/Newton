@@ -1,7 +1,7 @@
 class_name SpellDisplay
 extends TextureRect
 
-var spell_menu_data : SpellMenuData
+var spell : Spell
 
 func _ready() -> void:
-	$SpellTextureHolder.texture = spell_menu_data.texture
+	$SpellTextureHolder.texture = spell.menu_data.texture

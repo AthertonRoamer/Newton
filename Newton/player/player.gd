@@ -19,7 +19,9 @@ var max_health : int = 100
 var health : int = max_health:
 	set(v):
 		health = v
-		if health < 0:
+		Hud.health_display.health = health
+		if health <= 0:
+			health = 0
 			die()
 
 @export var spell_manager : SpellManager
@@ -101,6 +103,12 @@ func movement():
 		velocity.y += gravity
 	
 	move_and_slide()
+
+	
+	if position.y > death_altitude:
+		health = 0
+	
+
 
 
 #func equip_spell(spell_scene : PackedScene) -> void:
