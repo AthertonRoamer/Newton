@@ -8,6 +8,21 @@
 radius = 11.0
 height = 44.0
 
+[sub_resource type="Animation" id="Animation_hmqwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_xp5i7"]
 resource_name = "idle"
 length = 0.6
@@ -25,8 +40,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_hmqwr"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_roiha"]
+resource_name = "jump"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,10 +50,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [5, 6, 7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_qynu2"]
@@ -57,22 +73,6 @@ tracks/0/keys = {
 "values": [9, 10, 11, 12, 13, 14, 15, 16]
 }
 
-[sub_resource type="Animation" id="Animation_roiha"]
-resource_name = "jump"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnese"]
 _data = {
 "RESET": SubResource("Animation_hmqwr"),
@@ -81,18 +81,17 @@ _data = {
 "walk": SubResource("Animation_qynu2")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["damageable", "knockable"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_q0i30")
+spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_pjwf2")
 hframes = 8
 vframes = 3
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

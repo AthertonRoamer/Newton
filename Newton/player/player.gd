@@ -37,7 +37,7 @@ func reset() -> void:
 
 func _ready() -> void:
 	reset()
-	#equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
+	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 
 
 func take_damage(damage : int) -> void:
@@ -57,7 +57,7 @@ func _physics_process(_delta) -> void:
 	update_player_visuals()
 	
 	if position.y > death_altitude:
-		take_damage(max_health)
+		health = 0
 
 
 
@@ -104,21 +104,16 @@ func movement():
 	
 	move_and_slide()
 
-	
-	if position.y > death_altitude:
-		health = 0
-	
 
+func equip_spell(spell_scene : PackedScene) -> void:
+	var spell : Spell = spell_scene.instantiate()
+	for equiped_spell in spell_manager.get_children():
+		if equiped_spell.id == spell.id:
+			push_warning("Trying to equip spell that is already equipped")
+			return
+	Hud.spell_display_manager.add_spell(spell)
+	spell_manager.add_child(spell)
 
-
-#func equip_spell(spell_scene : PackedScene) -> void:
-	#var spell : Spell = spell_scene.instantiate()
-	#for equiped_spell in spell_manager.get_children():
-		#if equiped_spell.id == spell.id:
-			#push_warning("Trying to equip spell that is already equipped")
-			#return
-	#Hud.spell_display_manager.add_spell(spell)
-	#spell_manager.add_child(spell)
 
 func update_player_visuals():
 	flip_player()
@@ -126,10 +121,11 @@ func update_player_visuals():
 
 
 func flip_player():
-	if velocity.x < 0: 
-		player_sprite.flip_h = true
-	elif velocity.x > 0:
-		player_sprite.flip_h = false
+	match direction:
+		Vector2.RIGHT:
+			player_sprite.flip_h = false
+		Vector2.LEFT:
+			player_sprite.flip_h = true
 
 
 func player_animations():
@@ -137,6 +133,6 @@ func player_animations():
 		if walking:
 			anim_p.play("walk")
 		else:
-			anim_p.play("idle",0.3)
+			anim_p.play("idle", 0.3)
 	else:
 			anim_p.play("jump",1.5)
