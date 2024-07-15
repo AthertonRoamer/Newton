@@ -8,10 +8,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_0x56n")
 spell_display_scene = ExtResource("2_s68cq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+columns = 10

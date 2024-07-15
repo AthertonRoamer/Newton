@@ -1,19 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5i6jq0j1qily"]
+[gd_scene load_steps=6 format=3 uid="uid://c5i6jq0j1qily"]
 
 [ext_resource type="Script" path="res://hud/spell_display/spell_display.gd" id="1_0x56n"]
 [ext_resource type="Texture2D" uid="uid://duxl2eo07rqk5" path="res://hud/spell_display/filler_spell_display_background.png" id="1_yo8ts"]
+[ext_resource type="Texture2D" uid="uid://36huirvj3ldi" path="res://hud/spell_display/filler_spell_display_background_selected.png" id="3_c5ipw"]
+
+[sub_resource type="FontVariation" id="FontVariation_jn5ch"]
+
+[sub_resource type="Theme" id="Theme_fdpws"]
+default_font = SubResource("FontVariation_jn5ch")
+default_font_size = 14
 
 [node name="SpellDisplay" type="TextureRect"]
-anchors_preset = 15
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = -1
+anchor_left = -0.01
+anchor_top = -0.019
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.52
+offset_top = 12.312
+offset_right = -1136.0
+offset_bottom = -632.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 texture = ExtResource("1_yo8ts")
 script = ExtResource("1_0x56n")
+spell_selected_background = ExtResource("3_c5ipw")
+spell_deselected_background = ExtResource("1_yo8ts")
+spell_available_modulate = Color(1, 1, 1, 1)
+spell_unavailable_modulate = Color(0.278343, 0.278344, 0.269464, 1)
 
 [node name="SpellTextureHolder" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TimeTillAvailableDiaplay" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme = SubResource("Theme_fdpws")
+horizontal_alignment = 1
+vertical_alignment = 1

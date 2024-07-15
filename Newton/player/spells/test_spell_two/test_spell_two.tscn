@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bquomwnv3epvp"]
+
+[ext_resource type="Script" path="res://player/spells/test_spell_two/test_spell_two.gd" id="1_d1fj7"]
+[ext_resource type="Resource" uid="uid://d0ykwv1itd5k2" path="res://player/spells/test_spell_two/test_spell_two.tres" id="2_e2g5s"]
+
+[node name="TestSpellTwo" type="Node"]
+script = ExtResource("1_d1fj7")
+menu_data = ExtResource("2_e2g5s")
+id = "test_spell_two"
