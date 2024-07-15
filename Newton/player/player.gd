@@ -2,8 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 @export var walk_accel : int = 80
-@export var friction : int = 50
+@export var friction : int = 30
 @export var max_walk_speed : int = 350
+@export var max_walk_speed_charging : int = 175
 @export var max_sprint_speed : int = 500
 var effective_max_speed : int
 
@@ -13,6 +14,8 @@ var effective_max_speed : int
 @export var death_altitude : int = 3000
 
 var walking = false
+var jumping = false
+var charging = false
 var direction : Vector2 = Vector2.RIGHT
 
 var max_health : int = 100
@@ -26,9 +29,12 @@ var health : int = max_health:
 
 @export var spell_manager : SpellManager
 
-
+@onready var player_cam = $Camera2D
 @onready var player_sprite = $Sprite2D
+@onready var staff_sprite = $staff
 @onready var anim_p = $AnimationPlayer
+
+@onready var test_label = $Label
 
 func reset() -> void:
 	Hud.health_display.health = health
@@ -53,20 +59,31 @@ func die() -> void:
 
 
 func _physics_process(_delta) -> void:
+	mouse_actions()
 	movement()
 	update_player_visuals()
 	
 	if position.y > death_altitude:
 		health = 0
 
-
+func mouse_actions():
+#	feel free to mess with this code this is just where
+#	im putting the charge animation stuff (quick solution)
+	if Input.is_action_pressed("player_cast"):
+		charging = true
+	elif !Input.is_action_pressed("player_cast"):
+		charging = false
+		charged = false
 
 func movement():
 	walking = false
 	#if Input.is_action_pressed("player_sprint"):
 		#effective_max_speed = max_sprint_speed
 	#else:
-	effective_max_speed = max_walk_speed
+	if !charging:
+		effective_max_speed = max_walk_speed
+	else:
+		effective_max_speed = max_walk_speed_charging
 	
 	#get lateral input
 	var lateral_acceleration : int = 0
@@ -98,6 +115,7 @@ func movement():
 		velocity.y = 0
 		if Input.is_action_just_pressed("player_jump"):
 			velocity.y -= jump_accel
+			jumping = true
 
 	else:
 		velocity.y += gravity
@@ -123,16 +141,38 @@ func update_player_visuals():
 func flip_player():
 	match direction:
 		Vector2.RIGHT:
-			player_sprite.flip_h = false
+			player_sprite.scale.x = 1
+			staff_sprite.scale.x = 1
 		Vector2.LEFT:
-			player_sprite.flip_h = true
+			player_sprite.scale.x = -1
+			staff_sprite.scale.x = -1
+			
 
-
+var charged = false
 func player_animations():
-	if is_on_floor():
-		if walking:
-			anim_p.play("walk")
-		else:
-			anim_p.play("idle", 0.3)
+	if charging:
+		if !charged:
+			anim_p.play("charging")
 	else:
-			anim_p.play("jump",1.5)
+		if is_on_floor():
+			if walking:
+				if direction == Vector2.RIGHT:
+					anim_p.play("walk_right")
+					test_label.text = "walking"
+				elif direction == Vector2.LEFT:
+					anim_p.play("walk_left")
+					test_label.text = "walking"
+			else:
+				anim_p.play("idle",-1,0.75)
+				test_label.text = "idle"
+		else:
+			if jumping == true:
+				anim_p.play("jump",-1,0.75)
+				test_label.text = "jumping"
+				jumping = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "charging":
+		charged = true
+		anim_p.play("full_charged")
