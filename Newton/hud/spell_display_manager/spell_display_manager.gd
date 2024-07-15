@@ -11,6 +11,6 @@ func add_spell(spell : Spell) -> void:
 	spells.append(spell)
 	var new_display : SpellDisplay = spell_display_scene.instantiate()
 	new_display.spell = spell
-	$HBoxContainer.add_child(new_display)
+	$GridContainer.add_child(new_display)
 	
-	custom_minimum_size = $HBoxContainer.get_minimum_size()
+	custom_minimum_size = $GridContainer.get_minimum_size()

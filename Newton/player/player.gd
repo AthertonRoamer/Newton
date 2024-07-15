@@ -38,6 +38,7 @@ func reset() -> void:
 func _ready() -> void:
 	reset()
 	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
+	equip_spell(preload("res://player/spells/test_spell_two/test_spell_two.tscn"))
 
 
 func take_damage(damage : int) -> void:
@@ -58,6 +59,18 @@ func _physics_process(_delta) -> void:
 	
 	if position.y > death_altitude:
 		health = 0
+		
+		
+func _input(event : InputEvent) -> void:
+	if event.is_action("player_cast"):
+		if not event.is_echo():
+			if event.is_pressed():
+				if spell_manager.selected_spell.available:
+					spell_manager.selected_spell.begin_charge()
+			else:
+				if spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
+					spell_manager.selected_spell.cast()
+			
 
 
 
@@ -112,7 +125,9 @@ func equip_spell(spell_scene : PackedScene) -> void:
 			push_warning("Trying to equip spell that is already equipped")
 			return
 	Hud.spell_display_manager.add_spell(spell)
-	spell_manager.add_child(spell)
+	spell_manager.add_spell(spell)
+	if spell_manager.spell_count == 1:
+		spell_manager.select_spell_by_num(0)
 
 
 func update_player_visuals():
