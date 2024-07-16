@@ -2,6 +2,7 @@ class_name SpellManager
 extends Node
 
 var selected_spell : Spell
+var selected_spell_num : int = 0
 
 var spell_count : int = 0
 
@@ -18,3 +19,4 @@ func select_spell_by_num(num : int) -> void:
 				selected_spell.selected = false
 			selected_spell = new_selected_spell
 			selected_spell.selected = true
+			selected_spell_num = num
