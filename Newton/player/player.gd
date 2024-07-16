@@ -90,12 +90,14 @@ func mouse_actions():
 	if Input.is_action_pressed("player_cast"):
 		direction_locked = true
 		charging = true
+		staff_sprite.start_following_mouse()
 		if !is_on_floor():
 			falling = true
 	elif !Input.is_action_pressed("player_cast"):
 		direction_locked = false
 		charging = false
 		charged = false
+		staff_sprite.stop_following_mouse()
 
 func movement():
 	walking = false
@@ -180,7 +182,6 @@ func player_animations():
 	if charging:
 		if !charged:
 			anim_p.play("charging")
-			staff_sprite.start_following_mouse()
 	else:
 		if is_on_floor():
 			if walking:
