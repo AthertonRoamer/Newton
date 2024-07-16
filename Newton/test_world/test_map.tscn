@@ -14,7 +14,9 @@ scale = Vector2(115.334, 70.3635)
 color = Color(0.0392157, 0.145098, 0.14902, 1)
 
 [node name="Block2" parent="." instance=ExtResource("1_0n05w")]
+z_index = -5
 position = Vector2(1104, 473)
 
 [node name="Block" parent="." instance=ExtResource("1_0n05w")]
+z_index = -5
 position = Vector2(520, 549)
