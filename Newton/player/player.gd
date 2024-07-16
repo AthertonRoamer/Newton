@@ -211,7 +211,7 @@ func flip_player():
 func player_animations():
 	if charging:
 		if !charged:
-			anim_p.play("charging")
+			anim_p.play("wind_charging")
 	else:
 		if is_on_floor():
 			if walking:
@@ -238,3 +238,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "charging":
 		charged = true
 		anim_p.play("full_charged")
+	elif anim_name == "wind_charging":
+		charged = true
+		anim_p.play("wind_charged")
