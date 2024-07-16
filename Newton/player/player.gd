@@ -30,15 +30,16 @@ var health : int = max_health:
 @onready var player_sprite = $Sprite2D
 @onready var anim_p = $AnimationPlayer
 
-func reset() -> void:
-	Hud.health_display.health = health
-	Hud.show()
-
 
 func _ready() -> void:
 	reset()
 	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 	equip_spell(preload("res://player/spells/test_spell_two/test_spell_two.tscn"))
+	
+	
+func reset() -> void:
+	Hud.health_display.health = health
+	Hud.show()
 
 
 func take_damage(damage : int) -> void:
@@ -47,10 +48,59 @@ func take_damage(damage : int) -> void:
 
 func take_knockback(knock : Vector2) -> void:
 	velocity += knock
-	
-	
+
+
 func die() -> void:
 	print("You have died")
+
+
+func _input(event : InputEvent) -> void:
+	if event.is_action("player_cast"):
+		if not event.is_echo():
+			if event.is_pressed():
+				begin_charging_spell()
+			else:
+				cast_spell()
+	elif event.is_action("select_spell_up"):
+		if not event.is_echo() and event.is_pressed():
+			shift_to_spell_up()
+	elif event.is_action("select_spell_down"):
+		if not event.is_echo() and event.is_pressed():
+			shift_to_spell_down()
+
+
+func equip_spell(spell_scene : PackedScene) -> void:
+	var spell : Spell = spell_scene.instantiate()
+	for equiped_spell in spell_manager.get_children():
+		if equiped_spell.id == spell.id:
+			push_warning("Trying to equip spell that is already equipped")
+			return
+	Hud.spell_display_manager.add_spell(spell)
+	spell_manager.add_spell(spell)
+	if spell_manager.spell_count == 1:
+		spell_manager.select_spell_by_num(0)
+
+
+func begin_charging_spell() -> void:
+	if spell_manager.selected_spell.available:
+		spell_manager.selected_spell.begin_charge()
+
+
+func cast_spell() -> void:
+	if spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
+		spell_manager.selected_spell.cast()
+
+
+func shift_to_spell_up() -> void:
+	var new_spell_num = (spell_manager.selected_spell_num + 1) % spell_manager.spell_count
+	spell_manager.select_spell_by_num(new_spell_num)
+
+
+func shift_to_spell_down() -> void:
+	var new_spell_num = spell_manager.selected_spell_num - 1
+	if new_spell_num == -1:
+		new_spell_num = spell_manager.spell_count - 1
+	spell_manager.select_spell_by_num(new_spell_num)
 
 
 func _physics_process(_delta) -> void:
@@ -59,19 +109,6 @@ func _physics_process(_delta) -> void:
 	
 	if position.y > death_altitude:
 		health = 0
-		
-		
-func _input(event : InputEvent) -> void:
-	if event.is_action("player_cast"):
-		if not event.is_echo():
-			if event.is_pressed():
-				if spell_manager.selected_spell.available:
-					spell_manager.selected_spell.begin_charge()
-			else:
-				if spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
-					spell_manager.selected_spell.cast()
-			
-
 
 
 func movement():
@@ -116,18 +153,6 @@ func movement():
 		velocity.y += gravity
 	
 	move_and_slide()
-
-
-func equip_spell(spell_scene : PackedScene) -> void:
-	var spell : Spell = spell_scene.instantiate()
-	for equiped_spell in spell_manager.get_children():
-		if equiped_spell.id == spell.id:
-			push_warning("Trying to equip spell that is already equipped")
-			return
-	Hud.spell_display_manager.add_spell(spell)
-	spell_manager.add_spell(spell)
-	if spell_manager.spell_count == 1:
-		spell_manager.select_spell_by_num(0)
 
 
 func update_player_visuals():
