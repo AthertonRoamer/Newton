@@ -15,8 +15,12 @@ var effective_max_speed : int
 
 var walking = false
 var jumping = false
+var falling = false
 var charging = false
+var charged = false
+
 var direction : Vector2 = Vector2.RIGHT
+var direction_locked = false
 
 var max_health : int = 100
 var health : int = max_health:
@@ -26,6 +30,7 @@ var health : int = max_health:
 		if health <= 0:
 			health = 0
 			die()
+
 
 @export var spell_manager : SpellManager
 
@@ -70,8 +75,12 @@ func mouse_actions():
 #	feel free to mess with this code this is just where
 #	im putting the charge animation stuff (quick solution)
 	if Input.is_action_pressed("player_cast"):
+		direction_locked = true
 		charging = true
+		if !is_on_floor():
+			falling = true
 	elif !Input.is_action_pressed("player_cast"):
+		direction_locked = false
 		charging = false
 		charged = false
 
@@ -89,12 +98,14 @@ func movement():
 	var lateral_acceleration : int = 0
 	if Input.is_action_pressed("player_right"):
 		lateral_acceleration += walk_accel
-		direction = Vector2.RIGHT
+		if !direction_locked:
+			direction = Vector2.RIGHT
 		walking = true
 		
 	if Input.is_action_pressed("player_left"):
 		lateral_acceleration -= walk_accel
-		direction = Vector2.LEFT
+		if !direction_locked:
+			direction = Vector2.LEFT
 		walking = true
 		
 	#apply max speed
@@ -139,20 +150,22 @@ func update_player_visuals():
 
 
 func flip_player():
-	match direction:
-		Vector2.RIGHT:
-			player_sprite.scale.x = 1
-			staff_sprite.scale.x = 1
-		Vector2.LEFT:
-			player_sprite.scale.x = -1
-			staff_sprite.scale.x = -1
-			
+	if !direction_locked:
+		match direction:
+			Vector2.RIGHT:
+				player_sprite.scale.x = 1
+				staff_sprite.scale.x = 1
+			Vector2.LEFT:
+				player_sprite.scale.x = -1
+				staff_sprite.scale.x = -1
+				
 
-var charged = false
+
 func player_animations():
 	if charging:
 		if !charged:
 			anim_p.play("charging")
+			staff_sprite.start_following_mouse()
 	else:
 		if is_on_floor():
 			if walking:
@@ -170,6 +183,9 @@ func player_animations():
 				anim_p.play("jump",-1,0.75)
 				test_label.text = "jumping"
 				jumping = false
+			if falling == true:
+				anim_p.play("fall")
+				falling = false
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
