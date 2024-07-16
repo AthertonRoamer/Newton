@@ -66,16 +66,6 @@ func die() -> void:
 	print("You have died")
 
 
-func _physics_process(_delta) -> void:
-	mouse_actions()
-	movement()
-	update_player_visuals()
-	
-	if position.y > death_altitude:
-		health = 0
-		
-		
-
 func _input(event : InputEvent) -> void:
 	if event.is_action("player_cast"):
 		if not event.is_echo():
@@ -127,7 +117,7 @@ func shift_to_spell_down() -> void:
 
 
 func _physics_process(_delta) -> void:
-  mouse_actions()
+	mouse_actions()
 	movement()
 	update_player_visuals()
 	
