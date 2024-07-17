@@ -9,9 +9,11 @@ extends CharacterBody2D
 var effective_max_speed : int
 
 @export var jump_accel : int = 700
-@export var gravity : int = 35
+@export var gravity : int = PhysicsData.gravity_acceleration
 
-@export var death_altitude : int = 3000
+@export var death_altitude : int = PhysicsData.death_altitude
+
+@export var interactable_item_detector : InteractableItemDetector
 
 var walking = false
 var jumping = false
@@ -22,8 +24,9 @@ var charged = false
 var direction : Vector2 = Vector2.RIGHT
 var direction_locked = false
 
-var max_health : int = 100
-var health : int = max_health:
+@export var max_health : int = 100
+@export var starting_health : int = 100
+var health : int = starting_health:
 	set(v):
 		health = v
 		Hud.health_display.health = health
@@ -46,15 +49,16 @@ var health : int = max_health:
 func _ready() -> void:
 	reset()
 	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
-	equip_spell(preload("res://player/spells/test_spell_two/test_spell_two.tscn"))
 	
 	
 func reset() -> void:
+	health = starting_health
 	Hud.health_display.health = health
 	Hud.show()
+	interactable_item_detector.player = self
 
 
-func take_damage(damage : int) -> void:
+func take_damage(damage : int, _damage_type : String = "none") -> void:
 	health -= damage
 
 
@@ -79,6 +83,25 @@ func _input(event : InputEvent) -> void:
 	elif event.is_action("select_spell_down"):
 		if not event.is_echo() and event.is_pressed():
 			shift_to_spell_down()
+	elif event.is_action("player_select_spell_one"):
+		if not event.is_echo() and event.is_pressed():
+			if spell_manager.spell_count > 0:
+				spell_manager.select_spell_by_num(0)
+	elif event.is_action("player_select_spell_two"):
+		if not event.is_echo() and event.is_pressed():
+			if spell_manager.spell_count > 1:
+				spell_manager.select_spell_by_num(1)
+	elif event.is_action("player_select_spell_three"):
+		if not event.is_echo() and event.is_pressed():
+			if spell_manager.spell_count > 2:
+				spell_manager.select_spell_by_num(2)
+	elif event.is_action("player_select_spell_four"):
+		if not event.is_echo() and event.is_pressed():
+			if spell_manager.spell_count > 3:
+				spell_manager.select_spell_by_num(3)
+	elif event.is_action("player_interact"):
+		if not event.is_echo() and event.is_pressed():
+			interactable_item_detector.interact()
 
 
 func equip_spell(spell_scene : PackedScene) -> void:
@@ -180,7 +203,8 @@ func movement():
 	velocity.x = velocity_sign * pos_v
 	
 	if is_on_floor():
-		velocity.y = 0
+		if velocity.y > 0:
+			velocity.y = 0
 		if Input.is_action_just_pressed("player_jump"):
 			velocity.y -= jump_accel
 			jumping = true
