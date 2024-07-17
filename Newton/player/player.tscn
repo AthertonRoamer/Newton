@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bou6u6lk3irln" path="res://player/staff-ss.png" id="4_wmyvf"]
 [ext_resource type="Texture2D" uid="uid://dah5s03eq8hlq" path="res://player/light.png" id="5_5ko0m"]
 [ext_resource type="Script" path="res://player/staff.gd" id="5_omt7o"]
+[ext_resource type="Script" path="res://player/interactables/interactable_item_detector/interactable_item_detector.gd" id="7_0bawi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v0p5"]
 radius = 5.14286
@@ -920,9 +921,13 @@ _data = {
 "wind_charging": SubResource("Animation_8liq7")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spell_manager") groups=["damageable", "knockable"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
+radius = 16.0312
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_q0i30")
+interactable_item_detector = NodePath("InteractableItemDetector")
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -970,5 +975,13 @@ text = "blank"
 libraries = {
 "": SubResource("AnimationLibrary_hnese")
 }
+
+[node name="InteractableItemDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_0bawi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableItemDetector"]
+shape = SubResource("CircleShape2D_savv0")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

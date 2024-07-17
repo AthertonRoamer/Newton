@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b25ocklxmlo8i"]
+
+[ext_resource type="Script" path="res://entities/edge_detector/edge_detector.gd" id="1_ndid2"]
+
+[node name="EdgeDetector" type="Node2D" node_paths=PackedStringArray("right_ray", "left_ray")]
+script = ExtResource("1_ndid2")
+right_ray = NodePath("RightRay")
+left_ray = NodePath("LeftRay")
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+position = Vector2(-16, 0)
+
+[node name="RightRay" type="RayCast2D" parent="."]
+position = Vector2(16, 0)

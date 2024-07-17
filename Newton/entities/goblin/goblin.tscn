@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://crs5n2j5sil7s"]
+
+[ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
+[ext_resource type="Texture2D" uid="uid://bbsgvlv6kygf2" path="res://entities/goblin/filler_goblin_art.png" id="2_7xhft"]
+[ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_b6hqv"]
+[ext_resource type="PackedScene" uid="uid://cuv6l4g0b6sea" path="res://entities/entity_state_machine/entity_state_machine.tscn" id="4_etnwo"]
+[ext_resource type="Script" path="res://entities/goblin/patrol.gd" id="5_wj7n0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4b8o"]
+radius = 21.0
+height = 64.0
+
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector")]
+script = ExtResource("1_glrm0")
+edge_detector = NodePath("EdgeDetector")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_7xhft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a4b8o")
+
+[node name="EdgeDetector" parent="." instance=ExtResource("3_b6hqv")]
+width = 80.0
+
+[node name="EntityStateMachine" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("4_etnwo")]
+entity = NodePath("..")
+
+[node name="Patrol" type="Node" parent="EntityStateMachine"]
+script = ExtResource("5_wj7n0")
+id = "patrol"
+first_active_state = true
