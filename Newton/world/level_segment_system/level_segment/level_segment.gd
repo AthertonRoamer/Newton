@@ -1,0 +1,2 @@
+class_name LevelSegment
+extends Node2D
