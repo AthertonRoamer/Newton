@@ -1,9 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-@export var walk_accel : int = 80
+@export var walk_accel : int = 90
 @export var friction : int = 30
-@export var max_walk_speed : int = 350
+@export var max_walk_speed : int = 400
 @export var max_walk_speed_charging : int = 175
 @export var max_sprint_speed : int = 500
 var effective_max_speed : int

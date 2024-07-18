@@ -2,13 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://vo4tbm4u65yf" path="res://test_world/test_map/test_map.tscn" id="1_tw7wp"]
 [ext_resource type="Script" path="res://test_world/test_world.gd" id="1_yrsjs"]
+
 [ext_resource type="Script" path="res://world/level_segment_system/level_segment_manager/level_segment_manager.gd" id="5_bvliq"]
+
 
 [node name="TestWorld" type="Node2D" node_paths=PackedStringArray("object_holder", "level_segment_manager")]
 script = ExtResource("1_yrsjs")
 object_holder = NodePath(".")
 level_segment_manager = NodePath("LevelSegmentManager")
 
+
 [node name="LevelSegmentManager" type="Node2D" parent="."]
 script = ExtResource("5_bvliq")
 level_segment_list = Array[PackedScene]([ExtResource("1_tw7wp")])
+
