@@ -23,7 +23,7 @@ var direction : Vector2 = Vector2.RIGHT:
 			direction_changed.emit(direction)
 
 var walking : bool = false
-var was_walking : bool = false #last frame
+var was_walking_last_frame : bool = false
 
 var health : int = starting_health:
 	set(v):
@@ -50,13 +50,21 @@ func take_knockback(knock : Vector2) -> void:
 
 func die() -> void:
 	queue_free()
+	
+	
+func switch_direction() -> void:
+	match direction:
+		Vector2.RIGHT:
+			direction = Vector2.LEFT
+		Vector2.LEFT:
+			direction = Vector2.RIGHT
 
 
 func walk() -> void:
 	if not walking:
 		walking = true
-		was_walking = true
-		walking_changed.emit(true)
+		if not was_walking_last_frame:
+			walking_changed.emit(true)
 
 
 func process_walking() -> void:
@@ -73,10 +81,11 @@ func process_walking() -> void:
 			velocity.x += lateral_acceleration
 		
 		walking = false
+		was_walking_last_frame = true
 	else:
-		if was_walking:
+		if was_walking_last_frame:
 			walking_changed.emit(false)
-			was_walking = false
+		was_walking_last_frame = false
 
 
 func basic_entiy_friction() -> void:

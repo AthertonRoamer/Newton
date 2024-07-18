@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7d6kh1qxiylf"
-path="res://.godot/imported/filler_goblin_weapon.png-1e85034d19efcfe1a9255c272ad32aef.ctex"
+path="res://.godot/imported/filler_goblin_weapon.png-79b814a56128051323ae0d51f0cdc512.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/goblin/filler_goblin_weapon.png"
-dest_files=["res://.godot/imported/filler_goblin_weapon.png-1e85034d19efcfe1a9255c272ad32aef.ctex"]
+source_file="res://entities/goblin/art/filler_goblin_weapon.png"
+dest_files=["res://.godot/imported/filler_goblin_weapon.png-79b814a56128051323ae0d51f0cdc512.ctex"]
 
 [params]
 
