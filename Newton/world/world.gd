@@ -7,3 +7,5 @@ extends Node2D
 
 func _ready() -> void:
 	Main.world = self
+	if is_instance_valid(level_segment_manager.active_segment):
+		object_holder = level_segment_manager.active_segment
