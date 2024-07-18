@@ -41,7 +41,7 @@ func is_player_attackable() -> bool:
 	
 	
 func get_simple_direction_to_player() -> Vector2:
-	if is_instance_valid(Main.player) and position.x > Main.player.global_position.x:
+	if is_instance_valid(Main.player) and global_position.x > Main.player.global_position.x:
 		return Vector2.LEFT
 	else:
 		return Vector2.RIGHT
