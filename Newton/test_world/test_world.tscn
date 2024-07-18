@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" path="res://wind.tscn" id="3_jv0u6"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="5_2mg2v"]
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" type="Node2D" node_paths=PackedStringArray("object_holder")]
 script = ExtResource("1_yrsjs")
+object_holder = NodePath(".")
 
 [node name="TestMap" parent="." instance=ExtResource("1_tw7wp")]
 position = Vector2(-736, -258)
@@ -16,6 +17,7 @@ position = Vector2(-736, -258)
 position = Vector2(-265, 160)
 
 [node name="wind" parent="." instance=ExtResource("3_jv0u6")]
+visible = false
 position = Vector2(397, 157)
 
 [node name="Goblin" parent="." instance=ExtResource("5_2mg2v")]

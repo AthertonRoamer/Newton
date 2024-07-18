@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellMenuData" load_steps=3 format=3 uid="uid://nfk2guamm5ki"]
+
+[ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="1_y5fhi"]
+[ext_resource type="Texture2D" uid="uid://c47dhjnw5k8yu" path="res://player/spells/magic_missile_spell/filler_magic_missile_spell_menu_image.png" id="2_5x8q6"]
+
+[resource]
+script = ExtResource("1_y5fhi")
+texture = ExtResource("2_5x8q6")
+name = "Magic Missile"
+description = "Rapid fire blasts of magic"

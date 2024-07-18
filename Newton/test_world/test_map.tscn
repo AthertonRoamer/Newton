@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=4 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
+[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
 
 [node name="TestMap" type="Node2D"]
 
@@ -23,4 +24,7 @@ z_index = -5
 position = Vector2(520, 549)
 
 [node name="GrabbableTestSpellTwo" parent="." instance=ExtResource("2_8411r")]
-position = Vector2(1105, 407)
+position = Vector2(1275, 402)
+
+[node name="GrabbableMagicMissile" parent="." instance=ExtResource("3_6mq8f")]
+position = Vector2(987, 408)

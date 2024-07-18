@@ -14,6 +14,7 @@ var effective_max_speed : int
 @export var death_altitude : int = PhysicsData.death_altitude
 
 @export var interactable_item_detector : InteractableItemDetector
+@export var staff_end_node : Node2D
 
 var walking = false
 var jumping = false
@@ -109,6 +110,7 @@ func _input(event : InputEvent) -> void:
 
 func equip_spell(spell_scene : PackedScene) -> void:
 	var spell : Spell = spell_scene.instantiate()
+	spell.player = self
 	for equiped_spell in spell_manager.get_children():
 		if equiped_spell.id == spell.id:
 			push_warning("Trying to equip spell that is already equipped")
