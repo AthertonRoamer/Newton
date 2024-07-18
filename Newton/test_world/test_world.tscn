@@ -1,11 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://w06y3prgnygb"]
+[gd_scene load_steps=5 format=3 uid="uid://w06y3prgnygb"]
 
 [ext_resource type="PackedScene" uid="uid://vo4tbm4u65yf" path="res://test_world/test_map.tscn" id="1_tw7wp"]
 [ext_resource type="PackedScene" uid="uid://city0pwx48l16" path="res://player/player.tscn" id="2_3631f"]
+[ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://wind.tscn" id="3_jv0u6"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2el0w"]
+polygon = PackedVector2Array(-6, -12.6667, 9, -5.33334, 1, -1.33334, 4.33334, 2.33332, 6, 12, -6, 12.3333, -1.66666, -0.666676, -5, 0.333324)
 
 [node name="TestWorld" type="Node2D"]
 
 [node name="TestMap" parent="." instance=ExtResource("1_tw7wp")]
+position = Vector2(-736, -258)
+
+[node name="ColorRect2" type="ColorRect" parent="TestMap"]
+offset_left = 267.0
+offset_top = 524.0
+offset_right = 362.0
+offset_bottom = 585.0
+scale = Vector2(5.32147, 2.1695)
+color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="TestMap"]
+offset_left = 849.0
+offset_top = 445.0
+offset_right = 945.0
+offset_bottom = 511.0
+scale = Vector2(5.32147, 2.1695)
+color = Color(0.054902, 0.054902, 0.054902, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_3631f")]
-position = Vector2(471, 409)
+position = Vector2(-265, 160)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player"]
+occluder = SubResource("OccluderPolygon2D_2el0w")
+
+[node name="wind" parent="." instance=ExtResource("3_jv0u6")]
+position = Vector2(397, 157)

@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://fs6myl3u0kt5"]
+[gd_scene load_steps=3 format=3 uid="uid://fs6myl3u0kt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jl8"]
 size = Vector2(500, 50)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g0pfk"]
+polygon = PackedVector2Array(-250, -26, 247, -25, 250, 23, -247, 24)
+
 [node name="Block" type="StaticBody2D"]
+z_index = 10
+z_as_relative = false
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_n8jl8")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.0784314, 0.0901961, 0.164706, 1)
 polygon = PackedVector2Array(-250, -25, 250, -25, 250, 25, -250, 25)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_g0pfk")

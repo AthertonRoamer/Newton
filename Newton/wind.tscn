@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://gnat8j78a4g7"]
+
+[ext_resource type="Texture2D" uid="uid://dm310lx8x507r" path="res://player/spells-ss.png" id="1_2x7s2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t8pdw"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_sgpbl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.102921, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jfvo"]
+curve = SubResource("Curve_sgpbl")
+
+[sub_resource type="Curve" id="Curve_tcmm1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_in845"]
+curve = SubResource("Curve_tcmm1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vsum7"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 12.0
+initial_velocity_min = 145.16
+initial_velocity_max = 209.68
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_in845")
+color = Color(1, 1, 1, 0.137255)
+alpha_curve = SubResource("CurveTexture_5jfvo")
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 5
+
+[node name="wind" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_t8pdw")
+amount = 5000
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_vsum7")
+texture = ExtResource("1_2x7s2")
+lifetime = 15.0
+speed_scale = 2.5
+collision_base_size = 0.01
