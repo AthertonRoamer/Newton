@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://4v2rturel3lx"]
+
+[ext_resource type="Script" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.gd" id="1_stvxi"]
+[ext_resource type="PackedScene" uid="uid://bquomwnv3epvp" path="res://player/spells/test_spell_two/test_spell_two.tscn" id="2_6xhra"]
+[ext_resource type="Texture2D" uid="uid://cmt87aupc7oph" path="res://player/spells/test_spell_two/test_spell_two_menu_image.png" id="3_cacyr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqnak"]
+radius = 38.0526
+
+[node name="GrabbableTestSpellTwo" type="Area2D"]
+script = ExtResource("1_stvxi")
+spell_scene = ExtResource("2_6xhra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_cacyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kqnak")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = -12.0
+text = "E to grab"

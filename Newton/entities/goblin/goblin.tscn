@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://crs5n2j5sil7s"]
+
+[ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
+[ext_resource type="Texture2D" uid="uid://bbsgvlv6kygf2" path="res://entities/goblin/art/filler_goblin_art.png" id="2_7xhft"]
+[ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_b6hqv"]
+[ext_resource type="PackedScene" uid="uid://cuv6l4g0b6sea" path="res://entities/entity_state_machine/entity_state_machine.tscn" id="4_etnwo"]
+[ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="4_tt073"]
+[ext_resource type="Script" path="res://entities/goblin/states/patrol.gd" id="5_wj7n0"]
+[ext_resource type="Script" path="res://entities/goblin/states/attack.gd" id="6_ofi1d"]
+[ext_resource type="Script" path="res://entities/goblin/states/pursue.gd" id="7_4e64o"]
+[ext_resource type="Script" path="res://entities/goblin/melee_weapon/goblin_melee_weapon.gd" id="8_2lfkf"]
+[ext_resource type="Texture2D" uid="uid://c7d6kh1qxiylf" path="res://entities/goblin/art/filler_goblin_weapon.png" id="8_ddich"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4b8o"]
+radius = 21.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b1is"]
+radius = 16.1245
+
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine", "weapon", "can_attack_timer")]
+script = ExtResource("1_glrm0")
+edge_detector = NodePath("EdgeDetector")
+obstacle_detector = NodePath("ObstacleDetector")
+state_machine = NodePath("EntityStateMachine")
+weapon = NodePath("MeleeWeapon")
+attack_range = 70
+can_attack_timer = NodePath("CanAtttackTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_7xhft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a4b8o")
+
+[node name="CanAtttackTimer" type="Timer" parent="."]
+
+[node name="EntityStateMachine" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("4_etnwo")]
+entity = NodePath("..")
+
+[node name="Patrol" type="Node" parent="EntityStateMachine"]
+script = ExtResource("5_wj7n0")
+id = "patrol"
+first_active_state = true
+
+[node name="Pursue" type="Node" parent="EntityStateMachine"]
+script = ExtResource("7_4e64o")
+id = "pursue"
+
+[node name="Attack" type="Node" parent="EntityStateMachine"]
+script = ExtResource("6_ofi1d")
+id = "attack"
+
+[node name="StateDisplay" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -86.0
+offset_right = 40.0
+offset_bottom = -19.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EdgeDetector" parent="." instance=ExtResource("3_b6hqv")]
+width = 80.0
+
+[node name="ObstacleDetector" parent="." instance=ExtResource("4_tt073")]
+length = 45.0
+
+[node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("timer", "wielder")]
+position = Vector2(40, 0)
+script = ExtResource("8_2lfkf")
+timer = NodePath("Timer")
+wielder = NodePath("..")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MeleeWeapon"]
+texture = ExtResource("8_ddich")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeWeapon"]
+shape = SubResource("CircleShape2D_1b1is")
+
+[node name="Timer" type="Timer" parent="MeleeWeapon"]
+one_shot = true

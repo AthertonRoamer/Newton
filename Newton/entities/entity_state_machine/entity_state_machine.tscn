@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuv6l4g0b6sea"]
+
+[ext_resource type="Script" path="res://entities/entity_state_machine/entity_state_machine.gd" id="1_gvsop"]
+
+[node name="EntityStateMachine" type="Node"]
+script = ExtResource("1_gvsop")

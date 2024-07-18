@@ -2,6 +2,8 @@ class_name Main
 extends Node
 
 static var main : Main
+static var world : World
+static var player : Player
 
 @export var menu_scene : PackedScene
 @export var game_scene : PackedScene

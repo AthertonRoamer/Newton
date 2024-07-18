@@ -1,6 +1,10 @@
 Group Reference:
 ================
 
-damageable - guarantees take_damage(damage : int) -> void
+damageable - guarantees take_damage(damage : int, damage_type : String = "none") -> void
 
 knockable - guarantees take_knockback(knockback : Vector2) -> void
+
+interactable - guarantees interact(player : Player) -> void (Often extends InteractableItem)
+
+factioned - guarantees get_faction() -> String:
