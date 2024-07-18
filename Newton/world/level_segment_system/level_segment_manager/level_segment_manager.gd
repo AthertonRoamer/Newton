@@ -15,7 +15,8 @@ func open_level_segment(segment_scene : PackedScene, spawn_state : Player.spawn_
 	var segment : LevelSegment = segment_scene.instantiate()
 	active_segment_scene = segment_scene
 	active_segment = segment
-	#Main.world.object_holder = active_segment
+	if is_instance_valid(Main.world):
+		Main.world.object_holder = active_segment
 	add_child(active_segment)
 	active_segment.spawn_player(spawn_state)
 	
