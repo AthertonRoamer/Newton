@@ -20,4 +20,13 @@ func is_edge_on_right() -> bool:
 	
 func is_edge_on_left() -> bool:
 	return not left_ray.is_colliding()
+	
+	
+func is_edge_in_direction(direction : Vector2) -> bool:
+	if direction == Vector2.RIGHT:
+		return is_edge_on_right()
+	elif direction == Vector2.LEFT:
+		return is_edge_on_left()
+	else:
+		return false
 

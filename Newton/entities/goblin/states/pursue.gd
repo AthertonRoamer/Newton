@@ -1,0 +1,13 @@
+class_name PursueState
+extends EntityState
+
+func process_state() -> void:
+	get_entity().direction = get_entity().get_simple_direction_to_player()
+	var blocked : bool = get_entity().edge_detector.is_edge_in_direction(get_entity().direction)
+	blocked = blocked or get_entity().obstacle_detector.is_obstacle_in_direction(get_entity().direction)
+	if not blocked:
+		get_entity().walk()
+	if not get_entity().is_player_nearby():
+		state_machine.set_state("patrol")
+	elif get_entity().is_player_attackable() and get_entity().can_attack:
+		state_machine.set_state("attack")

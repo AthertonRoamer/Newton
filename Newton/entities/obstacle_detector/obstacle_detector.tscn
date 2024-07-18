@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk1s87ecljx8c"]
+
+[ext_resource type="Script" path="res://entities/obstacle_detector/obstacle_detector.gd" id="1_xxpgw"]
+
+[node name="ObstacleDetector" type="Node2D" node_paths=PackedStringArray("right_ray_cast", "left_ray_cast")]
+script = ExtResource("1_xxpgw")
+right_ray_cast = NodePath("RightRayCast")
+left_ray_cast = NodePath("LeftRayCast")
+length = 32.0
+
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(-32, 0)
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(32, 0)

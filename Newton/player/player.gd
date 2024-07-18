@@ -28,11 +28,13 @@ var direction_locked = false
 @export var starting_health : int = 100
 var health : int = starting_health:
 	set(v):
-		health = v
-		Hud.health_display.health = health
-		if health <= 0:
+		if v <= 0:
 			health = 0
 			die()
+		else:
+			health = v
+		Hud.health_display.health = health
+			
 
 
 @export var spell_manager : SpellManager
@@ -48,6 +50,7 @@ var health : int = starting_health:
 
 func _ready() -> void:
 	reset()
+	Main.player = self
 	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 	
 	
@@ -119,6 +122,11 @@ func equip_spell(spell_scene : PackedScene) -> void:
 func begin_charging_spell() -> void:
 	if spell_manager.selected_spell.available:
 		spell_manager.selected_spell.begin_charge()
+		direction_locked = true
+		charging = true
+		staff_sprite.start_following_mouse()
+		if !is_on_floor():
+			falling = true
 
 
 func cast_spell() -> void:
@@ -151,13 +159,7 @@ func _physics_process(_delta) -> void:
 func mouse_actions():
 #	feel free to mess with this code this is just where
 #	im putting the charge animation stuff (quick solution)
-	if Input.is_action_pressed("player_cast"):
-		direction_locked = true
-		charging = true
-		staff_sprite.start_following_mouse()
-		if !is_on_floor():
-			falling = true
-	elif !Input.is_action_pressed("player_cast"):
+	if !Input.is_action_pressed("player_cast"):
 		direction_locked = false
 		charging = false
 		charged = false
