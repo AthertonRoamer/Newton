@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crs5n2j5sil7s"]
+[gd_scene load_steps=14 format=3 uid="uid://crs5n2j5sil7s"]
 
 [ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
 [ext_resource type="Texture2D" uid="uid://bbsgvlv6kygf2" path="res://entities/goblin/art/filler_goblin_art.png" id="2_7xhft"]
@@ -17,6 +17,9 @@ height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1b1is"]
 radius = 16.1245
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_huv5h"]
+polygon = PackedVector2Array(-22, -32, 21, -32, 22, 30, -23, 31)
 
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine", "weapon", "can_attack_timer")]
 script = ExtResource("1_glrm0")
@@ -81,3 +84,6 @@ shape = SubResource("CircleShape2D_1b1is")
 
 [node name="Timer" type="Timer" parent="MeleeWeapon"]
 one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_huv5h")
