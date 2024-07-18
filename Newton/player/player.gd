@@ -1,9 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-@export var walk_accel : int = 80
+@export var walk_accel : int = 90
 @export var friction : int = 30
-@export var max_walk_speed : int = 350
+@export var max_walk_speed : int = 400
 @export var max_walk_speed_charging : int = 175
 @export var max_sprint_speed : int = 500
 var effective_max_speed : int
@@ -14,6 +14,7 @@ var effective_max_speed : int
 @export var death_altitude : int = PhysicsData.death_altitude
 
 @export var interactable_item_detector : InteractableItemDetector
+@export var staff_end_node : Node2D
 
 var walking = false
 var jumping = false
@@ -34,6 +35,7 @@ var health : int = starting_health:
 		else:
 			health = v
 		Hud.health_display.health = health
+		PlayerData.health = health
 			
 
 
@@ -47,18 +49,34 @@ var health : int = starting_health:
 
 @onready var test_label = $Label
 
+enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN}
+var spawn_state : spawn_states = spawn_states.LOAD_IN
 
 func _ready() -> void:
-	reset()
+	match spawn_state:
+		spawn_states.LEVEL_TRANSFER:
+			load_temporary_player_data()
+		spawn_states.RESPAWN:
+			load_persistent_player_data()
+			respawn_reset()
+	Hud.health_display.health = health
+	Hud.show()
+	interactable_item_detector.player = self
 	Main.player = self
 	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 	
 	
-func reset() -> void:
+func load_persistent_player_data() -> void:
+	for spell in PlayerData.equipped_spells:
+		equip_spell(spell)
+		
+		
+func load_temporary_player_data() -> void:
+	health = PlayerData.health
+	
+	
+func respawn_reset() -> void:
 	health = starting_health
-	Hud.health_display.health = health
-	Hud.show()
-	interactable_item_detector.player = self
 
 
 func take_damage(damage : int, _damage_type : String = "none") -> void:
@@ -71,6 +89,8 @@ func take_knockback(knock : Vector2) -> void:
 
 func die() -> void:
 	print("You have died")
+	Hud.respawn_menu.show()
+	queue_free()
 
 
 func _input(event : InputEvent) -> void:
@@ -109,10 +129,12 @@ func _input(event : InputEvent) -> void:
 
 func equip_spell(spell_scene : PackedScene) -> void:
 	var spell : Spell = spell_scene.instantiate()
+	spell.player = self
 	for equiped_spell in spell_manager.get_children():
 		if equiped_spell.id == spell.id:
 			push_warning("Trying to equip spell that is already equipped")
 			return
+	PlayerData.equipped_spells.append(spell_scene)
 	Hud.spell_display_manager.add_spell(spell)
 	spell_manager.add_spell(spell)
 	if spell_manager.spell_count == 1:

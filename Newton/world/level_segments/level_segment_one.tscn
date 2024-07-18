@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyvbxcx7eoai2"]
+
+[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
+
+[node name="LevelSegmentOne" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_35eit")
+spawn_point = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
