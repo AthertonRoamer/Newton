@@ -1,3 +1,4 @@
+class_name Staff
 extends Sprite2D
 
 @export var limit_staff_angle_to_forward = true
@@ -5,6 +6,8 @@ extends Sprite2D
 
 var follow_mouse = false
 var rotation_speed = 1000
+
+var cast_direction : Vector2
 
 func _process(delta):
 	if follow_mouse:
@@ -33,9 +36,17 @@ func _process(delta):
 		while angle_to_mouse - rotation_degrees < -180:
 			angle_to_mouse += 360
 		rotation_degrees = move_toward(rotation_degrees, angle_to_mouse, rotation_speed * delta)
+		
+		match player.direction:
+			Vector2.RIGHT:
+				cast_direction = Vector2.RIGHT.rotated(rotation)
+			Vector2.LEFT:
+				cast_direction = Vector2.LEFT.rotated(rotation)
+		
 
 func start_following_mouse():
 	follow_mouse = true
+
 
 func stop_following_mouse():
 	follow_mouse = false
