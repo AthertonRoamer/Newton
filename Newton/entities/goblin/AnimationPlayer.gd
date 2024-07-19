@@ -42,7 +42,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_visuals()
 
 
