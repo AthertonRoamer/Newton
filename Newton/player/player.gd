@@ -15,6 +15,7 @@ var effective_max_speed : int
 
 @export var interactable_item_detector : InteractableItemDetector
 @export var staff_end_node : Node2D
+@export var staff : Staff
 
 var walking = false
 var jumping = false
