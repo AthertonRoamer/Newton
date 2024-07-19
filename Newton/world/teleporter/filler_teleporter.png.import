@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-
-uid="uid://chuttohj0ls77"
-
-
-path="res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"
+uid="uid://76cwdkgwqcko"
+path="res://.godot/imported/filler_teleporter.png-83c266839ffaea955f29b48328d47724.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_world/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"]
+source_file="res://world/teleporter/filler_teleporter.png"
+dest_files=["res://.godot/imported/filler_teleporter.png-83c266839ffaea955f29b48328d47724.ctex"]
 
 [params]
 

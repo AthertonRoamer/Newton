@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=8 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
 [ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="5_ec22k"]
-[ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://wind.tscn" id="6_vn1vw"]
+
+[ext_resource type="PackedScene" path="res://wind.tscn" id="6_vn1vw"]
+[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
+
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_otmdb")
@@ -28,6 +31,10 @@ position = Vector2(1104, 473)
 z_index = -5
 position = Vector2(520, 549)
 
+[node name="Block3" parent="." instance=ExtResource("1_0n05w")]
+z_index = -5
+position = Vector2(1672, 397)
+
 [node name="GrabbableTestSpellTwo" parent="." instance=ExtResource("2_8411r")]
 position = Vector2(1275, 402)
 
@@ -43,3 +50,6 @@ position = Vector2(345, 452)
 [node name="wind" parent="." instance=ExtResource("6_vn1vw")]
 visible = false
 position = Vector2(1041, 213)
+
+[node name="Teleporter" parent="." instance=ExtResource("7_yxum4")]
+position = Vector2(1802, 340)

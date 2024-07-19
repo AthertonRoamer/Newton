@@ -15,6 +15,7 @@ var effective_max_speed : int
 
 @export var interactable_item_detector : InteractableItemDetector
 @export var staff_end_node : Node2D
+@export var staff : Staff
 
 var walking = false
 var jumping = false
@@ -53,22 +54,28 @@ enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN}
 var spawn_state : spawn_states = spawn_states.LOAD_IN
 
 func _ready() -> void:
+	Hud.spell_display_manager.clear_spells()
 	match spawn_state:
 		spawn_states.LEVEL_TRANSFER:
+			load_persistent_player_data()
 			load_temporary_player_data()
 		spawn_states.RESPAWN:
 			load_persistent_player_data()
 			respawn_reset()
+		spawn_states.LOAD_IN:
+			equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 	Hud.health_display.health = health
 	Hud.show()
 	interactable_item_detector.player = self
 	Main.player = self
-	equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
+	
 	
 	
 func load_persistent_player_data() -> void:
-	for spell in PlayerData.equipped_spells:
+	var num = PlayerData.selected_spell_num
+	for spell in PlayerData.equipped_spells.duplicate():
 		equip_spell(spell)
+	spell_manager.select_spell_by_num(num)
 		
 		
 func load_temporary_player_data() -> void:
@@ -134,7 +141,8 @@ func equip_spell(spell_scene : PackedScene) -> void:
 		if equiped_spell.id == spell.id:
 			push_warning("Trying to equip spell that is already equipped")
 			return
-	PlayerData.equipped_spells.append(spell_scene)
+	if not PlayerData.equipped_spells.has(spell_scene):
+		PlayerData.equipped_spells.append(spell_scene)
 	Hud.spell_display_manager.add_spell(spell)
 	spell_manager.add_spell(spell)
 	if spell_manager.spell_count == 1:
@@ -142,7 +150,7 @@ func equip_spell(spell_scene : PackedScene) -> void:
 
 
 func begin_charging_spell() -> void:
-	if spell_manager.selected_spell.available:
+	if is_instance_valid(spell_manager.selected_spell) and spell_manager.selected_spell.available:
 		spell_manager.selected_spell.begin_charge()
 		direction_locked = true
 		charging = true
@@ -152,7 +160,7 @@ func begin_charging_spell() -> void:
 
 
 func cast_spell() -> void:
-	if spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
+	if is_instance_valid(spell_manager.selected_spell) and spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
 		spell_manager.selected_spell.cast()
 
 

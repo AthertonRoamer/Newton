@@ -924,11 +924,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
 radius = 16.0312
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "spell_manager") groups=["damageable", "knockable"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_q0i30")
 interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
+staff = NodePath("staff")
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -937,17 +938,6 @@ texture = ExtResource("2_6jsh6")
 hframes = 8
 vframes = 3
 frame = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_2v0p5")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
-[node name="SpellManager" type="Node" parent="."]
-script = ExtResource("3_gwpyy")
 
 [node name="staff" type="Sprite2D" parent="."]
 position = Vector2(0, 4.76837e-07)
@@ -966,6 +956,17 @@ texture_scale = 0.03
 
 [node name="StaffEndPosition" type="Node2D" parent="staff"]
 position = Vector2(14.6667, -17.3333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_2v0p5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="SpellManager" type="Node" parent="."]
+script = ExtResource("3_gwpyy")
 
 [node name="Label" type="Label" parent="."]
 visible = false

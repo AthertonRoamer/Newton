@@ -2,7 +2,10 @@ class_name SpellManager
 extends Node
 
 var selected_spell : Spell
-var selected_spell_num : int = 0
+var selected_spell_num : int = 0:
+	set(v):
+		selected_spell_num = v
+		PlayerData.selected_spell_num = selected_spell_num
 
 var spell_count : int = 0
 
@@ -20,3 +23,5 @@ func select_spell_by_num(num : int) -> void:
 			selected_spell = new_selected_spell
 			selected_spell.selected = true
 			selected_spell_num = num
+	else:
+		push_warning("Spell manager is trying to select an invalid spell num")
