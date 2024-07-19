@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwgdig80lejvq"]
+
+[ext_resource type="Script" path="res://environment/breakable_platform/breakable_platform.gd" id="1_myhbl"]
+[ext_resource type="Texture2D" uid="uid://b0ec5o38evttm" path="res://environment/breakable_platform/filler_breakable_platform.png" id="2_1buvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yquse"]
+size = Vector2(32, 20)
+
+[node name="BreakablePlatform" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_myhbl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1buvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yquse")
