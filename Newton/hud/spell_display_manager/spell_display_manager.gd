@@ -14,3 +14,10 @@ func add_spell(spell : Spell) -> void:
 	$GridContainer.add_child(new_display)
 	
 	custom_minimum_size = $GridContainer.get_minimum_size()
+	
+	
+func clear_spells() -> void:
+	spells = []
+	for child in $GridContainer.get_children():
+		child.queue_free()
+	custom_minimum_size = $GridContainer.get_minimum_size()

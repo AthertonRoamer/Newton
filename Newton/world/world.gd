@@ -9,3 +9,5 @@ func _ready() -> void:
 	Main.world = self
 	if is_instance_valid(level_segment_manager.active_segment):
 		object_holder = level_segment_manager.active_segment
+	else:
+		push_warning("Main's level segment manager does not have an active segment at World _ready")

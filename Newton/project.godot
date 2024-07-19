@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Hud="*res://hud/hud.tscn"
 PlayerData="*res://player/player_data/player_data.tscn"
+AudioManager="*res://audio_manager/audio_manager.tscn"
 
 [input]
 

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://2aaa3oxxbcg3"]
+
+[ext_resource type="Script" path="res://test_world/test_map_2/test_map2.gd" id="1_15de8"]
+[ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="2_8mqfg"]
+[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="3_ivkys"]
+
+[node name="TestMap2" type="Node2D" node_paths=PackedStringArray("spawn_point", "object_holder")]
+script = ExtResource("1_15de8")
+spawn_point = NodePath("SpawnPoint")
+object_holder = NodePath("")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -697.0
+offset_top = -1176.0
+offset_right = -657.0
+offset_bottom = -1136.0
+scale = Vector2(115.334, 70.3635)
+color = Color(0.0392157, 0.145098, 0.14902, 1)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(-47, 260)
+
+[node name="Block" parent="." instance=ExtResource("2_8mqfg")]
+position = Vector2(135, 335)
+
+[node name="Block2" parent="." instance=ExtResource("2_8mqfg")]
+position = Vector2(756, 242)
+
+[node name="Block3" parent="." instance=ExtResource("2_8mqfg")]
+position = Vector2(1342, 126)
+
+[node name="Teleporter" parent="." instance=ExtResource("3_ivkys")]
+position = Vector2(1457, 66)
