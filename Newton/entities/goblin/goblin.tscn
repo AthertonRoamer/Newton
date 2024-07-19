@@ -226,15 +226,15 @@ _data = {
 "walk": SubResource("Animation_bi8fw")
 }
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine", "weapon", "can_attack_timer")]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_glrm0")
-edge_detector = NodePath("EdgeDetector")
-obstacle_detector = NodePath("ObstacleDetector")
-state_machine = NodePath("EntityStateMachine")
 weapon = NodePath("MeleeWeapon")
 attack_range = 70
 can_attack_timer = NodePath("CanAtttackTimer")
 wander_range = 300
+edge_detector = NodePath("EdgeDetector")
+obstacle_detector = NodePath("ObstacleDetector")
+state_machine = NodePath("EntityStateMachine")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3.5, 3.5)

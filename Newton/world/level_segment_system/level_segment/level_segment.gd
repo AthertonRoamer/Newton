@@ -3,8 +3,14 @@ extends Node2D
 
 @export var spawn_point : Node2D
 @export var object_holder : Node2D
+var alert_broadcaster : AlertBroadcaster
 
 var player_scene : PackedScene = preload("res://player/player.tscn")
+
+func _ready() -> void:
+	alert_broadcaster = AlertBroadcaster.new()
+	add_child(alert_broadcaster)
+	
 
 func spawn_player(spawn_state : Player.spawn_states):
 	var new_player : Player = player_scene.instantiate()

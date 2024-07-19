@@ -11,11 +11,15 @@ signal walking_changed(new_walking : bool)
 @export var gravity_acceleration : int = PhysicsData.gravity_acceleration
 @export var death_altitude : int = PhysicsData.death_altitude
 
-@export var walk_speed : int = 250
 @export var walk_accel : int = 80
 @export var friction : int = 30
 @export var max_walk_speed : int = 350
 @export var wander_range : int = 700
+
+@export var edge_detector : EdgeDetector
+@export var obstacle_detector : ObstacleDetector
+
+@export var state_machine : EntityStateMachine
 
 var direction : Vector2 = Vector2.RIGHT:
 	set(v):
@@ -38,6 +42,7 @@ var health : int = starting_health:
 var spawn_position : Vector2
 
 func _ready() -> void:
+	health = starting_health
 	spawn_position = global_position
 	add_to_group("damageable")
 	add_to_group("knockable")
@@ -75,9 +80,9 @@ func process_walking() -> void:
 	if walking:
 		match direction:
 			Vector2.RIGHT:
-				lateral_acceleration += walk_speed
+				lateral_acceleration += walk_accel
 			Vector2.LEFT:
-				lateral_acceleration += -walk_speed
+				lateral_acceleration += -walk_accel
 		
 		#apply max speed
 		if abs(velocity.x + lateral_acceleration) < max_walk_speed:
@@ -127,4 +132,25 @@ func get_simple_direction_to(other_global_position : Vector2) -> Vector2:
 		return Vector2.LEFT
 	else:
 		return Vector2.RIGHT
+		
+		
+func other_direction():
+	match direction:
+		Vector2.RIGHT:
+			return Vector2.LEFT
+		Vector2.LEFT:
+			return Vector2.RIGHT
+			
+			
+func is_direction_blocked(in_direction : Vector2) -> bool:
+	var blocked : bool = false
+	if is_instance_valid(edge_detector):
+		blocked = edge_detector.is_edge_in_direction(in_direction)
+	if is_instance_valid(obstacle_detector):
+		blocked = blocked or obstacle_detector.is_obstacle_in_direction(in_direction)
+	return blocked
+	
+	
+func is_to_far_from_spawn() -> bool:
+	return global_position.distance_to(spawn_position) > wander_range
 	

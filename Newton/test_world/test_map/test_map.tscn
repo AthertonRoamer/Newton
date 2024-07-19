@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=10 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://wind.tscn" id="6_vn1vw"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
 [ext_resource type="PackedScene" uid="uid://dwgdig80lejvq" path="res://environment/breakable_platform/breakable_platform.tscn" id="8_ydbyu"]
+[ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="9_7ucq7"]
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_otmdb")
@@ -64,3 +65,6 @@ position = Vector2(-21, 534)
 
 [node name="BreakablePlatform4" parent="." instance=ExtResource("8_ydbyu")]
 position = Vector2(-91, 532)
+
+[node name="Pig" parent="." instance=ExtResource("9_7ucq7")]
+position = Vector2(1540, 347)
