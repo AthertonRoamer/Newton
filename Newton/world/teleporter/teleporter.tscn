@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2o234hsvd7y0"]
+
+[ext_resource type="Script" path="res://world/teleporter/teleporter.gd" id="1_qwdy7"]
+[ext_resource type="Texture2D" uid="uid://76cwdkgwqcko" path="res://world/teleporter/filler_teleporter.png" id="2_cav4k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d6tk"]
+radius = 38.2099
+
+[node name="Teleporter" type="Area2D"]
+script = ExtResource("1_qwdy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cav4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2d6tk")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = -41.0
+text = "E to teleport"
