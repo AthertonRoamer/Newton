@@ -8,6 +8,7 @@ func die() -> void:
 		Main.world.level_segment_manager.active_segment.alert_broadcaster.pig_killed.emit(global_position)
 		state_machine.set_state("dead")
 		dead = true
+		$CollisionShape2D.disabled = true
 		
 		
 func take_knockback(knock) -> void:
