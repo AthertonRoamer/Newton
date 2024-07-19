@@ -54,7 +54,7 @@ offset_bottom = 272.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_qrv7r")
 theme_override_font_sizes/font_size = 60
-text = "MASTER'S APPRENTICE"
+text = "CHAOS APPRENTICE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
