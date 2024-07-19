@@ -18,16 +18,24 @@ var swinging = false
 func _on_walking_changed(walking : bool):
 	moving = walking
 
+
 func _on_direction_changed(new_direction : Vector2):
 	goblin_dir = new_direction
+	
 	
 func _on_health_changed(new_health : int):
 	if health >= new_health:
 		took_dmg = true
 	health = new_health
 
+
 func _on_strike_began():
 	attacking = true
+	
+	
+func _on_strike_ended() -> void:
+	attacking = false
+	swinging = false
 	
 
 func _on_death():
@@ -39,6 +47,7 @@ func _ready() -> void:
 	goblin.health_changed.connect(_on_health_changed)
 	goblin.dead.connect(_on_death)
 	goblin.weapon.strike_began.connect(_on_strike_began)
+	goblin.weapon.strike_ended.connect(_on_strike_ended)
 
 
 
