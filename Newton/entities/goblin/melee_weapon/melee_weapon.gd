@@ -36,7 +36,8 @@ func end_strike() -> void:
 	
 	
 func _on_body_entered(body : Node2D) -> void:
-	effect_body(body)
+	if striking:
+		effect_body(body)
 	
 	
 func effect_body(body : Node2D) -> void:
