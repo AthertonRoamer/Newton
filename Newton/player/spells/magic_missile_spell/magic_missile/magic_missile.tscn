@@ -10,11 +10,12 @@ radius = 8.66667
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_cd6uj")
 speed = 500.0
-damage = 20
+damage = 4
 damage_type = "\"none\""
 extinguish_on_effect_body = true
 duration_timer = NodePath("Timer")
-duration = 15.0
+duration = 6.0
+impact_knockback = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gyw7d")

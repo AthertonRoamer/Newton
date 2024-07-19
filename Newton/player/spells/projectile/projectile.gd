@@ -10,6 +10,7 @@ extends Area2D
 @export var extinguish_on_effect_body : bool
 @export var duration_timer : Timer
 @export var duration : float = 0
+@export var impact_knockback : int = 300
 
 var hit_entities : Array[Node] = []
 var velocity : Vector2
@@ -40,8 +41,10 @@ func effect_body(body : Node2D) -> void:
 	if body.is_in_group("damageable"):
 		body.take_damage(damage, damage_type)
 		hit_entities.append(body)
-		if extinguish_on_effect_body:
-			extinguish()
+	if body.is_in_group("knockable") and impact_knockback > 0:
+		body.take_knockback(impact_knockback * velocity.normalized())
+	if extinguish_on_effect_body:
+		extinguish()
 
 
 func _process(delta):

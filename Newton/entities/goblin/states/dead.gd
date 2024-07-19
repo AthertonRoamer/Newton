@@ -1,0 +1,2 @@
+extends EntityState
+class_name DeadState

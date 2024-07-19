@@ -5,9 +5,11 @@
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/missile_shooter.gd" id="3_i12b3"]
 [ext_resource type="PackedScene" uid="uid://ciap8p8ysjt5n" path="res://player/spells/magic_missile_spell/magic_missile/magic_missile.tscn" id="4_xhvqn"]
 
-[node name="MagicMissileSpell" type="Node" node_paths=PackedStringArray("missile_shooter")]
+[node name="MagicMissileSpell" type="Node" node_paths=PackedStringArray("missile_shooter", "fire_timer", "damage_player_timer")]
 script = ExtResource("1_e2xoc")
 missile_shooter = NodePath("MissileShooter")
+fire_timer = NodePath("FireTimer")
+damage_player_timer = NodePath("DamagePlayerTimer")
 menu_data = ExtResource("2_1ow6r")
 id = "magic_missile"
 
@@ -15,3 +17,10 @@ id = "magic_missile"
 script = ExtResource("3_i12b3")
 magic_missile_spell = NodePath("..")
 projectile_scene = ExtResource("4_xhvqn")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="DamagePlayerTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="DamagePlayerTimer" to="." method="_on_damage_player_timer_timeout"]

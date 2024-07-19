@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://crs5n2j5sil7s"]
+[gd_scene load_steps=23 format=3 uid="uid://crs5n2j5sil7s"]
 
 [ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
 [ext_resource type="Texture2D" uid="uid://f1erxpw83siy" path="res://world/zombie.png" id="2_cio0n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://entities/goblin/states/pursue.gd" id="7_4e64o"]
 [ext_resource type="Script" path="res://entities/goblin/melee_weapon/goblin_melee_weapon.gd" id="8_2lfkf"]
 [ext_resource type="Texture2D" uid="uid://c7d6kh1qxiylf" path="res://entities/goblin/art/filler_goblin_weapon.png" id="8_ddich"]
+[ext_resource type="Script" path="res://entities/goblin/states/dead.gd" id="9_4um2t"]
 [ext_resource type="Script" path="res://entities/goblin/AnimationPlayer.gd" id="11_qo7o1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4b8o"]
@@ -246,6 +247,13 @@ shape = SubResource("CapsuleShape2D_a4b8o")
 
 [node name="CanAtttackTimer" type="Timer" parent="."]
 
+[node name="EdgeDetector" parent="." instance=ExtResource("3_b6hqv")]
+width = 100.0
+length = 100.0
+
+[node name="ObstacleDetector" parent="." instance=ExtResource("4_tt073")]
+length = 90.0
+
 [node name="EntityStateMachine" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("4_etnwo")]
 entity = NodePath("..")
 
@@ -262,6 +270,10 @@ id = "pursue"
 script = ExtResource("6_ofi1d")
 id = "attack"
 
+[node name="Dead" type="Node" parent="EntityStateMachine"]
+script = ExtResource("9_4um2t")
+id = "dead"
+
 [node name="StateDisplay" type="Label" parent="."]
 visible = false
 offset_left = -39.0
@@ -270,13 +282,6 @@ offset_right = 40.0
 offset_bottom = -19.0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EdgeDetector" parent="." instance=ExtResource("3_b6hqv")]
-width = 100.0
-length = 100.0
-
-[node name="ObstacleDetector" parent="." instance=ExtResource("4_tt073")]
-length = 90.0
 
 [node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("timer", "wielder")]
 position = Vector2(-2, 0)

@@ -19,4 +19,19 @@ func _on_state_changed() -> void:
 	$StateDisplay.text = state_machine.active_state.id
 
 func die():
+	state_machine.set_state("dead")
 	dead.emit()
+	
+	
+func is_direction_blocked(in_direction : Vector2) -> bool:
+	var blocked = edge_detector.is_edge_in_direction(in_direction)
+	blocked = blocked or obstacle_detector.is_obstacle_in_direction(in_direction)
+	return blocked
+	
+	
+func other_direction():
+	match direction:
+		Vector2.RIGHT:
+			return Vector2.LEFT
+		Vector2.LEFT:
+			return Vector2.RIGHT

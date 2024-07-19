@@ -28,7 +28,7 @@ func _on_health_changed(new_health : int):
 
 func _on_strike_began():
 	attacking = true
-	print("attack")
+	
 
 func _on_death():
 	dead = true
