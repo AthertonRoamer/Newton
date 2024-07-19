@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://chuttohj0ls77"
-
-path="res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"
+uid="uid://ck412ldhn420c"
+path="res://.godot/imported/houses.png-5625e9b5bd6a0bab0b2a0c5b8d6fdac5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_world/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"]
+source_file="res://world/houses.png"
+dest_files=["res://.godot/imported/houses.png-5625e9b5bd6a0bab0b2a0c5b8d6fdac5.ctex"]
 
 [params]
 
