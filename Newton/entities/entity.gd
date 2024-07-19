@@ -15,6 +15,7 @@ signal walking_changed(new_walking : bool)
 @export var walk_accel : int = 80
 @export var friction : int = 30
 @export var max_walk_speed : int = 350
+@export var wander_range : int = 700
 
 var direction : Vector2 = Vector2.RIGHT:
 	set(v):
@@ -34,8 +35,10 @@ var health : int = starting_health:
 			health = 0
 			die()
 
+var spawn_position : Vector2
 
 func _ready() -> void:
+	spawn_position = global_position
 	add_to_group("damageable")
 	add_to_group("knockable")
 
@@ -117,3 +120,11 @@ func _physics_process(_delta) -> void:
 	process_walking()
 	basic_entity_physics()
 	move_and_slide()
+	
+	
+func get_simple_direction_to(other_global_position : Vector2) -> Vector2:
+	if global_position.x > other_global_position.x:
+		return Vector2.LEFT
+	else:
+		return Vector2.RIGHT
+	

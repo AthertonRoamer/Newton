@@ -234,6 +234,7 @@ state_machine = NodePath("EntityStateMachine")
 weapon = NodePath("MeleeWeapon")
 attack_range = 70
 can_attack_timer = NodePath("CanAtttackTimer")
+wander_range = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3.5, 3.5)
