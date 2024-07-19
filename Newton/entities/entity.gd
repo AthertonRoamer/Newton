@@ -41,15 +41,36 @@ var health : int = starting_health:
 
 var spawn_position : Vector2
 
+var immune_to_spike : bool = false
+var immune_to_spike_timer : Timer
+
 func _ready() -> void:
+	set_up_immune_to_spike_timer()
 	health = starting_health
 	spawn_position = global_position
 	add_to_group("damageable")
 	add_to_group("knockable")
+	
+	
+func set_up_immune_to_spike_timer() -> void:
+	immune_to_spike_timer = Timer.new()
+	immune_to_spike_timer.wait_time = SpikePlant.interlude_time
+	immune_to_spike_timer.one_shot = true
+	add_child(immune_to_spike_timer)
 
 
-func take_damage(damage : int, _damage_type : String = "none") -> void:
-	health -= damage
+func take_damage(damage : int, damage_type : String = "none") -> void:
+	if damage_type == "spike_plant_first":
+		health -= damage
+		immune_to_spike = true
+		immune_to_spike_timer.start()
+	elif damage_type == "spike_plant":
+		if not immune_to_spike:
+			health -= damage
+			immune_to_spike = true
+			immune_to_spike_timer.start()
+	else:
+		health -= damage
 
 
 func take_knockback(knock : Vector2) -> void:
@@ -153,4 +174,8 @@ func is_direction_blocked(in_direction : Vector2) -> bool:
 	
 func is_to_far_from_spawn() -> bool:
 	return global_position.distance_to(spawn_position) > wander_range
+	
+	
+func immune_to_spike_timer_timeout() -> void:
+	immune_to_spike = false
 	

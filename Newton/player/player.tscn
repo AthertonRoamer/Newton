@@ -989,4 +989,8 @@ script = ExtResource("7_0bawi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableItemDetector"]
 shape = SubResource("CircleShape2D_savv0")
 
+[node name="ImmuneToSpikeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ImmuneToSpikeTimer" to="." method="_on_immune_to_spike_timer_timeout"]

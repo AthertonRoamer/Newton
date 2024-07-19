@@ -63,7 +63,10 @@ var lives : int = starting_lives
 enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN, TOTAL_RESPAWN}
 var spawn_state : spawn_states = spawn_states.LOAD_IN
 
+var immune_to_spike_plant : bool = false
+
 func _ready() -> void:
+	$ImmuneToSpikeTimer.wait_time = SpikePlant.interlude_time
 	Hud.spell_display_manager.clear_spells()
 	match spawn_state:
 		spawn_states.LEVEL_TRANSFER:
@@ -106,8 +109,18 @@ func respawn_reset() -> void:
 	health = starting_health
 
 
-func take_damage(damage : int, _damage_type : String = "none") -> void:
-	health -= damage
+func take_damage(damage : int, damage_type : String = "none") -> void:
+	if damage_type == "spike_plant_first":
+		health -= damage
+		immune_to_spike_plant = true
+		$ImmuneToSpikeTimer.start()
+	elif damage_type == "spike_plant":
+		if not immune_to_spike_plant:
+			health -= damage
+			immune_to_spike_plant = true
+			$ImmuneToSpikeTimer.start()
+	else:
+		health -= damage
 
 
 func take_knockback(knock : Vector2) -> void:
@@ -342,3 +355,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "wind_charging":
 		charged = true
 		anim_p.play("wind_charged")
+
+
+func _on_immune_to_spike_timer_timeout():
+	immune_to_spike_plant = false
