@@ -1,26 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://djtd7fhmfd8g2"]
+[gd_scene load_steps=6 format=3 uid="uid://djtd7fhmfd8g2"]
 
 [ext_resource type="Script" path="res://environment/spike_plant/spike_plant.gd" id="1_1aojg"]
-[ext_resource type="Texture2D" uid="uid://cfpkns50k8grp" path="res://environment/spike_plant/filler_spike_plant.png" id="2_0tyk2"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="2_d22t3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snoso"]
+atlas = ExtResource("2_d22t3")
+region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fujk4"]
-size = Vector2(32, 12)
+size = Vector2(32, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xugoi"]
+size = Vector2(32.041, 7.75)
 
 [node name="SpikePlant" type="Area2D"]
-scale = Vector2(2, 2)
 collision_mask = 5
 script = ExtResource("1_1aojg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0tyk2")
+texture = SubResource("AtlasTexture_snoso")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+visible = false
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_fujk4")
 
 [node name="StrikeTimer" type="Timer" parent="."]
 wait_time = 0.75
 autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(0.0204449, 12.2619)
+shape = SubResource("RectangleShape2D_xugoi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]

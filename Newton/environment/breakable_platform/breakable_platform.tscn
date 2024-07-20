@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwgdig80lejvq"]
+[gd_scene load_steps=5 format=3 uid="uid://dwgdig80lejvq"]
 
 [ext_resource type="Script" path="res://environment/breakable_platform/breakable_platform.gd" id="1_myhbl"]
-[ext_resource type="Texture2D" uid="uid://b0ec5o38evttm" path="res://environment/breakable_platform/filler_breakable_platform.png" id="2_1buvg"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="2_uh4i6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdm88"]
+atlas = ExtResource("2_uh4i6")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yquse"]
-size = Vector2(32, 20)
+size = Vector2(32, 8)
 
 [node name="BreakablePlatform" type="StaticBody2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_myhbl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_1buvg")
+texture = SubResource("AtlasTexture_tdm88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_yquse")
