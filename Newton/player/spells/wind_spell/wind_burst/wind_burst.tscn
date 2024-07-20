@@ -13,7 +13,7 @@ particles_anim_v_frames = 2
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_sgpbl"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.102921, 0.0, 0, 0]
+_data = [Vector2(0, 0.494505), 0.0, 0.0, 0, 0, Vector2(0.2, 0), -0.102921, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_5jfvo"]
@@ -26,7 +26,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_in845"]
 curve = SubResource("Curve_tcmm1")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3dd17"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fn07c"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 spread = 8.0
@@ -36,7 +36,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 3.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_in845")
-color = Color(1, 1, 1, 0.137255)
 alpha_curve = SubResource("CurveTexture_5jfvo")
 anim_speed_min = 5.0
 anim_speed_max = 5.0
@@ -61,7 +60,8 @@ shape = SubResource("RectangleShape2D_4xa6b")
 
 [node name="wind" parent="." instance=ExtResource("2_yp26v")]
 material = SubResource("CanvasItemMaterial_trm2j")
-process_material = SubResource("ParticleProcessMaterial_3dd17")
+amount = 2500
+process_material = SubResource("ParticleProcessMaterial_fn07c")
 texture = SubResource("CompressedTexture2D_lolk1")
 
 [node name="EmitTimer" type="Timer" parent="."]

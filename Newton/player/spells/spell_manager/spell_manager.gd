@@ -23,5 +23,7 @@ func select_spell_by_num(num : int) -> void:
 			selected_spell = new_selected_spell
 			selected_spell.selected = true
 			selected_spell_num = num
+			var frame_id : int = selected_spell.staff_frame_id
+			selected_spell.player.change_staff_color(frame_id)
 	else:
 		push_warning("Spell manager is trying to select an invalid spell num")

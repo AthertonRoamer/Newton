@@ -7,6 +7,9 @@ signal selected_changed(selected : bool)
 
 var player : Player
 
+
+@export var cast_anim_name : String
+@export var staff_frame_id : int 
 @export var recharge_time : float = 2.0
 @export var fire_duration : float = 0.0
 @export var menu_data : SpellMenuData
@@ -42,8 +45,9 @@ var state : int = state_options.IDLE
 func begin_charge() -> void:
 	state = state_options.CHARGING
 	
-	
+
 func cast() -> void:
+	player.play_cast_anim(cast_anim_name)
 	charge_time = 0
 	available = false
 	if fire_duration != 0.0 and fire_duration_timer != null:

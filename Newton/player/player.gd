@@ -27,6 +27,12 @@ var jumping = false
 var falling = false
 var charging = false
 var charged = false
+var shooting = false
+
+var hurt = false
+
+var dead = false
+var died = false
 
 var direction : Vector2 = Vector2.RIGHT
 var direction_locked = false
@@ -44,6 +50,7 @@ var health : int = starting_health:
 			die()
 		else:
 			health = v
+		hurt = true
 		Hud.health_display.health = health
 		PlayerData.health = health
 		
@@ -53,10 +60,12 @@ var lives : int = starting_lives
 
 @export var spell_manager : SpellManager
 
+
+@onready var respawn_timer = $respawn_timer
 @onready var player_cam = $Camera2D
 @onready var player_sprite = $Sprite2D
 @onready var staff_sprite = $staff
-@onready var anim_p = $AnimationPlayer
+@onready var anim_p : AnimationPlayer = $AnimationPlayer
 
 
 @onready var test_label = $Label
@@ -65,6 +74,12 @@ enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN, TOTAL_RESPAWN}
 var spawn_state : spawn_states = spawn_states.LOAD_IN
 
 var immune_to_spike_plant : bool = false
+
+func play_cast_anim(anim_name : String) -> void:
+	if anim_p.has_animation(anim_name):
+		shooting = true
+		anim_p.play(anim_name)
+	
 
 func _ready() -> void:
 	$ImmuneToSpikeTimer.wait_time = SpikePlant.interlude_time
@@ -132,15 +147,13 @@ func take_knockback(knock : Vector2) -> void:
 
 
 func die() -> void:
-	lives -= 1
-	PlayerData.lives = lives
-	Hud.lives_display.lives = lives
-	if lives <= 0:
-		total_death()
-	else:
-		print("You have died")
-		Hud.respawn_menu.show_menu()
-		queue_free()
+	if !dead:
+		dead = true
+		respawn_timer.start()
+		lives -= 1
+		PlayerData.lives = lives
+		Hud.lives_display.lives = lives
+	
 
 
 func total_death() -> void:
@@ -151,37 +164,38 @@ func total_death() -> void:
 	
 	
 func _input(event : InputEvent) -> void:
-	if event.is_action("player_cast"):
-		if not event.is_echo():
-			if event.is_pressed():
-				begin_charging_spell()
-			else:
-				cast_spell()
-	elif event.is_action("select_spell_up"):
-		if not event.is_echo() and event.is_pressed():
-			shift_to_spell_up()
-	elif event.is_action("select_spell_down"):
-		if not event.is_echo() and event.is_pressed():
-			shift_to_spell_down()
-	elif event.is_action("player_select_spell_one"):
-		if not event.is_echo() and event.is_pressed():
-			if spell_manager.spell_count > 0:
-				spell_manager.select_spell_by_num(0)
-	elif event.is_action("player_select_spell_two"):
-		if not event.is_echo() and event.is_pressed():
-			if spell_manager.spell_count > 1:
-				spell_manager.select_spell_by_num(1)
-	elif event.is_action("player_select_spell_three"):
-		if not event.is_echo() and event.is_pressed():
-			if spell_manager.spell_count > 2:
-				spell_manager.select_spell_by_num(2)
-	elif event.is_action("player_select_spell_four"):
-		if not event.is_echo() and event.is_pressed():
-			if spell_manager.spell_count > 3:
-				spell_manager.select_spell_by_num(3)
-	elif event.is_action("player_interact"):
-		if not event.is_echo() and event.is_pressed():
-			interactable_item_detector.interact()
+	if !dead:
+		if event.is_action("player_cast"):
+			if not event.is_echo():
+				if event.is_pressed():
+					begin_charging_spell()
+				else:
+					cast_spell()
+		elif event.is_action("select_spell_up"):
+			if not event.is_echo() and event.is_pressed():
+				shift_to_spell_up()
+		elif event.is_action("select_spell_down"):
+			if not event.is_echo() and event.is_pressed():
+				shift_to_spell_down()
+		elif event.is_action("player_select_spell_one"):
+			if not event.is_echo() and event.is_pressed():
+				if spell_manager.spell_count > 0:
+					spell_manager.select_spell_by_num(0)
+		elif event.is_action("player_select_spell_two"):
+			if not event.is_echo() and event.is_pressed():
+				if spell_manager.spell_count > 1:
+					spell_manager.select_spell_by_num(1)
+		elif event.is_action("player_select_spell_three"):
+			if not event.is_echo() and event.is_pressed():
+				if spell_manager.spell_count > 2:
+					spell_manager.select_spell_by_num(2)
+		elif event.is_action("player_select_spell_four"):
+			if not event.is_echo() and event.is_pressed():
+				if spell_manager.spell_count > 3:
+					spell_manager.select_spell_by_num(3)
+		elif event.is_action("player_interact"):
+			if not event.is_echo() and event.is_pressed():
+				interactable_item_detector.interact()
 
 
 func equip_spell(spell_scene : PackedScene) -> void:
@@ -229,7 +243,8 @@ func shift_to_spell_down() -> void:
 
 func _physics_process(delta) -> void:
 	mouse_actions()
-	movement(delta)
+	if !dead:
+		movement(delta)
 	update_player_visuals()
 	
 	if position.y > death_altitude:
@@ -325,31 +340,67 @@ func flip_player():
 				staff_sprite.scale.x = -1
 				
 
+func change_staff_color(frame_id ):
+	$staff.frame = frame_id
 
 func player_animations():
-	if charging:
-		if !charged:
-			anim_p.play("wind_charging")
+	if dead:
+		if !died:
+			anim_p.play("death")
 	else:
-		if is_on_floor():
-			if walking:
-				if direction == Vector2.RIGHT:
-					anim_p.play("walk_right")
-					test_label.text = "walking"
-				elif direction == Vector2.LEFT:
-					anim_p.play("walk_left")
-					test_label.text = "walking"
-			else:
-				anim_p.play("idle",-1,0.75)
-				test_label.text = "idle"
+		if hurt:
+			match spell_manager.selected_spell.id:
+							"magic_missile":
+								if charging:
+									anim_p.play("mm_hurt")
+								else:
+									anim_p.play("mm_hurt2")
+							_:
+								anim_p.play("hurt")
 		else:
-			if jumping == true:
-				anim_p.play("jump",-1,0.75)
-				test_label.text = "jumping"
-				jumping = false
-			if falling == true:
-				anim_p.play("fall")
-				falling = false
+			if !shooting:
+				if charging:
+					if !charged:
+						match spell_manager.selected_spell.id:
+							"magic_missile":
+								anim_p.play("mm_charging",-1,0.4)
+							_:
+								anim_p.play("wind_charging")
+							
+				else:
+					if is_on_floor():
+						if walking:
+							if direction == Vector2.RIGHT:
+								match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_walk_right")
+									_:
+										anim_p.play("walk_right")
+							
+							elif direction == Vector2.LEFT:
+								match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_walk_left")
+									_:
+										anim_p.play("walk_left")
+						else:
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_idle",-1,0.75)
+									_:
+										anim_p.play("idle",-1,0.75)
+							
+					else:
+						if jumping == true:
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_jump",-1,0.75)
+									_:
+										anim_p.play("jump",-1,0.75)
+							jumping = false
+						if falling == true:
+							anim_p.play("fall")
+							falling = false
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -359,7 +410,32 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "wind_charging":
 		charged = true
 		anim_p.play("wind_charged")
+	elif anim_name == "wind_fire":
+		shooting = false
+	elif anim_name == "death":
+		died = true
+	elif anim_name == "hurt":
+		hurt = false
+	elif anim_name == "mm_charging" :
+		charged = true
+		anim_p.play("mm_charged")
+	elif anim_name == "mm_hurt":
+		hurt = false
+		anim_p.play("mm_charged")
+	elif anim_name == "mm_hurt2":
+		hurt = false
+	
 
 
 func _on_immune_to_spike_timer_timeout():
 	immune_to_spike_plant = false
+
+
+func _on_respawn_timer_timeout() -> void:
+	if lives <= 0:
+		total_death()
+	else:
+		print("You have died")
+		Hud.respawn_menu.show_menu()
+		queue_free()
+	
