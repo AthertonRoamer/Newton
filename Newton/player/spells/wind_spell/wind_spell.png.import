@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chuttohj0ls77"
-path="res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"
+uid="uid://bcx2i45xpduiy"
+path="res://.godot/imported/wind_spell.png-b273a3b5b4f325195d84fbc24e052db5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_world/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"]
+source_file="res://player/spells/wind_spell/wind_spell.png"
+dest_files=["res://.godot/imported/wind_spell.png-b273a3b5b4f325195d84fbc24e052db5.ctex"]
 
 [params]
 

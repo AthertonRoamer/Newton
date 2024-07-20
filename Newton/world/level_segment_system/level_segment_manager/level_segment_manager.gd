@@ -47,4 +47,14 @@ func transfer_to_next_segment() -> void:
 			Main.main.exit_game_to_menu()
 		else:
 			push_warning("No level segment to load")
+			
+			
+func load_level_segment_by_index(level_num : int, spawn_state : Player.spawn_states = Player.spawn_states.TOTAL_RESPAWN) -> void:
+	if level_segment_list.size() >= level_num + 1 and level_segment_list[level_num] != null and level_segment_list[level_num].can_instantiate():
+		level_segment_index = level_num
+		close_active_segment()
+		open_level_segment(level_segment_list[level_segment_index], spawn_state)
+	else:
+		push_warning("Level segment manager given invalid level index to switch to")
+		
 	

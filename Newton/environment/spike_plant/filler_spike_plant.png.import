@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chuttohj0ls77"
-path="res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"
+uid="uid://cfpkns50k8grp"
+path="res://.godot/imported/filler_spike_plant.png-93884a5654696ec9743b1de64df047dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_world/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"]
+source_file="res://environment/spike_plant/filler_spike_plant.png"
+dest_files=["res://.godot/imported/filler_spike_plant.png-93884a5654696ec9743b1de64df047dc.ctex"]
 
 [params]
 

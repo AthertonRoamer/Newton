@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chuttohj0ls77"
-path="res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"
+uid="uid://rq7yl2sharcf"
+path="res://.godot/imported/filler_explosion.png-5773b67d135949d04243c6a26cbb4a58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_world/Farm.png"
-dest_files=["res://.godot/imported/Farm.png-f59b675cea8aae6c87643961b893fcb3.ctex"]
+source_file="res://environment/explosion/filler_explosion.png"
+dest_files=["res://.godot/imported/filler_explosion.png-5773b67d135949d04243c6a26cbb4a58.ctex"]
 
 [params]
 

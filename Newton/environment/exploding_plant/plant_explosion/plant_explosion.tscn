@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://di5cnvba54df5"]
+
+[ext_resource type="Script" path="res://environment/exploding_plant/plant_explosion/plant_explosion.gd" id="1_losug"]
+[ext_resource type="Texture2D" uid="uid://rq7yl2sharcf" path="res://environment/explosion/filler_explosion.png" id="2_vb8hc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oa6b2"]
+radius = 16.0
+
+[node name="PlantExplosion" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+script = ExtResource("1_losug")
+collision_shape = NodePath("CollisionShape2D")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vb8hc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oa6b2")

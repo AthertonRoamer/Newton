@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://32h5aq1noaa8"]
+[gd_scene load_steps=6 format=3 uid="uid://32h5aq1noaa8"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_bynxb"]
+[ext_resource type="PackedScene" uid="uid://bd1lyw45e577q" path="res://hud/lives_display/lives_display.tscn" id="2_r56qh"]
 [ext_resource type="PackedScene" uid="uid://bhrqr2au42xmx" path="res://hud/health_display/health_display.tscn" id="2_yhtg2"]
 [ext_resource type="PackedScene" uid="uid://do4ids8a5t4ka" path="res://hud/spell_display_manager/spell_display_manager.tscn" id="3_ovhhw"]
 [ext_resource type="PackedScene" uid="uid://bavso5emg78ns" path="res://hud/respawn_menu/respawn_menu.tscn" id="4_u18od"]
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("health_display", "spell_display_manager", "respawn_menu")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("health_display", "lives_display", "spell_display_manager", "respawn_menu")]
 script = ExtResource("1_bynxb")
 health_display = NodePath("Control/HBoxContainer/HealthDisplay")
+lives_display = NodePath("Control/HBoxContainer/LivesDisplay")
 spell_display_manager = NodePath("Control/HBoxContainer/SpellDisplayManager")
 respawn_menu = NodePath("Control/RespawnMenu")
 
@@ -30,6 +32,13 @@ offset_left = -0.120003
 offset_top = 0.255981
 offset_right = 442.88
 offset_bottom = 104.256
+
+[node name="LivesDisplay" parent="Control/HBoxContainer" instance=ExtResource("2_r56qh")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "      "
 
 [node name="HealthDisplay" parent="Control/HBoxContainer" instance=ExtResource("2_yhtg2")]
 layout_mode = 2

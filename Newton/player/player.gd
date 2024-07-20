@@ -9,6 +9,10 @@ extends CharacterBody2D
 var effective_max_speed : int
 
 @export var jump_accel : int = 700
+@export var initial_jump_accel : int = 400
+@export var continued_jump_accel : float = 29.5
+@export var max_jump_time : float = 0.3
+
 @export var gravity : int = PhysicsData.gravity_acceleration
 
 @export var death_altitude : int = PhysicsData.death_altitude
@@ -16,6 +20,7 @@ var effective_max_speed : int
 @export var interactable_item_detector : InteractableItemDetector
 @export var staff_end_node : Node2D
 @export var staff : Staff
+@export var wind_burst_holder : Node2D
 
 var walking = false
 var jumping = false
@@ -26,8 +31,12 @@ var charged = false
 var direction : Vector2 = Vector2.RIGHT
 var direction_locked = false
 
+var current_jump_time : float = 0
+var is_jumping : bool = false
+
 @export var max_health : int = 100
 @export var starting_health : int = 100
+@export var starting_lives : int = 2
 var health : int = starting_health:
 	set(v):
 		if v <= 0:
@@ -37,7 +46,9 @@ var health : int = starting_health:
 			health = v
 		Hud.health_display.health = health
 		PlayerData.health = health
-			
+		
+		
+var lives : int = starting_lives
 
 
 @export var spell_manager : SpellManager
@@ -50,10 +61,13 @@ var health : int = starting_health:
 
 @onready var test_label = $Label
 
-enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN}
+enum spawn_states {LOAD_IN, LEVEL_TRANSFER, RESPAWN, TOTAL_RESPAWN}
 var spawn_state : spawn_states = spawn_states.LOAD_IN
 
+var immune_to_spike_plant : bool = false
+
 func _ready() -> void:
+	$ImmuneToSpikeTimer.wait_time = SpikePlant.interlude_time
 	Hud.spell_display_manager.clear_spells()
 	match spawn_state:
 		spawn_states.LEVEL_TRANSFER:
@@ -64,11 +78,20 @@ func _ready() -> void:
 			respawn_reset()
 		spawn_states.LOAD_IN:
 			equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
+			reset_lives()
+		spawn_states.TOTAL_RESPAWN:
+			reset_lives()
+			load_persistent_player_data()
 	Hud.health_display.health = health
 	Hud.show()
 	interactable_item_detector.player = self
 	Main.player = self
 	
+	
+func reset_lives() -> void:
+	lives = starting_lives
+	PlayerData.lives = lives
+	Hud.lives_display.lives = lives
 	
 	
 func load_persistent_player_data() -> void:
@@ -76,6 +99,7 @@ func load_persistent_player_data() -> void:
 	for spell in PlayerData.equipped_spells.duplicate():
 		equip_spell(spell)
 	spell_manager.select_spell_by_num(num)
+	lives = PlayerData.lives
 		
 		
 func load_temporary_player_data() -> void:
@@ -86,8 +110,21 @@ func respawn_reset() -> void:
 	health = starting_health
 
 
-func take_damage(damage : int, _damage_type : String = "none") -> void:
-	health -= damage
+func take_damage(damage : int, damage_type : String = "none") -> void:
+	if damage_type == "spike_plant_first":
+		if not is_on_floor() and velocity.y > 0:
+			health -= SpikePlant.fall_on_spike_damage
+		else:
+			health -= damage
+		immune_to_spike_plant = true
+		$ImmuneToSpikeTimer.start()
+	elif damage_type == "spike_plant":
+		if not immune_to_spike_plant:
+			health -= damage
+			immune_to_spike_plant = true
+			$ImmuneToSpikeTimer.start()
+	else:
+		health -= damage
 
 
 func take_knockback(knock : Vector2) -> void:
@@ -95,11 +132,24 @@ func take_knockback(knock : Vector2) -> void:
 
 
 func die() -> void:
-	print("You have died")
-	Hud.respawn_menu.show()
+	lives -= 1
+	PlayerData.lives = lives
+	Hud.lives_display.lives = lives
+	if lives <= 0:
+		total_death()
+	else:
+		print("You have died")
+		Hud.respawn_menu.show_menu()
+		queue_free()
+
+
+func total_death() -> void:
+	print("You have totally died")
+	Hud.respawn_menu.total_respawn = true
+	Hud.respawn_menu.show_menu()
 	queue_free()
-
-
+	
+	
 func _input(event : InputEvent) -> void:
 	if event.is_action("player_cast"):
 		if not event.is_echo():
@@ -177,9 +227,9 @@ func shift_to_spell_down() -> void:
 	spell_manager.select_spell_by_num(new_spell_num)
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	mouse_actions()
-	movement()
+	movement(delta)
 	update_player_visuals()
 	
 	if position.y > death_altitude:
@@ -196,7 +246,7 @@ func mouse_actions():
 		staff_sprite.stop_following_mouse()
 
 
-func movement():
+func movement(delta : float):
 	walking = false
 	#if Input.is_action_pressed("player_sprint"):
 		#effective_max_speed = max_sprint_speed
@@ -238,11 +288,23 @@ func movement():
 		if velocity.y > 0:
 			velocity.y = 0
 		if Input.is_action_just_pressed("player_jump"):
-			velocity.y -= jump_accel
+			velocity.y -= initial_jump_accel
+			is_jumping = true
 			jumping = true
-
 	else:
+		if is_jumping:
+			velocity.y -= continued_jump_accel
+			current_jump_time += delta
+			if current_jump_time >= max_jump_time:
+				is_jumping = false
+				current_jump_time = 0
+		if Input.is_action_just_released("player_jump"):
+			is_jumping = false
+			current_jump_time = 0
 		velocity.y += gravity
+		if sign(velocity.y) == 1:
+			is_jumping = false
+			current_jump_time = 0
 	
 	move_and_slide()
 
@@ -297,3 +359,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "wind_charging":
 		charged = true
 		anim_p.play("wind_charged")
+
+
+func _on_immune_to_spike_timer_timeout():
+	immune_to_spike_plant = false

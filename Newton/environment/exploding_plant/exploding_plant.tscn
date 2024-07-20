@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b57rx4vddglpo"]
+
+[ext_resource type="Script" path="res://environment/exploding_plant/exploding_plant.gd" id="1_dcxwo"]
+[ext_resource type="PackedScene" uid="uid://di5cnvba54df5" path="res://environment/exploding_plant/plant_explosion/plant_explosion.tscn" id="2_ph7yx"]
+[ext_resource type="Texture2D" uid="uid://duww5k4urkbnp" path="res://environment/exploding_plant/filler_exploding_plant.png" id="2_wmgg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxayg"]
+size = Vector2(32, 12)
+
+[node name="ExplodingPlant" type="StaticBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_dcxwo")
+explosion_scene = ExtResource("2_ph7yx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wmgg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_fxayg")

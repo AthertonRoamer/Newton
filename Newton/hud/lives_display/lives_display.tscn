@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd1lyw45e577q"]
+
+[ext_resource type="Script" path="res://hud/lives_display/lives_display.gd" id="1_n1jcj"]
+
+[node name="LivesDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_n1jcj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 46.0
+horizontal_alignment = 1
+vertical_alignment = 1

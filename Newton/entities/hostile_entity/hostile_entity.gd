@@ -11,6 +11,8 @@ var can_attack : bool = true
 @export var can_attack_timer : Timer
 
 
+
+
 func _ready() -> void:
 	super()
 	if can_attack_timer != null:

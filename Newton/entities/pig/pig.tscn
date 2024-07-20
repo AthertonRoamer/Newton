@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://ll8lhlcpnn17"]
+
+[ext_resource type="Script" path="res://entities/pig/pig.gd" id="1_tokog"]
+[ext_resource type="Script" path="res://entities/pig/pig_state_machine.gd" id="2_7jytu"]
+[ext_resource type="Script" path="res://entities/pig/wander.gd" id="3_lnxht"]
+[ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_ne6j1"]
+[ext_resource type="Script" path="res://entities/pig/pause.gd" id="4_xfiay"]
+[ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="5_866yc"]
+[ext_resource type="Script" path="res://entities/pig/dead.gd" id="5_rbxjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3t4c"]
+size = Vector2(58, 33)
+
+[node name="Pig" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine")]
+script = ExtResource("1_tokog")
+max_health = 1
+starting_health = 1
+walk_accel = 35
+friction = 25
+max_walk_speed = 100
+wander_range = 400
+edge_detector = NodePath("EdgeDetector")
+obstacle_detector = NodePath("ObstacleDetector")
+state_machine = NodePath("PigStateMachine")
+
+[node name="PigStateMachine" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_7jytu")
+entity = NodePath("..")
+
+[node name="Wander" type="Node" parent="PigStateMachine"]
+script = ExtResource("3_lnxht")
+id = "wander"
+first_active_state = true
+
+[node name="Pause" type="Node" parent="PigStateMachine" node_paths=PackedStringArray("timer")]
+script = ExtResource("4_xfiay")
+timer = NodePath("Timer")
+id = "pause"
+
+[node name="Timer" type="Timer" parent="PigStateMachine/Pause"]
+one_shot = true
+
+[node name="Dead" type="Node" parent="PigStateMachine"]
+script = ExtResource("5_rbxjr")
+id = "dead"
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.960784, 0.529412, 0.435294, 1)
+polygon = PackedVector2Array(-29, -11, 29, -11, 29, 14, -29, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_u3t4c")
+
+[node name="EdgeDetector" parent="." instance=ExtResource("3_ne6j1")]
+width = 80.0
+
+[node name="ObstacleDetector" parent="." instance=ExtResource("5_866yc")]
+length = 50.0
+
+[connection signal="timeout" from="PigStateMachine/Pause/Timer" to="PigStateMachine/Pause" method="_on_timer_timeout"]
