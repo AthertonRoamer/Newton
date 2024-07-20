@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://be6g7s4ex5qep"]
+
+[ext_resource type="Script" path="res://player/spells/wind_spell/wind_spell.gd" id="1_b05ko"]
+[ext_resource type="PackedScene" uid="uid://ch3kln537qxi1" path="res://player/spells/wind_spell/wind_burst/wind_burst.tscn" id="2_l5cns"]
+[ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_qp4sj"]
+[ext_resource type="Texture2D" uid="uid://bcx2i45xpduiy" path="res://player/spells/wind_spell/wind_spell.png" id="3_iiw0t"]
+
+[sub_resource type="Resource" id="Resource_2tavj"]
+script = ExtResource("2_qp4sj")
+texture = ExtResource("3_iiw0t")
+name = "Wind Burst"
+description = "A burst of wind that knoks foes back and knocks you backward"
+
+[node name="WindSpell" type="Node"]
+script = ExtResource("1_b05ko")
+wind_burst_scene = ExtResource("2_l5cns")
+menu_data = SubResource("Resource_2tavj")

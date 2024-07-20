@@ -924,12 +924,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
 radius = 16.0312
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "spell_manager") groups=["damageable", "knockable"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_q0i30")
 interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
 staff = NodePath("staff")
+wind_burst_holder = NodePath("WindBurstHolder")
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -991,6 +992,9 @@ shape = SubResource("CircleShape2D_savv0")
 
 [node name="ImmuneToSpikeTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="WindBurstHolder" type="Node2D" parent="."]
+position = Vector2(0, -9)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ImmuneToSpikeTimer" to="." method="_on_immune_to_spike_timer_timeout"]
