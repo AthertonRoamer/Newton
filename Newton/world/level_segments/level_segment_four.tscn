@@ -1,15 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://cyvbxcx7eoai2"]
+[gd_scene load_steps=21 format=3 uid="uid://c1x752b6f21cq"]
 
-[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
-[ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_02fqk"]
-[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="2_efhk4"]
-[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="3_8s0qq"]
-[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="4_l1vxq"]
-[ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="6_0hmuu"]
-[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_ic40c"]
-[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_rk6bf"]
-[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="9_r3uxp"]
-[ext_resource type="PackedScene" uid="uid://city0pwx48l16" path="res://player/player.tscn" id="10_r3vxl"]
+[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_rocic"]
+[ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_76cwu"]
+[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="3_rebvu"]
+[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_jho3b"]
+[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_xfpra"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_ym0ky"]
+[ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="7_4lgxu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
 tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1)
@@ -24,7 +21,7 @@ tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65
 tile_data = PackedInt32Array(0, 0, 3, 65536, 0, 4, 1, 65536, 3, 65537, 65536, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bm6ke"]
-texture = ExtResource("2_efhk4")
+texture = ExtResource("3_rebvu")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -58,7 +55,7 @@ texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7f15l"]
-texture = ExtResource("3_8s0qq")
+texture = ExtResource("4_jho3b")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -82,7 +79,7 @@ pattern_2 = SubResource("TileMapPattern_rfwsy")
 pattern_3 = SubResource("TileMapPattern_3qxqw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xkas"]
-texture = ExtResource("4_l1vxq")
+texture = ExtResource("5_xfpra")
 texture_region_size = Vector2i(32, 64)
 0:1/0 = 0
 1:1/0 = 0
@@ -92,7 +89,7 @@ texture_region_size = Vector2i(32, 64)
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6qm2"]
-texture = ExtResource("3_8s0qq")
+texture = ExtResource("4_jho3b")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -126,7 +123,7 @@ sources/2 = SubResource("TileSetAtlasSource_y6qm2")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8f2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xow3h"]
-texture = ExtResource("6_ic40c")
+texture = ExtResource("6_ym0ky")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -247,11 +244,11 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_q8f2o")
 sources/0 = SubResource("TileSetAtlasSource_xow3h")
 
-[node name="LevelSegmentOne" type="Node2D" node_paths=PackedStringArray("spawn_point")]
-script = ExtResource("1_35eit")
+[node name="LevelSegmentFour" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_rocic")
 spawn_point = NodePath("SpawnPoint")
 
-[node name="Node" parent="." instance=ExtResource("2_02fqk")]
+[node name="Node" parent="." instance=ExtResource("2_76cwu")]
 position = Vector2(-1, 2)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
@@ -279,19 +276,16 @@ position = Vector2(0, 155)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_dmik0")
 format = 2
-layer_0/tile_data = PackedInt32Array(131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 131072, 1, 131076, 65536, 0, 131077, 65536, 1, 131078, 65536, 1, 131079, 196608, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 131083, 65536, 1, 131084, 65536, 1, 131085, 131072, 0, 131086, 196608, 0, 131087, 196608, 0, 131088, 262144, 0, 131089, 65536, 1, 131090, 65536, 1, 196607, 327680, 2, 131091, 65536, 1, 131092, 65536, 1, 131093, 65536, 1, 131094, 65536, 1, 131095, 65536, 0, 131096, 65536, 1, 131097, 65536, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 131072, 1, 131101, 131072, 1, 131102, 65536, 1, 131103, 131072, 1, 131104, 131072, 1, 131105, 65536, 0, 131106, 65536, 1, 131107, 65536, 1, 131108, 65536, 1, 131109, 131072, 0, 131110, 196608, 0, 131111, 262144, 0, 131112, 131072, 1, 131113, 131072, 1, 131114, 131072, 1, 131115, 65536, 1, 131116, 65536, 1, 131117, 0, 0, 131118, 65536, 0, 131119, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 131072, 1, 131126, 131072, 1, 131127, 131072, 1, 131128, 65536, 1, 131129, 327680, 2, 131071, 327680, 1, 65535, 327680, 1, -1, 327680, 1, -65537, 327680, 1, -131073, 327680, 1, -196609, 327680, 1, -262145, 327680, 1, -327681, 327680, 1, -393217, 327680, 1, 65593, 327680, 1, 57, 327680, 1, -65479, 327680, 1, -131015, 327680, 1, -196551, 327680, 1, -262087, 327680, 1, -327623, 327680, 1, -393159, 327680, 1)
+layer_0/tile_data = PackedInt32Array(131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 131072, 1, 131076, 65536, 0, 131077, 65536, 1, 131078, 65536, 1, 131079, 65536, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 131083, 65536, 1, 131084, 65536, 1, 131085, 131072, 0, 131086, 196608, 0, 131087, 196608, 0, 131088, 262144, 0, 131089, 65536, 1, 131090, 65536, 1, 196607, 327680, 2, 131091, 65536, 1, 131092, 65536, 1, 131093, 65536, 1, 131094, 65536, 1, 131095, 65536, 0, 131096, 65536, 1, 131097, 65536, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 131072, 1, 131101, 131072, 1, 131102, 65536, 1, 131103, 131072, 1, 131104, 131072, 1, 131105, 65536, 0, 131106, 65536, 1, 131107, 65536, 1, 131108, 65536, 1, 131109, 131072, 0, 131110, 196608, 0, 131111, 262144, 0, 131112, 131072, 1, 131113, 131072, 1, 131114, 131072, 1, 131115, 65536, 1, 131116, 65536, 1, 131117, 0, 0, 131118, 65536, 0, 131119, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 131072, 1, 131126, 131072, 1, 131127, 131072, 1, 131128, 65536, 1, 131129, 327680, 2, 131071, 327680, 1, 65535, 327680, 1, -1, 327680, 1, -65537, 327680, 1, -131073, 327680, 1, -196609, 327680, 1, -262145, 327680, 1, -327681, 327680, 1, -393217, 327680, 1, 65593, 327680, 1, 57, 327680, 1, -65479, 327680, 1, -131015, 327680, 1, -196551, 327680, 1, -262087, 327680, 1, -327623, 327680, 1, -393159, 327680, 1)
 
-[node name="Goblin" parent="." instance=ExtResource("6_0hmuu")]
-position = Vector2(3304, 389)
+[node name="Goblin" parent="." instance=ExtResource("7_4lgxu")]
+position = Vector2(1632, 513)
 
-[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_rk6bf")]
-position = Vector2(525, 532)
-
-[node name="Goblin2" parent="." instance=ExtResource("6_0hmuu")]
+[node name="Goblin2" parent="." instance=ExtResource("7_4lgxu")]
 position = Vector2(8122, 515)
 
-[node name="GrabbableWindSpell" parent="." instance=ExtResource("9_r3uxp")]
-position = Vector2(371, 538)
+[node name="Goblin3" parent="." instance=ExtResource("7_4lgxu")]
+position = Vector2(3487, 515)
 
-[node name="Player" parent="." instance=ExtResource("10_r3vxl")]
-position = Vector2(158, 105)
+[node name="Goblin4" parent="." instance=ExtResource("7_4lgxu")]
+position = Vector2(4703, 508)
