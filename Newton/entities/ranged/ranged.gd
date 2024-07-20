@@ -10,7 +10,7 @@ func is_player_attackable() -> bool:
 		return to_player.length() <= attack_range
 	else:
 		return false
-		
+	super()
 
 func _on_fire_duration_timer_timeout():
 	pass # Replace with function body.

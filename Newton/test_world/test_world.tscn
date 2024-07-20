@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://test_world/test_world.gd" id="1_yrsjs"]
 [ext_resource type="Script" path="res://test_world/level_segment_manager.gd" id="2_5d4fn"]
-[ext_resource type="PackedScene" uid="uid://vo4tbm4u65yf" path="res://test_world/test_map/test_map.tscn" id="3_qbsrl"]
+[ext_resource type="PackedScene" uid="uid://vo4tbm4u65yf" path="res://test_world/test_map.tscn" id="3_qbsrl"]
 [ext_resource type="PackedScene" uid="uid://2aaa3oxxbcg3" path="res://test_world/test_map_2/test_map2.tscn" id="4_rfshi"]
 
 [node name="TestWorld" type="Node2D" node_paths=PackedStringArray("object_holder", "level_segment_manager")]

@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="2_8mqfg"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="3_ivkys"]
 
-[node name="TestMap2" type="Node2D" node_paths=PackedStringArray("spawn_point", "object_holder")]
+[node name="TestMap2" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_15de8")
 spawn_point = NodePath("SpawnPoint")
-object_holder = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5
