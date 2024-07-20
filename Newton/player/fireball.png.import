@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxt0qittcx0lr"
-path="res://.godot/imported/pits.png-b4d3df15696ad0c6ec60577ede0cec73.ctex"
+uid="uid://jirolkfewjnx"
+path="res://.godot/imported/fireball.png-f109eb8f295624a99e68f935ba61fcf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/pits.png"
-dest_files=["res://.godot/imported/pits.png-b4d3df15696ad0c6ec60577ede0cec73.ctex"]
+source_file="res://player/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-f109eb8f295624a99e68f935ba61fcf0.ctex"]
 
 [params]
 
