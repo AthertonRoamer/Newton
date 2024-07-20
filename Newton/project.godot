@@ -93,6 +93,7 @@ player_select_spell_four={
 2d_physics/layer_1="Main Physics Layer"
 2d_physics/layer_2="Interactable Item Layer"
 2d_physics/layer_3="Damageable Only Layer"
+2d_physics/layer_4="Player Specific Layer"
 
 [rendering]
 

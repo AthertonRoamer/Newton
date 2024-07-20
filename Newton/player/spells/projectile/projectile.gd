@@ -38,12 +38,15 @@ func _on_body_entered(body : Node2D) -> void:
 	
 	
 func effect_body(body : Node2D) -> void:
+	var extinguish_triggered : bool = false
 	if body.is_in_group("damageable"):
 		body.take_damage(damage, damage_type)
 		hit_entities.append(body)
+		extinguish_triggered = true
 	if body.is_in_group("knockable") and impact_knockback > 0:
 		body.take_knockback(impact_knockback * velocity.normalized())
-	if extinguish_on_effect_body:
+		extinguish_triggered = true
+	if extinguish_on_effect_body and extinguish_triggered:
 		extinguish()
 
 

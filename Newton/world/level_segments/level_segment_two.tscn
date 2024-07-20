@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_gljis"]
 [ext_resource type="PackedScene" uid="uid://city0pwx48l16" path="res://player/player.tscn" id="2_g2glk"]
 [ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="2_t0hub"]
-[ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://level_backround2.tscn" id="2_ude5v"]
+[ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="2_ude5v"]
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="3_syrob"]
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_f4lqn"]
 
