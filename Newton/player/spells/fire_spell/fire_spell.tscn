@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://blcfifxj8ue6e"]
+
+[ext_resource type="Script" path="res://player/spells/fire_spell/fire_spell.gd" id="1_nufmj"]
+[ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_jlikx"]
+[ext_resource type="Texture2D" uid="uid://d2f4u7kfexkj5" path="res://player/spells/fire_spell/filler_fire_spell_icon.png" id="3_encgm"]
+[ext_resource type="Script" path="res://player/spells/fire_spell/fire_spell_projectile_manager.gd" id="4_r8vbk"]
+[ext_resource type="PackedScene" uid="uid://bbuxwc6oc8ajo" path="res://player/spells/fire_spell/fire_ball/fire_ball.tscn" id="5_dao0b"]
+
+[sub_resource type="Resource" id="Resource_ov2ab"]
+script = ExtResource("2_jlikx")
+texture = ExtResource("3_encgm")
+name = "Fireball"
+description = "Massive blast of cleansing fire"
+
+[node name="FireSpell" type="Node" node_paths=PackedStringArray("projectile_manager")]
+script = ExtResource("1_nufmj")
+projectile_manager = NodePath("FireSpellProjectileManager")
+menu_data = SubResource("Resource_ov2ab")
+id = "fire_spell"
+
+[node name="FireSpellProjectileManager" type="Node" parent="." node_paths=PackedStringArray("fire_spell")]
+script = ExtResource("4_r8vbk")
+fire_spell = NodePath("..")
+projectile_scene = ExtResource("5_dao0b")

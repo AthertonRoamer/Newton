@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=12 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
-[ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
 [ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://player/spells/wind_spell/wind.tscn" id="6_vn1vw"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
@@ -10,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="9_7ucq7"]
 [ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="10_d5phd"]
 [ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="11_qsboe"]
-[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="12_te0uk"]
+[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="12_12ul7"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="12_y5pha"]
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
@@ -43,9 +42,6 @@ scale = Vector2(7.7286, 1.73167)
 z_index = -5
 position = Vector2(1520, -427)
 rotation = 1.5708
-
-[node name="GrabbableTestSpellTwo" parent="." instance=ExtResource("2_8411r")]
-position = Vector2(1196, 498)
 
 [node name="GrabbableMagicMissile" parent="." instance=ExtResource("3_6mq8f")]
 position = Vector2(818, 465)
@@ -87,11 +83,5 @@ position = Vector2(917, 429)
 [node name="GrabbableWindSpell" parent="." instance=ExtResource("12_y5pha")]
 position = Vector2(457, 481)
 
-[node name="Ranged" parent="." instance=ExtResource("12_te0uk")]
-position = Vector2(2165, 415)
-
-[node name="Ranged2" parent="." instance=ExtResource("12_te0uk")]
-position = Vector2(1996, 440)
-
-[node name="Ranged3" parent="." instance=ExtResource("12_te0uk")]
-position = Vector2(2432, 416)
+[node name="GrabbableFireSpell" parent="." instance=ExtResource("12_12ul7")]
+position = Vector2(612, 468)
