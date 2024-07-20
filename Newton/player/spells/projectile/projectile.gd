@@ -12,6 +12,7 @@ extends Area2D
 @export var duration : float = 0
 @export var impact_knockback : int = 300
 
+
 var hit_entities : Array[Node] = []
 var velocity : Vector2
 

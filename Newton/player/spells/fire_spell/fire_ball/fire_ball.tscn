@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbuxwc6oc8ajo"]
+
+[ext_resource type="Script" path="res://player/spells/fire_spell/fire_ball/fire_ball.gd" id="1_v68ec"]
+[ext_resource type="PackedScene" uid="uid://c6e46y0d2lvxx" path="res://player/spells/fire_spell/fireball_explosion/fireball_explosion.tscn" id="2_cutgm"]
+[ext_resource type="Texture2D" uid="uid://d2f4u7kfexkj5" path="res://player/spells/fire_spell/filler_fire_spell_icon.png" id="2_htbp1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6erqh"]
+radius = 16.0312
+
+[node name="FireBall" type="Area2D" node_paths=PackedStringArray("collision_shape", "duration_timer")]
+script = ExtResource("1_v68ec")
+collision_shape = NodePath("CollisionShape2D")
+explosion_scene = ExtResource("2_cutgm")
+speed = 700.0
+extinguish_on_impact = true
+duration_timer = NodePath("DurationTimer")
+duration = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_htbp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6erqh")
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

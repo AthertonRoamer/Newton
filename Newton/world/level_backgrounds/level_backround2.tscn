@@ -6,12 +6,12 @@ colors = PackedColorArray(0.715245, 0.461057, 0.278534, 1, 0.93208, 0.7712, 0.78
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nlfdq"]
 gradient = SubResource("Gradient_vw6tl")
 
-[sub_resource type="Gradient" id="Gradient_ga05b"]
+[sub_resource type="Gradient" id="Gradient_6mbe5"]
 offsets = PackedFloat32Array(0, 0.720779, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.0344283, 0.0185383, 0.0258212, 1, 0.203922, 0.109804, 0.152941, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ghc2i"]
-gradient = SubResource("Gradient_ga05b")
+gradient = SubResource("Gradient_6mbe5")
 
 [node name="Node" type="Node2D"]
 
@@ -19,12 +19,12 @@ gradient = SubResource("Gradient_ga05b")
 z_index = -2
 position = Vector2(4582.37, -290.072)
 rotation = 1.5708
-scale = Vector2(29.3111, 145.155)
+scale = Vector2(29.3111, 300)
 texture = SubResource("GradientTexture2D_nlfdq")
 
 [node name="ground2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(4582.71, 1012.48)
 rotation = -1.5708
-scale = Vector2(11.8786, 145.219)
+scale = Vector2(11.8786, 300)
 texture = SubResource("GradientTexture2D_ghc2i")
