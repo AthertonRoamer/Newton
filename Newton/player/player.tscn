@@ -925,18 +925,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
 radius = 16.0312
 
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "spell_manager") groups=["damageable", "knockable"]]
-
 scale = Vector2(3, 3)
 script = ExtResource("1_q0i30")
 jump_accel = 800
 interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
 staff = NodePath("staff")
-
 wind_burst_holder = NodePath("WindBurstHolder")
-
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
