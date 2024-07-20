@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxt0qittcx0lr"
-path="res://.godot/imported/pits.png-b4d3df15696ad0c6ec60577ede0cec73.ctex"
+uid="uid://chp0uqml1dabb"
+path="res://.godot/imported/m-m.png-8c6a79835ff2a3eb9e9c5f85f4ed8807.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/pits.png"
-dest_files=["res://.godot/imported/pits.png-b4d3df15696ad0c6ec60577ede0cec73.ctex"]
+source_file="res://player/m-m.png"
+dest_files=["res://.godot/imported/m-m.png-8c6a79835ff2a3eb9e9c5f85f4ed8807.ctex"]
 
 [params]
 
