@@ -19,12 +19,12 @@ gradient = SubResource("Gradient_ga05b")
 z_index = -2
 position = Vector2(4582.37, -290.072)
 rotation = 1.5708
-scale = Vector2(29.3111, 145.155)
+scale = Vector2(29.3111, 300)
 texture = SubResource("GradientTexture2D_nlfdq")
 
 [node name="ground2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(4582.71, 1012.48)
 rotation = -1.5708
-scale = Vector2(11.8786, 145.219)
+scale = Vector2(11.8786, 300)
 texture = SubResource("GradientTexture2D_ghc2i")

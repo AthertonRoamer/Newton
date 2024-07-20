@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkx515vsl3mk2"]
+
+[ext_resource type="Texture2D" uid="uid://jirolkfewjnx" path="res://player/fireball.png" id="1_pwvg8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_axddw"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_34y05"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.44, 1), 0.0, 0.0, 0, 0, Vector2(0.753333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ichfg"]
+curve = SubResource("Curve_34y05")
+
+[sub_resource type="Curve" id="Curve_v8wvp"]
+_data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hdhv0"]
+curve = SubResource("Curve_v8wvp")
+
+[sub_resource type="Curve" id="Curve_ajaxp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.753333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0879121), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_elar3"]
+curve = SubResource("Curve_ajaxp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nexbo"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_elar3")
+alpha_curve = SubResource("CurveTexture_ichfg")
+emission_curve = SubResource("CurveTexture_hdhv0")
+anim_speed_min = 1.5
+anim_speed_max = 2.5
+
+[node name="firebomb" type="GPUParticles2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_axddw")
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_nexbo")
+texture = ExtResource("1_pwvg8")
+lifetime = 1.5
+speed_scale = 2.0
+explosiveness = 1.0
+fixed_fps = 60

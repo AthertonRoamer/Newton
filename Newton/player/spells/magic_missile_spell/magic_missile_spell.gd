@@ -35,7 +35,8 @@ func cast() -> void:
 
 
 func _on_fire_timer_timeout():
-	missile_shooter.fire()
+	if not player.dead:
+		missile_shooter.fire()
 	fire_timer.wait_time -= fire_wait_time_deaccel
 	if fire_timer.wait_time < min_fire_wait_time:
 		fire_timer.wait_time = min_fire_wait_time

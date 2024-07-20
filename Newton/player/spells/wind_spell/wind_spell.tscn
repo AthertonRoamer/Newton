@@ -14,4 +14,8 @@ description = "A burst of wind that knoks foes back and knocks you backward"
 [node name="WindSpell" type="Node"]
 script = ExtResource("1_b05ko")
 wind_burst_scene = ExtResource("2_l5cns")
+base_emit_duration = 0.5
+max_emit_duration = 0.75
+cast_anim_name = "wind_fire"
 menu_data = SubResource("Resource_2tavj")
+id = "wind_spell"
