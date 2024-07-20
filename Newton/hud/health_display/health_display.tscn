@@ -10,10 +10,10 @@ offset_bottom = 648.0
 script = ExtResource("1_2lokd")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 20.0
+offset_right = 121.0
+offset_bottom = 46.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

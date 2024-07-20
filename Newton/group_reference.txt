@@ -1,7 +1,7 @@
 Group Reference:
 ================
 
-damageable - guarantees take_damage(damage : int, damage_type : String = "none") -> void
+damageable - guarantees take_damage(damage : int, damage_type : String = "none", damager : Node = null) -> void
 
 knockable - guarantees take_knockback(knockback : Vector2) -> void
 

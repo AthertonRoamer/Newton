@@ -59,7 +59,7 @@ func set_up_immune_to_spike_timer() -> void:
 	add_child(immune_to_spike_timer)
 
 
-func take_damage(damage : int, damage_type : String = "none") -> void:
+func take_damage(damage : int, damage_type : String = "none", _damager : Node = null) -> void:
 	if damage_type == "spike_plant_first":
 		if not is_on_floor() and velocity.y > 0:
 			health -= SpikePlant.fall_on_spike_damage
@@ -163,6 +163,14 @@ func other_direction():
 		Vector2.RIGHT:
 			return Vector2.LEFT
 		Vector2.LEFT:
+			return Vector2.RIGHT
+			
+			
+func invert_direction(dir : Vector2) -> Vector2:
+	match dir:
+		Vector2.RIGHT:
+			return Vector2.LEFT
+		_:
 			return Vector2.RIGHT
 			
 			

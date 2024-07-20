@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
 [ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
-[ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="5_ec22k"]
 [ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://player/spells/wind_spell/wind.tscn" id="6_vn1vw"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
 [ext_resource type="PackedScene" uid="uid://dwgdig80lejvq" path="res://environment/breakable_platform/breakable_platform.tscn" id="8_ydbyu"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="9_7ucq7"]
 [ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="10_d5phd"]
 [ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="11_qsboe"]
+[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="12_te0uk"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="12_y5pha"]
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
@@ -28,7 +28,7 @@ color = Color(0.0392157, 0.145098, 0.14902, 1)
 
 [node name="Block2" parent="." instance=ExtResource("1_0n05w")]
 z_index = -5
-position = Vector2(1104, 473)
+position = Vector2(1020, 549)
 
 [node name="Block" parent="." instance=ExtResource("1_0n05w")]
 z_index = -5
@@ -36,7 +36,8 @@ position = Vector2(520, 549)
 
 [node name="Block3" parent="." instance=ExtResource("1_0n05w")]
 z_index = -5
-position = Vector2(1672, 397)
+position = Vector2(3254, 542)
+scale = Vector2(7.7286, 1.73167)
 
 [node name="Block4" parent="." instance=ExtResource("1_0n05w")]
 z_index = -5
@@ -44,13 +45,10 @@ position = Vector2(1520, -427)
 rotation = 1.5708
 
 [node name="GrabbableTestSpellTwo" parent="." instance=ExtResource("2_8411r")]
-position = Vector2(1275, 402)
+position = Vector2(1196, 498)
 
 [node name="GrabbableMagicMissile" parent="." instance=ExtResource("3_6mq8f")]
-position = Vector2(987, 408)
-
-[node name="Goblin" parent="." instance=ExtResource("5_ec22k")]
-position = Vector2(1014, 397)
+position = Vector2(818, 465)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(345, 452)
@@ -60,7 +58,7 @@ visible = false
 position = Vector2(1041, 213)
 
 [node name="Teleporter" parent="." instance=ExtResource("7_yxum4")]
-position = Vector2(1802, 340)
+position = Vector2(1833, 428)
 
 [node name="BreakablePlatform" parent="." instance=ExtResource("8_ydbyu")]
 position = Vector2(121, 532)
@@ -75,13 +73,25 @@ position = Vector2(-21, 534)
 position = Vector2(-91, 532)
 
 [node name="Pig" parent="." instance=ExtResource("9_7ucq7")]
-position = Vector2(1540, 347)
+position = Vector2(1362, 447)
 
 [node name="SpikePlant" parent="." instance=ExtResource("10_d5phd")]
-position = Vector2(635, 482)
+position = Vector2(1457, 458)
 
 [node name="ExplodingPlant" parent="." instance=ExtResource("11_qsboe")]
-position = Vector2(920, 401)
+position = Vector2(917, 480)
+
+[node name="ExplodingPlant2" parent="." instance=ExtResource("11_qsboe")]
+position = Vector2(917, 429)
 
 [node name="GrabbableWindSpell" parent="." instance=ExtResource("12_y5pha")]
 position = Vector2(457, 481)
+
+[node name="Ranged" parent="." instance=ExtResource("12_te0uk")]
+position = Vector2(2165, 415)
+
+[node name="Ranged2" parent="." instance=ExtResource("12_te0uk")]
+position = Vector2(1996, 440)
+
+[node name="Ranged3" parent="." instance=ExtResource("12_te0uk")]
+position = Vector2(2432, 416)
