@@ -9,7 +9,7 @@ extends CharacterBody2D
 var effective_max_speed : int
 
 @export var jump_accel : int = 700
-@export var initial_jump_accel : int = 400
+@export var initial_jump_accel : int = 600
 @export var continued_jump_accel : float = 29.5
 @export var max_jump_time : float = 0.3
 
