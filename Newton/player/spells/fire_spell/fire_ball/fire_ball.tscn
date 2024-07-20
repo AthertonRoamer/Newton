@@ -11,10 +11,10 @@ radius = 16.0312
 script = ExtResource("1_v68ec")
 collision_shape = NodePath("CollisionShape2D")
 explosion_scene = ExtResource("2_cutgm")
-speed = 500.0
+speed = 700.0
 extinguish_on_impact = true
 duration_timer = NodePath("DurationTimer")
-duration = 10.0
+duration = 0.75
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
