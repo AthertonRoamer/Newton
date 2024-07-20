@@ -8,6 +8,7 @@ size = Vector2(32, 12)
 
 [node name="SpikePlant" type="Area2D"]
 scale = Vector2(2, 2)
+collision_mask = 5
 script = ExtResource("1_1aojg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

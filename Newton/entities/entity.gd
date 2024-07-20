@@ -37,7 +37,7 @@ var health : int = starting_health:
 		health = v
 		if health <= 0:
 			health = 0
-			die()
+			call_deferred("die")
 
 var spawn_position : Vector2
 
