@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpny5jgpehprp"]
+
+[ext_resource type="Script" path="res://entities/farmer/farmer_spawner/farmer_spawn.gd" id="1_0iam4"]
+[ext_resource type="PackedScene" uid="uid://fa2ybcok776w" path="res://entities/farmer/farmer.tscn" id="2_i3krp"]
+
+[node name="FarmerSpawner" type="Node2D"]
+script = ExtResource("1_0iam4")
+farmer_scene = ExtResource("2_i3krp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -14,8 +14,8 @@
 [ext_resource type="Script" path="res://entities/goblin/AnimationPlayer.gd" id="11_qo7o1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4b8o"]
-radius = 23.0
-height = 106.0
+radius = 29.0
+height = 112.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1b1is"]
 radius = 16.1245
@@ -245,7 +245,7 @@ hframes = 8
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_a4b8o")
 
 [node name="CanAtttackTimer" type="Timer" parent="."]

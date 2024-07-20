@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://fa2ybcok776w"]
+
+[ext_resource type="Script" path="res://entities/farmer/farmer.gd" id="1_qyimm"]
+[ext_resource type="Texture2D" uid="uid://1lxdx1vtgmaj" path="res://entities/farmer/filler_farmer.png" id="2_0wmcm"]
+[ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_juxnm"]
+[ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="4_vi1jj"]
+[ext_resource type="Script" path="res://entities/farmer/farmer_state_machine.gd" id="5_vl5jl"]
+[ext_resource type="Script" path="res://entities/farmer/initial.gd" id="6_ku26s"]
+[ext_resource type="Script" path="res://entities/farmer/pursue.gd" id="6_rgcwb"]
+[ext_resource type="Script" path="res://entities/farmer/attack.gd" id="7_ccgyt"]
+[ext_resource type="Script" path="res://entities/farmer/dead.gd" id="9_acuje"]
+[ext_resource type="Script" path="res://entities/farmer/melee_weapon.gd" id="10_324p7"]
+[ext_resource type="Texture2D" uid="uid://c7d6kh1qxiylf" path="res://entities/goblin/art/filler_goblin_weapon.png" id="11_lypjq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeau7"]
+radius = 32.0
+height = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m41cj"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5qj0w"]
+polygon = PackedVector2Array(-4, -36, 6, -36, 10, -32, 16, -7, 8, 27, -7, 27, -16, -6)
+
+[node name="Farmer" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
+script = ExtResource("1_qyimm")
+weapon = NodePath("MeleeWeapon")
+attack_delay = 1.0
+can_attack_timer = NodePath("MeleeWeapon/StrikeTimer")
+edge_detector = NodePath("EdgeDetector")
+obstacle_detector = NodePath("ObstacleDetector")
+state_machine = NodePath("FarmerStateMachine")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_0wmcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aeau7")
+
+[node name="CanAtttackTimer" type="Timer" parent="."]
+
+[node name="EdgeDetector" parent="." instance=ExtResource("3_juxnm")]
+width = 100.0
+length = 100.0
+
+[node name="ObstacleDetector" parent="." instance=ExtResource("4_vi1jj")]
+length = 90.0
+
+[node name="FarmerStateMachine" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("5_vl5jl")
+entity = NodePath("..")
+
+[node name="Initial" type="Node" parent="FarmerStateMachine"]
+script = ExtResource("6_ku26s")
+id = "initial"
+first_active_state = true
+
+[node name="Timer" type="Timer" parent="FarmerStateMachine/Initial"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Pursue" type="Node" parent="FarmerStateMachine"]
+script = ExtResource("6_rgcwb")
+id = "pursue"
+
+[node name="Attack" type="Node" parent="FarmerStateMachine"]
+script = ExtResource("7_ccgyt")
+id = "attack"
+
+[node name="Dead" type="Node" parent="FarmerStateMachine"]
+script = ExtResource("9_acuje")
+id = "dead"
+
+[node name="StateDisplay" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -86.0
+offset_right = 40.0
+offset_bottom = -19.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("strike_timer", "timer", "wielder")]
+position = Vector2(-2, 0)
+collision_mask = 5
+script = ExtResource("10_324p7")
+strike_timer = NodePath("StrikeTimer")
+timer = NodePath("Timer")
+wielder = NodePath("..")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MeleeWeapon"]
+visible = false
+texture = ExtResource("11_lypjq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeWeapon"]
+position = Vector2(0.931934, 3)
+shape = SubResource("CircleShape2D_m41cj")
+
+[node name="StrikeTimer" type="Timer" parent="MeleeWeapon"]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="MeleeWeapon"]
+one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_5qj0w")
+
+[connection signal="timeout" from="FarmerStateMachine/Initial/Timer" to="FarmerStateMachine/Initial" method="_on_timer_timeout"]
