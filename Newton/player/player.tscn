@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://city0pwx48l16"]
+[gd_scene load_steps=22 format=3 uid="uid://city0pwx48l16"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q0i30"]
 [ext_resource type="Texture2D" uid="uid://c32v47imyoh2a" path="res://player/boy-no-hand-ss.png" id="2_6jsh6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bou6u6lk3irln" path="res://player/staff-ss.png" id="4_wmyvf"]
 [ext_resource type="Texture2D" uid="uid://dah5s03eq8hlq" path="res://player/light.png" id="5_5ko0m"]
 [ext_resource type="Script" path="res://player/staff.gd" id="5_omt7o"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="6_xr0eh"]
 [ext_resource type="Script" path="res://player/interactables/interactable_item_detector/interactable_item_detector.gd" id="7_0bawi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v0p5"]
@@ -924,13 +925,18 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
 radius = 16.0312
 
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "spell_manager") groups=["damageable", "knockable"]]
+
 scale = Vector2(3, 3)
 script = ExtResource("1_q0i30")
+jump_accel = 800
 interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
 staff = NodePath("staff")
+
 wind_burst_holder = NodePath("WindBurstHolder")
+
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -958,12 +964,20 @@ texture_scale = 0.03
 [node name="StaffEndPosition" type="Node2D" parent="staff"]
 position = Vector2(14.6667, -17.3333)
 
+[node name="PointLight2D2" type="PointLight2D" parent="staff/StaffEndPosition"]
+visible = false
+position = Vector2(-0.333366, -0.333366)
+scale = Vector2(0.0209627, 0.0133858)
+color = Color(1, 1, 1, 0.815686)
+texture = ExtResource("6_xr0eh")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2v0p5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -45)
 position_smoothing_enabled = true
 
 [node name="SpellManager" type="Node" parent="."]
