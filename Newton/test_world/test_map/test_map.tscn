@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="5_ec22k"]
-
 [ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://player/spells/wind_spell/wind.tscn" id="6_vn1vw"]
-
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
 [ext_resource type="PackedScene" uid="uid://dwgdig80lejvq" path="res://environment/breakable_platform/breakable_platform.tscn" id="8_ydbyu"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="9_7ucq7"]

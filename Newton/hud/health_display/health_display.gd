@@ -14,6 +14,7 @@ func _ready() -> void:
 func update_display() -> void:
 	$Label.text = "Health: " + str(health)
 	custom_minimum_size = $Label.get_minimum_size()
+	$Panel.custom_minimum_size = custom_minimum_size
 		
 		
 
