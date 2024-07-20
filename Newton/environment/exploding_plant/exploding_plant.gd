@@ -15,7 +15,6 @@ func take_damage(damage : int, _damage_type : String) -> void:
 		
 		
 func explode() -> void:
-	print("exploding")
 	var explosion : Explosion = explosion_scene.instantiate()
 	explosion.global_position = global_position
 	Main.world.object_holder.add_child(explosion)

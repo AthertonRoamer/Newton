@@ -20,6 +20,7 @@ var effective_max_speed : int
 @export var interactable_item_detector : InteractableItemDetector
 @export var staff_end_node : Node2D
 @export var staff : Staff
+@export var wind_burst_holder : Node2D
 
 var walking = false
 var jumping = false
@@ -111,7 +112,10 @@ func respawn_reset() -> void:
 
 func take_damage(damage : int, damage_type : String = "none") -> void:
 	if damage_type == "spike_plant_first":
-		health -= damage
+		if not is_on_floor() and velocity.y > 0:
+			health -= SpikePlant.fall_on_spike_damage
+		else:
+			health -= damage
 		immune_to_spike_plant = true
 		$ImmuneToSpikeTimer.start()
 	elif damage_type == "spike_plant":

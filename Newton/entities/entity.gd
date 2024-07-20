@@ -61,7 +61,10 @@ func set_up_immune_to_spike_timer() -> void:
 
 func take_damage(damage : int, damage_type : String = "none") -> void:
 	if damage_type == "spike_plant_first":
-		health -= damage
+		if not is_on_floor() and velocity.y > 0:
+			health -= SpikePlant.fall_on_spike_damage
+		else:
+			health -= damage
 		immune_to_spike = true
 		immune_to_spike_timer.start()
 	elif damage_type == "spike_plant":

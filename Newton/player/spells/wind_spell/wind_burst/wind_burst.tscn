@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch3kln537qxi1"]
+
+[ext_resource type="Script" path="res://player/spells/wind_spell/wind_burst/wind_burst.gd" id="1_28cgr"]
+[ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://player/spells/wind_spell/wind.tscn" id="2_yp26v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xa6b"]
+size = Vector2(545, 114)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_trm2j"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_sgpbl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.102921, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jfvo"]
+curve = SubResource("Curve_sgpbl")
+
+[sub_resource type="Curve" id="Curve_tcmm1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_in845"]
+curve = SubResource("Curve_tcmm1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3dd17"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+spread = 8.0
+initial_velocity_min = 145.16
+initial_velocity_max = 209.68
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_in845")
+color = Color(1, 1, 1, 0.137255)
+alpha_curve = SubResource("CurveTexture_5jfvo")
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 3
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lolk1"]
+load_path = "res://.godot/imported/spells-ss.png-cd855a14f0b16dac7d2d9d5361611af2.ctex"
+
+[node name="WindBurst" type="Area2D" node_paths=PackedStringArray("wind_particle_system", "emit_timer")]
+script = ExtResource("1_28cgr")
+wind_particle_system = NodePath("wind")
+emit_timer = NodePath("EmitTimer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(272.5, -1)
+shape = SubResource("RectangleShape2D_4xa6b")
+
+[node name="wind" parent="." instance=ExtResource("2_yp26v")]
+material = SubResource("CanvasItemMaterial_trm2j")
+process_material = SubResource("ParticleProcessMaterial_3dd17")
+texture = SubResource("CompressedTexture2D_lolk1")
+
+[node name="EmitTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="DurationTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="timeout" from="EmitTimer" to="." method="_on_emit_timer_timeout"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

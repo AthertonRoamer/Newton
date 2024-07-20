@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=13 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
 [ext_resource type="PackedScene" uid="uid://4v2rturel3lx" path="res://player/spells/test_spell_two/grabbable_test_spell_two/grabbable_test_spell_two.tscn" id="2_8411r"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="3_6mq8f"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="5_ec22k"]
-[ext_resource type="PackedScene" path="res://wind.tscn" id="6_vn1vw"]
+[ext_resource type="PackedScene" uid="uid://gnat8j78a4g7" path="res://player/spells/wind_spell/wind.tscn" id="6_vn1vw"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_yxum4"]
 [ext_resource type="PackedScene" uid="uid://dwgdig80lejvq" path="res://environment/breakable_platform/breakable_platform.tscn" id="8_ydbyu"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="9_7ucq7"]
 [ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="10_d5phd"]
 [ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="11_qsboe"]
+[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="12_y5pha"]
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_otmdb")
@@ -36,6 +37,11 @@ position = Vector2(520, 549)
 [node name="Block3" parent="." instance=ExtResource("1_0n05w")]
 z_index = -5
 position = Vector2(1672, 397)
+
+[node name="Block4" parent="." instance=ExtResource("1_0n05w")]
+z_index = -5
+position = Vector2(1520, -427)
+rotation = 1.5708
 
 [node name="GrabbableTestSpellTwo" parent="." instance=ExtResource("2_8411r")]
 position = Vector2(1275, 402)
@@ -72,7 +78,10 @@ position = Vector2(-91, 532)
 position = Vector2(1540, 347)
 
 [node name="SpikePlant" parent="." instance=ExtResource("10_d5phd")]
-position = Vector2(1147, 416)
+position = Vector2(635, 482)
 
 [node name="ExplodingPlant" parent="." instance=ExtResource("11_qsboe")]
-position = Vector2(1246, 413)
+position = Vector2(920, 401)
+
+[node name="GrabbableWindSpell" parent="." instance=ExtResource("12_y5pha")]
+position = Vector2(457, 481)
