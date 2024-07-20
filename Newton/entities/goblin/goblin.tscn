@@ -286,6 +286,7 @@ vertical_alignment = 1
 
 [node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("timer", "wielder")]
 position = Vector2(-2, 0)
+collision_mask = 5
 script = ExtResource("8_2lfkf")
 timer = NodePath("Timer")
 strike_time = 1.2
