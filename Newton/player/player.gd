@@ -1,8 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@export var walk_accel : int = 90
-@export var friction : int = 30
+@export var walk_accel : int = 100
+@export var friction : int = 40
 @export var max_walk_speed : int = 400
 @export var max_walk_speed_charging : int = 175
 @export var max_sprint_speed : int = 500
@@ -77,7 +77,6 @@ func _ready() -> void:
 			load_persistent_player_data()
 			respawn_reset()
 		spawn_states.LOAD_IN:
-			equip_spell(preload("res://player/spells/test_spell/test_spell.tscn"))
 			reset_lives()
 		spawn_states.TOTAL_RESPAWN:
 			reset_lives()
@@ -216,11 +215,15 @@ func cast_spell() -> void:
 
 
 func shift_to_spell_up() -> void:
+	if spell_manager.spell_count == 0:
+		return
 	var new_spell_num = (spell_manager.selected_spell_num + 1) % spell_manager.spell_count
 	spell_manager.select_spell_by_num(new_spell_num)
 
 
 func shift_to_spell_down() -> void:
+	if spell_manager.spell_count == 0:
+		return
 	var new_spell_num = spell_manager.selected_spell_num - 1
 	if new_spell_num == -1:
 		new_spell_num = spell_manager.spell_count - 1
