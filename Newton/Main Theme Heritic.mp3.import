@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqb0lv2rxj0wx"
+path="res://.godot/imported/Main Theme Heritic.mp3-65f548b4b3b068fbba0331b1e97baa8e.mp3str"
+
+[deps]
+
+source_file="res://Main Theme Heritic.mp3"
+dest_files=["res://.godot/imported/Main Theme Heritic.mp3-65f548b4b3b068fbba0331b1e97baa8e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
