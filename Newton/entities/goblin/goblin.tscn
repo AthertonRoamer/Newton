@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://crs5n2j5sil7s"]
 
 [ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
-[ext_resource type="Texture2D" uid="uid://f1erxpw83siy" path="res://world/zombie.png" id="2_cio0n"]
+[ext_resource type="Texture2D" uid="uid://cudmc7sj3bdu1" path="res://world/zombie.png" id="2_cio0n"]
 [ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_b6hqv"]
 [ext_resource type="PackedScene" uid="uid://cuv6l4g0b6sea" path="res://entities/entity_state_machine/entity_state_machine.tscn" id="4_etnwo"]
 [ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="4_tt073"]
@@ -226,7 +226,7 @@ _data = {
 "walk": SubResource("Animation_bi8fw")
 }
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine", "weapon", "can_attack_timer")]
+[node name="425" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine", "weapon", "can_attack_timer")]
 script = ExtResource("1_glrm0")
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")
@@ -234,6 +234,8 @@ state_machine = NodePath("EntityStateMachine")
 weapon = NodePath("MeleeWeapon")
 attack_range = 70
 can_attack_timer = NodePath("CanAtttackTimer")
+walk_speed = 275
+max_walk_speed = 425
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3.5, 3.5)

@@ -57,7 +57,7 @@ func _process(_delta: float) -> void:
 
 func set_visuals():
 	if dead:
-		play("death")
+		play("death",-1,1.5)
 	else:
 		if took_dmg == true:
 			play("damage")
