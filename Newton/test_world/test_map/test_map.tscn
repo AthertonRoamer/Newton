@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vo4tbm4u65yf"]
+[gd_scene load_steps=13 format=3 uid="uid://vo4tbm4u65yf"]
 
 [ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="1_0n05w"]
 [ext_resource type="Script" path="res://test_world/test_map/test_map.gd" id="1_otmdb"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="10_d5phd"]
 [ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="11_qsboe"]
 [ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="12_12ul7"]
+[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="12_eic80"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="12_y5pha"]
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
@@ -44,17 +45,17 @@ position = Vector2(1520, -427)
 rotation = 1.5708
 
 [node name="GrabbableMagicMissile" parent="." instance=ExtResource("3_6mq8f")]
-position = Vector2(818, 465)
+position = Vector2(611, 478)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(345, 452)
+position = Vector2(332, 477)
 
 [node name="wind" parent="." instance=ExtResource("6_vn1vw")]
 visible = false
 position = Vector2(1041, 213)
 
 [node name="Teleporter" parent="." instance=ExtResource("7_yxum4")]
-position = Vector2(1833, 428)
+position = Vector2(3126, 428)
 
 [node name="BreakablePlatform" parent="." instance=ExtResource("8_ydbyu")]
 position = Vector2(121, 532)
@@ -69,19 +70,34 @@ position = Vector2(-21, 534)
 position = Vector2(-91, 532)
 
 [node name="Pig" parent="." instance=ExtResource("9_7ucq7")]
-position = Vector2(1362, 447)
+position = Vector2(1740, 447)
 
 [node name="SpikePlant" parent="." instance=ExtResource("10_d5phd")]
-position = Vector2(1457, 458)
+position = Vector2(3255, 420)
 
 [node name="ExplodingPlant" parent="." instance=ExtResource("11_qsboe")]
-position = Vector2(917, 480)
+position = Vector2(3315, 453)
 
 [node name="ExplodingPlant2" parent="." instance=ExtResource("11_qsboe")]
-position = Vector2(917, 429)
+position = Vector2(3299, 348)
 
 [node name="GrabbableWindSpell" parent="." instance=ExtResource("12_y5pha")]
-position = Vector2(457, 481)
+position = Vector2(417, 478)
 
 [node name="GrabbableFireSpell" parent="." instance=ExtResource("12_12ul7")]
-position = Vector2(612, 468)
+position = Vector2(526, 483)
+
+[node name="FarmerSpawner" parent="." instance=ExtResource("12_eic80")]
+position = Vector2(1547, 418)
+
+[node name="FarmerSpawner2" parent="." instance=ExtResource("12_eic80")]
+position = Vector2(2411, 438)
+
+[node name="FarmerSpawner3" parent="." instance=ExtResource("12_eic80")]
+position = Vector2(1456, 423)
+
+[node name="FarmerSpawner4" parent="." instance=ExtResource("12_eic80")]
+position = Vector2(2217, 431)
+
+[node name="FarmerSpawner5" parent="." instance=ExtResource("12_eic80")]
+position = Vector2(2061, 433)
