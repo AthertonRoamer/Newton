@@ -5,13 +5,13 @@ extends ProjectileHandler
 @export var base_damage : int = 20
 @export var max_damage : int = 200
 
-@export var base_radius : float = 150
+@export var base_radius : float = 300
 @export var max_radius : float = 1000
 
-@export var base_grow_speed : int = 400
+@export var base_grow_speed : int = 800
 @export var max_grow_speed : int = 3000
 
-@export var base_explosion_knockback : int = 800
+@export var base_explosion_knockback : int = 600
 @export var max_exposion_knockback : int = 3000
 
 func set_up_projectile() -> Projectile:

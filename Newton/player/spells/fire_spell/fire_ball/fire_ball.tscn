@@ -14,7 +14,7 @@ explosion_scene = ExtResource("2_cutgm")
 speed = 700.0
 extinguish_on_impact = true
 duration_timer = NodePath("DurationTimer")
-duration = 0.75
+duration = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

@@ -352,54 +352,72 @@ func player_animations():
 			anim_p.play("death")
 	else:
 		if hurt:
-			match spell_manager.selected_spell.id:
-							"magic_missile":
-								if charging:
-									anim_p.play("mm_hurt")
-								else:
-									anim_p.play("mm_hurt2")
-							_:
-								anim_p.play("hurt")
+			if is_instance_valid(spell_manager.selected_spell):
+				match spell_manager.selected_spell.id:
+								"magic_missile":
+									if charging:
+										anim_p.play("mm_hurt")
+									else:
+										anim_p.play("mm_hurt2")
+								_:
+									anim_p.play("hurt")
+			else:
+				anim_p.play("hurt")
 		else:
 			if !shooting:
 				if charging:
 					if !charged:
-						match spell_manager.selected_spell.id:
-							"magic_missile":
-								anim_p.play("mm_charging",-1,0.4)
-							_:
-								anim_p.play("wind_charging")
+						if is_instance_valid(spell_manager.selected_spell):
+							match spell_manager.selected_spell.id:
+								"magic_missile":
+									anim_p.play("mm_charging",-1,0.4)
+								_:
+									anim_p.play("wind_charging")
+						else:
+							anim_p.play("wind_charging")
 							
 				else:
 					if is_on_floor():
 						if walking:
 							if direction == Vector2.RIGHT:
-								match spell_manager.selected_spell.id:
-									"magic_missile":
-										anim_p.play("mm_walk_right")
-									_:
-										anim_p.play("walk_right")
+								if is_instance_valid(spell_manager.selected_spell):
+									match spell_manager.selected_spell.id:
+										"magic_missile":
+											anim_p.play("mm_walk_right")
+										_:
+											anim_p.play("walk_right")
+								else:
+									anim_p.play("walk_right")
 							
 							elif direction == Vector2.LEFT:
-								match spell_manager.selected_spell.id:
-									"magic_missile":
-										anim_p.play("mm_walk_left")
-									_:
-										anim_p.play("walk_left")
+								if is_instance_valid(spell_manager.selected_spell):
+									match spell_manager.selected_spell.id:
+										"magic_missile":
+											anim_p.play("mm_walk_left")
+										_:
+											anim_p.play("walk_left")
+								else:
+									anim_p.play("walk_left")
 						else:
-							match spell_manager.selected_spell.id:
-									"magic_missile":
-										anim_p.play("mm_idle",-1,0.75)
-									_:
-										anim_p.play("idle",-1,0.75)
+							if is_instance_valid(spell_manager.selected_spell):
+								match spell_manager.selected_spell.id:
+										"magic_missile":
+											anim_p.play("mm_idle",-1,0.75)
+										_:
+											anim_p.play("idle",-1,0.75)
+							else:
+								anim_p.play("idle",-1,0.75)
 							
 					else:
 						if jumping == true:
-							match spell_manager.selected_spell.id:
-									"magic_missile":
-										anim_p.play("mm_jump",-1,0.75)
-									_:
-										anim_p.play("jump",-1,0.75)
+							if is_instance_valid(spell_manager.selected_spell):
+								match spell_manager.selected_spell.id:
+										"magic_missile":
+											anim_p.play("mm_jump",-1,0.75)
+										_:
+											anim_p.play("jump",-1,0.75)
+							else:
+								anim_p.play("jump",-1,0.75)
 							jumping = false
 						if falling == true:
 							anim_p.play("fall")
