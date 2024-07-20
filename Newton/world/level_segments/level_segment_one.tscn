@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=24 format=3 uid="uid://cyvbxcx7eoai2"]
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
@@ -10,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_ic40c"]
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_rk6bf"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="9_r3uxp"]
-
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="10_7txyp"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
@@ -295,7 +293,5 @@ position = Vector2(8122, 515)
 [node name="GrabbableWindSpell" parent="." instance=ExtResource("9_r3uxp")]
 position = Vector2(371, 538)
 
-
 [node name="Teleporter" parent="." instance=ExtResource("10_7txyp")]
 position = Vector2(829, 552)
-
