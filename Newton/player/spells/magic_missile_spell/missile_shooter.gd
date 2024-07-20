@@ -10,4 +10,5 @@ func set_up_projectile() -> Projectile:
 	random_angle_offset -= 2
 	new_projectile.direction = magic_missile_spell.player.staff.cast_direction.rotated(deg_to_rad(random_angle_offset))
 	new_projectile.wielder = magic_missile_spell.player
+	new_projectile.rotation = magic_missile_spell.player.staff.cast_direction.angle()
 	return new_projectile

@@ -7,7 +7,9 @@ signal selected_changed(selected : bool)
 
 var player : Player
 
+
 @export var cast_anim_name : String
+@export var staff_frame_id : int 
 @export var recharge_time : float = 2.0
 @export var fire_duration : float = 0.0
 @export var menu_data : SpellMenuData

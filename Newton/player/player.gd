@@ -340,6 +340,8 @@ func flip_player():
 				staff_sprite.scale.x = -1
 				
 
+func change_staff_color(frame_id ):
+	$staff.frame = frame_id
 
 func player_animations():
 	if dead:
@@ -347,28 +349,54 @@ func player_animations():
 			anim_p.play("death")
 	else:
 		if hurt:
-			anim_p.play("hurt")
+			match spell_manager.selected_spell.id:
+							"magic_missile":
+								if charging:
+									anim_p.play("mm_hurt")
+								else:
+									anim_p.play("mm_hurt2")
+							_:
+								anim_p.play("hurt")
 		else:
 			if !shooting:
 				if charging:
 					if !charged:
-						anim_p.play("wind_charging")
+						match spell_manager.selected_spell.id:
+							"magic_missile":
+								anim_p.play("mm_charging",-1,0.4)
+							_:
+								anim_p.play("wind_charging")
+							
 				else:
 					if is_on_floor():
 						if walking:
 							if direction == Vector2.RIGHT:
-								anim_p.play("walk_right")
-								test_label.text = "walking"
+								match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_walk_right")
+									_:
+										anim_p.play("walk_right")
+							
 							elif direction == Vector2.LEFT:
-								anim_p.play("walk_left")
-								test_label.text = "walking"
+								match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_walk_left")
+									_:
+										anim_p.play("walk_left")
 						else:
-							anim_p.play("idle",-1,0.75)
-							test_label.text = "idle"
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_idle",-1,0.75)
+									_:
+										anim_p.play("idle",-1,0.75)
+							
 					else:
 						if jumping == true:
-							anim_p.play("jump",-1,0.75)
-							test_label.text = "jumping"
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_jump",-1,0.75)
+									_:
+										anim_p.play("jump",-1,0.75)
 							jumping = false
 						if falling == true:
 							anim_p.play("fall")
@@ -388,6 +416,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		died = true
 	elif anim_name == "hurt":
 		hurt = false
+	elif anim_name == "mm_charging" :
+		charged = true
+		anim_p.play("mm_charged")
+	elif anim_name == "mm_hurt":
+		hurt = false
+		anim_p.play("mm_charged")
+	elif anim_name == "mm_hurt2":
+		hurt = false
+	
 
 
 func _on_immune_to_spike_timer_timeout():

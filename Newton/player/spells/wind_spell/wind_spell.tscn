@@ -18,3 +18,4 @@ base_emit_duration = 0.5
 max_emit_duration = 0.75
 cast_anim_name = "wind_fire"
 menu_data = SubResource("Resource_2tavj")
+id = "wind_spell"

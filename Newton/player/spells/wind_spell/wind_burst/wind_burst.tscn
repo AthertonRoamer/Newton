@@ -26,7 +26,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_in845"]
 curve = SubResource("Curve_tcmm1")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_myars"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fn07c"]
 resource_local_to_scene = true
 particle_flag_disable_z = true
 spread = 8.0
@@ -61,7 +61,7 @@ shape = SubResource("RectangleShape2D_4xa6b")
 [node name="wind" parent="." instance=ExtResource("2_yp26v")]
 material = SubResource("CanvasItemMaterial_trm2j")
 amount = 2500
-process_material = SubResource("ParticleProcessMaterial_myars")
+process_material = SubResource("ParticleProcessMaterial_fn07c")
 texture = SubResource("CompressedTexture2D_lolk1")
 
 [node name="EmitTimer" type="Timer" parent="."]
