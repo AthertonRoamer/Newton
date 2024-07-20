@@ -9,10 +9,17 @@ func die() -> void:
 		state_machine.set_state("dead")
 		dead = true
 		$CollisionShape2D.disabled = true
+		queue_free()
+		#TODO instance pig corpse
 		
 		
 func take_knockback(knock) -> void:
 	if not dead:
 		super(knock)
+		
+		
+func take_damage(damage : int, _damage_type : String = "none", damager : Node = null) -> void:
+	if damager is Player:
+		super(damage)
 
 

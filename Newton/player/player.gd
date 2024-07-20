@@ -110,7 +110,7 @@ func respawn_reset() -> void:
 	health = starting_health
 
 
-func take_damage(damage : int, damage_type : String = "none") -> void:
+func take_damage(damage : int, damage_type : String = "none", _damager : Node = null) -> void:
 	if damage_type == "spike_plant_first":
 		if not is_on_floor() and velocity.y > 0:
 			health -= SpikePlant.fall_on_spike_damage

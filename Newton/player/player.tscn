@@ -927,6 +927,8 @@ radius = 16.0312
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(3, 3)
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_q0i30")
 jump_accel = 800
 interactable_item_detector = NodePath("InteractableItemDetector")

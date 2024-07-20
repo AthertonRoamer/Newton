@@ -9,7 +9,7 @@ func _ready() -> void:
 	add_to_group("damageable")
 	
 	
-func take_damage(damage : int, _damage_type : String) -> void:
+func take_damage(damage : int, _damage_type : String, _damager : Node = null) -> void:
 	if damage > 0:
 		call_deferred("explode")
 		

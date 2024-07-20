@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://2t1raaq0gfdy"]
+
+[ext_resource type="Script" path="res://entities/ranged/ranged.gd" id="1_c0nti"]
+[ext_resource type="Texture2D" uid="uid://bbsgvlv6kygf2" path="res://entities/goblin/art/filler_goblin_art.png" id="2_5tsr8"]
+[ext_resource type="Script" path="res://entities/ranged/ranged_state_machine.gd" id="3_xh1m8"]
+[ext_resource type="Script" path="res://entities/ranged/states/patrol.gd" id="4_hsuvf"]
+[ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="4_xmslk"]
+[ext_resource type="Script" path="res://entities/ranged/states/pursue.gd" id="5_rwimd"]
+[ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="5_wfhfk"]
+[ext_resource type="Script" path="res://entities/ranged/states/attack.gd" id="6_h8mt2"]
+[ext_resource type="Script" path="res://entities/ranged/projectile_handler.gd" id="9_0owvt"]
+[ext_resource type="PackedScene" uid="uid://xsaah1ecfkyj" path="res://entities/ranged/projectile/ranged_projectile.tscn" id="10_cwbcv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjuc2"]
+radius = 33.0
+height = 96.0
+
+[node name="Ranged" type="CharacterBody2D" node_paths=PackedStringArray("projectile_handler", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
+script = ExtResource("1_c0nti")
+projectile_handler = NodePath("ProjectileHandler")
+sweet_range = 550
+sight_range = 1750
+attack_range = 700
+attack_delay = 2.0
+can_attack_timer = NodePath("CanAttackTimer")
+max_health = 75
+starting_health = 75
+walk_accel = 40
+max_walk_speed = 225
+wander_range = 400
+edge_detector = NodePath("EdgeDetector")
+obstacle_detector = NodePath("ObstacleDetector")
+state_machine = NodePath("RangedStateMachine")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_5tsr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jjuc2")
+
+[node name="RangedStateMachine" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_xh1m8")
+entity = NodePath("..")
+
+[node name="Patrol" type="Node" parent="RangedStateMachine"]
+script = ExtResource("4_hsuvf")
+id = "patrol"
+first_active_state = true
+
+[node name="Pursue" type="Node" parent="RangedStateMachine"]
+script = ExtResource("5_rwimd")
+id = "pursue"
+
+[node name="Attack" type="Node" parent="RangedStateMachine"]
+script = ExtResource("6_h8mt2")
+id = "attack"
+
+[node name="EdgeDetector" parent="." instance=ExtResource("4_xmslk")]
+width = 94.0
+length = 100.0
+
+[node name="ObstacleDetector" parent="." instance=ExtResource("5_wfhfk")]
+length = 64.0
+
+[node name="CanAttackTimer" type="Timer" parent="."]
+
+[node name="ProjectileHandler" type="Node" parent="." node_paths=PackedStringArray("ranged", "fire_duration_timer", "fire_position_node")]
+script = ExtResource("9_0owvt")
+ranged = NodePath("..")
+fire_duration = 1.0
+fire_duration_timer = NodePath("FireDurationTimer")
+projectile_scene = ExtResource("10_cwbcv")
+fire_position_node = NodePath("../FirePosition")
+
+[node name="FireDurationTimer" type="Timer" parent="ProjectileHandler"]
+one_shot = true
+
+[node name="FirePosition" type="Node2D" parent="."]
+
+[connection signal="timeout" from="ProjectileHandler/FireDurationTimer" to="ProjectileHandler" method="_on_fire_duration_timer_timeout"]

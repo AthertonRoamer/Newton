@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://xsaah1ecfkyj"]
+
+[ext_resource type="Script" path="res://entities/ranged/projectile/ranged_projectile.gd" id="1_wsbch"]
+[ext_resource type="Texture2D" uid="uid://b31n1omlx3vt" path="res://entities/ranged/projectile/filler_projectile_art.png" id="2_yma0u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ns4c1"]
+radius = 17.0
+
+[node name="RangedProjectile" type="Area2D" node_paths=PackedStringArray("duration_timer")]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_wsbch")
+speed = 400.0
+damage = 20
+damage_type = "projectile"
+extinguish_on_effect_body = true
+duration_timer = NodePath("DurationTimer")
+duration = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yma0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ns4c1")
+
+[node name="DurationTimer" type="Timer" parent="."]
