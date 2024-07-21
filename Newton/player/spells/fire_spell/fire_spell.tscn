@@ -15,6 +15,7 @@ description = "Massive blast of cleansing fire"
 [node name="FireSpell" type="Node" node_paths=PackedStringArray("projectile_manager")]
 script = ExtResource("1_nufmj")
 projectile_manager = NodePath("FireSpellProjectileManager")
+recharge_time = 0.1
 menu_data = SubResource("Resource_ov2ab")
 id = "fire_spell"
 

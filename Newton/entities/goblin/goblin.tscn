@@ -229,10 +229,9 @@ _data = {
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_glrm0")
 weapon = NodePath("MeleeWeapon")
-sight_range = 1750
+sight_range = 1000
 attack_range = 70
 can_attack_timer = NodePath("CanAtttackTimer")
-max_walk_speed = 425
 wander_range = 300
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")

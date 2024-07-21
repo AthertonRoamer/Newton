@@ -2,7 +2,7 @@ extends ProjectileHandler
 
 @export var fire_spell : Spell
 
-@export var base_damage : int = 20
+@export var base_damage : int = 40
 @export var max_damage : int = 200
 
 @export var base_radius : float = 300
@@ -33,26 +33,26 @@ func get_direction() -> Vector2:
 func get_damage() -> int:
 	var charge_time = fire_spell.charge_time
 	var d = min(base_damage * charge_time * charge_time, max_damage)
-	#print("damage: " + str(d))
+	print("damage: " + str(d))
 	return d
 	
 	
 func get_max_radius() -> float:
 	var charge_time = fire_spell.charge_time
 	var r : float = min(base_radius * charge_time * charge_time, max_radius)
-	#print("max_r: " + str(r))
+	print("max_r: " + str(r))
 	return r
 	
 	
 func get_explosion_knockback() -> int:
 	var charge_time = fire_spell.charge_time
 	var r : int = min(base_explosion_knockback * charge_time * charge_time, max_exposion_knockback)
-	#print("knockback: " + str(r))
+	print("knockback: " + str(r))
 	return r
 	
 	
 func get_grow_speed() -> int:
 	var charge_time = fire_spell.charge_time
 	var r : int = min(base_grow_speed * charge_time * charge_time, max_grow_speed)
-	#print("grow_speed " + str(r))
+	print("grow_speed " + str(r))
 	return r

@@ -11,6 +11,7 @@ missile_shooter = NodePath("MissileShooter")
 fire_timer = NodePath("FireTimer")
 damage_player_timer = NodePath("DamagePlayerTimer")
 staff_frame_id = 32
+recharge_time = 2.0
 menu_data = ExtResource("2_1ow6r")
 id = "magic_missile"
 
