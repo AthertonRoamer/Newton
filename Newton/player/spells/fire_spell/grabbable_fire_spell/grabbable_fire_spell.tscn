@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq4quaef3sdgt"]
+[gd_scene load_steps=7 format=3 uid="uid://cq4quaef3sdgt"]
 
 [ext_resource type="Script" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.gd" id="1_apcjy"]
 [ext_resource type="PackedScene" uid="uid://blcfifxj8ue6e" path="res://player/spells/fire_spell/fire_spell.tscn" id="2_1rxle"]
 [ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_4u5oy"]
 [ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="4_1weoi"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="5_7yekh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehiqk"]
 radius = 46.0435
@@ -32,3 +33,8 @@ theme = ExtResource("4_1weoi")
 text = "E to grab"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("5_7yekh")
+texture_scale = 0.1

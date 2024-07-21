@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvl5k81wk4ncv"]
+[gd_scene load_steps=7 format=3 uid="uid://cvl5k81wk4ncv"]
 
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.gd" id="1_7hwgd"]
 [ext_resource type="PackedScene" uid="uid://c0dum5hcxkbjr" path="res://player/spells/magic_missile_spell/magic_missile_spell.tscn" id="2_vr4b5"]
 [ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_sjvfe"]
 [ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="4_ylhtt"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="5_ixksf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3rpbo"]
 radius = 40.0
@@ -32,3 +33,8 @@ theme = ExtResource("4_ylhtt")
 text = "E to grab"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("5_ixksf")
+texture_scale = 0.1

@@ -39,6 +39,8 @@ var charging = false
 var charged = false
 var shooting = false
 
+var immune = true
+
 var hurt = false
 var hurting = false
 
@@ -140,21 +142,22 @@ func respawn_reset() -> void:
 
 
 func take_damage(damage : int, damage_type : String = "none", _damager : Node = null) -> void:
-	if damage_type == "spike_plant_first":
-		if not is_on_floor() and velocity.y > 0:
-			health -= SpikePlant.fall_on_spike_damage
-		else:
-			health -= damage
-		immune_to_spike_plant = true
-		$ImmuneToSpikeTimer.start()
-	elif damage_type == "spike_plant":
-		if not immune_to_spike_plant:
-			health -= damage
+	if !immune:
+		if damage_type == "spike_plant_first":
+			if not is_on_floor() and velocity.y > 0:
+				health -= SpikePlant.fall_on_spike_damage
+			else:
+				health -= damage
 			immune_to_spike_plant = true
 			$ImmuneToSpikeTimer.start()
-	else:
-		health -= damage
-	#hurt = true
+		elif damage_type == "spike_plant":
+			if not immune_to_spike_plant:
+				health -= damage
+				immune_to_spike_plant = true
+				$ImmuneToSpikeTimer.start()
+		else:
+			health -= damage
+		#hurt = true
 
 
 func take_knockback(knock : Vector2) -> void:
@@ -550,3 +553,7 @@ func _on_respawn_timer_timeout() -> void:
 		Hud.respawn_menu.show_menu()
 		queue_free()
 	
+
+
+func _on_spawn_timer_timeout() -> void:
+	immune = false
