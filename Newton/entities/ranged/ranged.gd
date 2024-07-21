@@ -1,6 +1,8 @@
 class_name Ranged
 extends HostileEntity
 
+signal dead
+
 @export var projectile_handler : RangedProjectileHandler
 @export var sweet_range : int = 400
 
@@ -10,7 +12,23 @@ func is_player_attackable() -> bool:
 		return to_player.length() <= attack_range
 	else:
 		return false
-	super()
+
 
 func _on_fire_duration_timer_timeout():
 	pass # Replace with function body.
+	
+	
+
+func _ready() -> void:
+	super()
+	#$StateDisplay.text = str(state_machine.active_state.id)
+	#state_machine.state_changed.connect(_on_state_changed)
+
+
+#func _on_state_changed() -> void:
+	#$StateDisplay.text = state_machine.active_state.id
+
+
+func die():
+	state_machine.set_state("dead")
+	dead.emit()
