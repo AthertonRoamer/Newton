@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://world/main_world/main_world.gd" id="1_njpno"]
 [ext_resource type="Script" path="res://world/main_world/level_segment_manager.gd" id="2_simgt"]
-[ext_resource type="PackedScene" uid="uid://ds82vpuoit5c3" path="res://world/level_segments/level_segment_two.tscn" id="3_ka5wn"]
+[ext_resource type="PackedScene" uid="uid://cyvbxcx7eoai2" path="res://world/level_segments/level_segment_one.tscn" id="3_h4u5m"]
 
 [node name="MainWorld" type="Node2D" node_paths=PackedStringArray("object_holder", "level_segment_manager")]
 script = ExtResource("1_njpno")
@@ -11,4 +11,4 @@ level_segment_manager = NodePath("LevelSegmentManager")
 
 [node name="LevelSegmentManager" type="Node2D" parent="."]
 script = ExtResource("2_simgt")
-level_segment_list = Array[PackedScene]([ExtResource("3_ka5wn")])
+level_segment_list = Array[PackedScene]([ExtResource("3_h4u5m")])
