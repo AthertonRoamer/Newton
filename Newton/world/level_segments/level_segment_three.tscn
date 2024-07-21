@@ -311,7 +311,6 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kisu1"]
 resource_name = "spike plant"
 scenes/2/scene = ExtResource("16_70oy2")
-scenes/2/display_placeholder = ExtResource("16_70oy2")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wgiv4"]
 resource_name = "bomb plant"
