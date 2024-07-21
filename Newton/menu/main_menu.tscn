@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwsnjtqbugh5m"]
+[gd_scene load_steps=6 format=3 uid="uid://cwsnjtqbugh5m"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xafnf"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="2_d516e"]
 [ext_resource type="FontFile" uid="uid://bnrlla1vnbk4y" path="res://menu/DigitalDisco.ttf" id="2_qrv7r"]
+[ext_resource type="Texture2D" uid="uid://ch3m4rxduqgwo" path="res://entities/ranged/ranged.png" id="4_3i6xh"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="5_106ir"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -38,6 +41,7 @@ offset_right = 61.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_d516e")
 theme_override_fonts/font = ExtResource("2_qrv7r")
 theme_override_font_sizes/font_size = 40
 text = "Start"
@@ -53,10 +57,25 @@ offset_top = 70.0
 offset_right = 289.0
 offset_bottom = 272.0
 grow_horizontal = 2
+theme = ExtResource("2_d516e")
 theme_override_fonts/font = ExtResource("2_qrv7r")
 theme_override_font_sizes/font_size = 60
 text = "CHAOS APPRENTICE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575, 475)
+scale = Vector2(5, 5)
+texture = ExtResource("4_3i6xh")
+hframes = 8
+vframes = 6
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(573, 247)
+energy = 1.39
+texture = ExtResource("5_106ir")
+texture_scale = 0.27
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

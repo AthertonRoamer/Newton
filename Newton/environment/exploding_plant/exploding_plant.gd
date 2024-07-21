@@ -3,6 +3,7 @@ extends StaticBody2D
 
 @export var explosion_scene : PackedScene
 
+
 var damage_taken : int = 0
 var active : bool = true
 
@@ -13,9 +14,11 @@ func _ready() -> void:
 func take_damage(damage : int, _damage_type : String, _damager : Node = null) -> void:
 	if damage > 0:
 		call_deferred("explode")
-		
-		
+
+
 func explode() -> void:
+	$Sprite2D.visible = false
+	$new_image.visible = true
 	if active:
 		var explosion : Explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position

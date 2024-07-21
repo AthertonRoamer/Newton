@@ -1,5 +1,11 @@
 extends Explosion
 
+
+@export var sound : AudioStream
+func  _ready() -> void:
+	super()
+	$AnimationPlayer.play("explode")
+	AudioManager.play(sound)
 	
 func _process(delta):
 	super(delta)

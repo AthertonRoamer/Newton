@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Main Theme Heritic.mp3-65f548b4b3b068fbba0331
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

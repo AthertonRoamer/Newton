@@ -1,23 +1,20 @@
-[gd_scene load_steps=34 format=3 uid="uid://v2nrh83p8ea"]
+[gd_scene load_steps=32 format=3 uid="uid://vw4goriptg43"]
 
-[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_owf5u"]
-[ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_8so27"]
-[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="3_6amco"]
-[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_xurs5"]
-[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_6q567"]
-[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="6_do2vn"]
-[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_ale1k"]
-[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="8_18rnk"]
-[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="9_krfhv"]
-[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="10_f1spw"]
-[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="11_0rag4"]
-[ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="12_4jdsx"]
-[ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="13_xlqrp"]
-[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="14_ok0ph"]
-[ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="15_sglfv"]
-[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="16_86dhi"]
-[ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="17_7idnh"]
-[ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="18_dbtu2"]
+[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_3f5pu"]
+[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="2_26awl"]
+[ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="2_ws5if"]
+[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="3_xnrrf"]
+[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="4_kjqpv"]
+[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="5_d75b8"]
+[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="6_ky665"]
+[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="7_q01xy"]
+[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="8_onqu3"]
+[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="9_vkcg0"]
+[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="10_8b3it"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="11_jrt2u"]
+[ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="12_cr464"]
+[ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="13_ymkei"]
+[ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="14_wx4gr"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
 tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1)
@@ -32,7 +29,7 @@ tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65
 tile_data = PackedInt32Array(0, 0, 3, 65536, 0, 4, 1, 65536, 3, 65537, 65536, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bm6ke"]
-texture = ExtResource("3_6amco")
+texture = ExtResource("2_26awl")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -66,7 +63,7 @@ texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7f15l"]
-texture = ExtResource("4_xurs5")
+texture = ExtResource("3_xnrrf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -90,7 +87,7 @@ pattern_2 = SubResource("TileMapPattern_rfwsy")
 pattern_3 = SubResource("TileMapPattern_3qxqw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xkas"]
-texture = ExtResource("5_6q567")
+texture = ExtResource("4_kjqpv")
 texture_region_size = Vector2i(32, 64)
 0:1/0 = 0
 1:1/0 = 0
@@ -100,7 +97,7 @@ texture_region_size = Vector2i(32, 64)
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6qm2"]
-texture = ExtResource("4_xurs5")
+texture = ExtResource("3_xnrrf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -134,7 +131,7 @@ sources/2 = SubResource("TileSetAtlasSource_y6qm2")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8f2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xow3h"]
-texture = ExtResource("16_86dhi")
+texture = ExtResource("11_jrt2u")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -250,65 +247,71 @@ texture_region_size = Vector2i(32, 32)
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(17.25, 7.5, 17.75, 16.5, -17.5, 15.75, -17.5, 6.5, -8, 5.25, -7.75, -16.75, 9.75, -16.25, 10.5, 6.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnqpn"]
-texture = ExtResource("17_7idnh")
+texture = ExtResource("12_cr464")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6, -6.5, 6.25, -6.25, 16, -16, 16)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, -7.01583, 7.01583, -6.29197, 16, -16, 16)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 6.75, 7, 7, 7.5, 16, 16, 16)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 16, 6.125, 16, 16, 6.25, 16)
 4:0/0 = 0
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.75, -16, -8.25, 16, -16, 16, -16, -16)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.25, -16, -5.95275, 16, -16, 16, -16, -16)
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, 7.75, 16, 7.75, -16)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.23629, -16, 16, -16, 16, 16, 6.5, 16)
 1:2/0 = 0
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -18.25, -8.25, 16, -16, 16, -16, -16)
-1:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, 7.75, -12.5, 7.5, -12.5, 16, 16, 16)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
+1:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(-6.5, -16, -6.34765, 7.90672, -16, 8.12945, -16, -16)
 2:2/0 = 0
 2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 7.75, 16, 8, 16, 16, -16, 16)
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
 3:2/0 = 0
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 7.75, 16, 8, 16, 16, -16, 16)
-3:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(8.25, -16, 8, 13.25, 16, 6.5, 16, -16)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
+3:2/0/physics_layer_0/polygon_1/points = PackedVector2Array(6.37835, -16, 6.53584, 6.37835, 16, 6.06337, 16, -16)
 1:3/0 = 0
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.75, -16, -8.25, 16, -16, 16, -16, -16)
-1:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, 8.5, -11.5, 8.5, -12.5, 16, 16, 16)
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
+1:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(-6.05197, 6.44882, -6.5, -16, -16, -16, -16, 6.15118)
 2:3/0 = 0
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:3/0/physics_layer_0/angular_velocity = 0.0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 7.5, 16, 8, 16, 16, -16, 16)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
 3:3/0 = 0
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 7.5, 16, 7.75, 16, 16, -16, 16)
-3:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(8.25, -16, 8, 13.25, 16, 6.5, 16, -16)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6.25, 16, 6.125, 16, 16, -16, 16)
+3:3/0/physics_layer_0/polygon_1/points = PackedVector2Array(6.68174, -16, 6.23629, 6.45901, 16, 4.75, 16, 5.25, 16, -16)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kisu1"]
 resource_name = "spike plant"
-scenes/2/scene = ExtResource("18_dbtu2")
+scenes/2/scene = ExtResource("13_ymkei")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wgiv4"]
+resource_name = "bomb plant"
+scenes/1/scene = ExtResource("14_wx4gr")
 
 [sub_resource type="TileSet" id="TileSet_dmik0"]
 tile_size = Vector2i(32, 32)
@@ -317,15 +320,15 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_q8f2o")
 sources/0 = SubResource("TileSetAtlasSource_xow3h")
 sources/1 = SubResource("TileSetAtlasSource_bnqpn")
 sources/2 = SubResource("TileSetScenesCollectionSource_kisu1")
+sources/3 = SubResource("TileSetScenesCollectionSource_wgiv4")
 
 [node name="LevelSegmentOne" type="Node2D" node_paths=PackedStringArray("spawn_point")]
-script = ExtResource("1_owf5u")
+script = ExtResource("1_3f5pu")
 spawn_point = NodePath("SpawnPoint")
 
-[node name="bg" parent="." instance=ExtResource("2_8so27")]
-visible = false
+[node name="Node" parent="." instance=ExtResource("2_ws5if")]
 z_index = 1
-position = Vector2(-1, 2)
+position = Vector2(1078, 0)
 
 [node name="houses" type="TileMap" parent="."]
 z_index = -1
@@ -334,79 +337,51 @@ position = Vector2(104, 590)
 scale = Vector2(7, 7)
 tile_set = SubResource("TileSet_ndq7v")
 format = 2
-layer_0/tile_data = PackedInt32Array(-131046, 262144, 0, -65510, 262144, 1, -131045, 327680, 0, -65509, 327680, 1, -131043, 0, 3, -65507, 0, 4, -131042, 65536, 3, -65506, 65536, 4, -196594, 0, 0, -131058, 0, 1, -65522, 0, 2, -196593, 65536, 0, -131057, 65536, 1, -65521, 65536, 2, -196592, 131072, 0, -131056, 131072, 1, -65520, 131072, 2, -131066, 262144, 0, -65530, 262144, 1, -131065, 327680, 0, -65529, 327680, 1)
+layer_0/tile_data = PackedInt32Array(-131071, 262144, 0, -65535, 262144, 1, -131070, 327680, 0, -65534, 327680, 1, -131065, 0, 3, -65529, 0, 4, -131064, 65536, 3, -65528, 65536, 4, -196594, 0, 0, -131058, 0, 1, -65522, 0, 2, -196593, 65536, 0, -131057, 65536, 1, -65521, 65536, 2, -196592, 131072, 0, -131056, 131072, 1, -65520, 131072, 2, -131055, 0, 3, -65519, 0, 4, -131054, 65536, 3, -65518, 65536, 4, -131053, 262144, 0, -65517, 262144, 1, -131052, 327680, 0, -65516, 327680, 1)
 
 [node name="trees_bushes" type="TileMap" parent="houses"]
 texture_filter = 1
 position = Vector2(2.42857, -14.4286)
 tile_set = SubResource("TileSet_id52a")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65527, 0, 0, -131051, 0, 0, -131052, 65536, 0, -65470, 0, 0, -65471, 65536, 0, -65457, 65536, 0, 63, 65538, 0, 62, 2, 0, 71, 65538, 0, 73, 65538, 0, 72, 2, 0)
+layer_0/tile_data = PackedInt32Array(-131062, 0, 0, -131061, 65536, 0, -65531, 65536, 0, 65534, 2, 0, 65533, 65538, 0, 32, 65538, 0, 33, 2, 0, 42, 2, 0, 41, 65538, 0)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(83, 507)
 
-[node name="Teleporter" parent="." instance=ExtResource("6_do2vn")]
+[node name="Teleporter" parent="." instance=ExtResource("5_d75b8")]
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
 
-[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_ale1k")]
+[node name="GrabbableMagicMissile" parent="." instance=ExtResource("6_ky665")]
 position = Vector2(504, 533)
 
-[node name="GrabbableWindSpell" parent="." instance=ExtResource("8_18rnk")]
+[node name="GrabbableWindSpell" parent="." instance=ExtResource("7_q01xy")]
 position = Vector2(504, 533)
 
-[node name="GrabbableFireSpell" parent="." instance=ExtResource("9_krfhv")]
+[node name="GrabbableFireSpell" parent="." instance=ExtResource("8_onqu3")]
 position = Vector2(504, 533)
 
-[node name="GrabbableLightning" parent="." instance=ExtResource("10_f1spw")]
+[node name="GrabbableLightning" parent="." instance=ExtResource("9_vkcg0")]
 position = Vector2(504, 533)
 
-[node name="FarmerSpawner" parent="." instance=ExtResource("11_0rag4")]
+[node name="FarmerSpawner" parent="." instance=ExtResource("10_8b3it")]
 position = Vector2(3337, 538)
 
-[node name="FarmerSpawner2" parent="." instance=ExtResource("11_0rag4")]
+[node name="FarmerSpawner2" parent="." instance=ExtResource("10_8b3it")]
 position = Vector2(1577, 519)
 
-[node name="FarmerSpawner3" parent="." instance=ExtResource("11_0rag4")]
+[node name="FarmerSpawner3" parent="." instance=ExtResource("10_8b3it")]
 position = Vector2(6058, 524)
 
-[node name="FarmerSpawner4" parent="." instance=ExtResource("11_0rag4")]
+[node name="FarmerSpawner4" parent="." instance=ExtResource("10_8b3it")]
 position = Vector2(6904, 534)
 
-[node name="Goblin" parent="." instance=ExtResource("12_4jdsx")]
-position = Vector2(2062, 525)
-
-[node name="Goblin3" parent="." instance=ExtResource("12_4jdsx")]
-position = Vector2(3827, 524)
-
-[node name="Goblin2" parent="." instance=ExtResource("12_4jdsx")]
-position = Vector2(2335, 525)
-
-[node name="Node" parent="." instance=ExtResource("13_xlqrp")]
-position = Vector2(1817, 2)
-
-[node name="Ranged2" parent="." instance=ExtResource("14_ok0ph")]
-position = Vector2(4876, 423)
-
-[node name="Ranged" parent="." instance=ExtResource("14_ok0ph")]
-position = Vector2(4562, 428)
-
-[node name="Pig2" parent="." instance=ExtResource("15_sglfv")]
-position = Vector2(1455, 554)
-scale = Vector2(1.5625, 1.5625)
-
-[node name="Pig" parent="." instance=ExtResource("15_sglfv")]
-position = Vector2(6300, 562)
-
-[node name="Ranged3" parent="." instance=ExtResource("14_ok0ph")]
-position = Vector2(7190, 543)
-
 [node name="ground" type="TileMap" parent="."]
-z_index = 10
+z_index = 18
 texture_filter = 1
 position = Vector2(0, 155)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_dmik0")
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 327680, 1, 65535, 327680, 1, -1, 327680, 1, -65537, 327680, 1, -131073, 327680, 1, -196609, 327680, 1, -262145, 327680, 1, -327681, 327680, 1, -393217, 327680, 1, 65593, 327680, 1, 57, 327680, 1, -65479, 327680, 1, -131015, 327680, 1, -196551, 327680, 1, -262087, 327680, 1, -327623, 327680, 1, -393159, 327680, 1, 196605, 65536, 1, 196604, 65536, 1, 196603, 65536, 1, 196602, 65536, 1, 196601, 65536, 1, 196600, 65536, 1, 196599, 65536, 1, 196598, 65536, 1, 196597, 65536, 1, 196596, 65536, 1, 131131, 65536, 1, 131132, 65536, 1, 131133, 65536, 1, 131134, 65536, 1, 196606, 65536, 1, 196607, 327680, 2, 131072, 65536, 1, 131073, 327680, 0, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 131077, 65536, 1, 131078, 65536, 1, 131079, 65536, 1, 131080, 131072, 0, 131081, 196608, 0, 131082, 262144, 0, 131083, 0, 2, 131084, 65536, 2, 131085, 65536, 2, 131086, 65536, 2, 131087, 65536, 2, 131088, 131072, 2, 131089, 65536, 1, 131090, 196608, 1, 131091, 131072, 0, 131092, 196608, 0, 131093, 196608, 0, 131094, 196608, 0, 131095, 196608, 0, 131096, 262144, 0, 131097, 65536, 1, 131098, 196608, 1, 131099, 65536, 1, 131100, 0, 1, 131102, 0, 1, 131103, 65536, 1, 131104, 196608, 1, 131105, 65536, 1, 131106, 0, 2, 131107, 65536, 2, 131108, 65536, 2, 131109, 131072, 2, 131110, 65536, 1, 131111, 65536, 1, 131112, 131072, 0, 131113, 196608, 0, 131114, 262144, 0, 131115, 65536, 1, 131116, 65536, 1, 131117, 65536, 1, 131118, 65536, 1, 131119, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 65536, 1, 131126, 65536, 1, 131127, 65536, 1, 131128, 65536, 1, 131129, 327680, 2, 131130, 65536, 1, 131135, 65536, 1, 131138, 65536, 1, 131139, 65536, 1, 131140, 65536, 1, 131137, 65536, 1, 131136, 65536, 1, 131101, 65536, 1)
+layer_0/tile_data = PackedInt32Array(196596, 65536, 1, 196597, 65536, 1, 196598, 65536, 1, 196599, 65536, 1, 196600, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, -393217, 327680, 1, -327681, 327680, 1, -262145, 327680, 1, -196609, 327680, 1, -131073, 327680, 1, -65537, 327680, 1, -1, 327680, 1, 65535, 327680, 1, 131071, 327680, 1, 196607, 327680, 2, 131072, 131072, 1, 131127, 131072, 1, 131128, 131072, 1, -393159, 327680, 1, -327623, 327680, 1, -262087, 327680, 1, -196551, 327680, 1, -131015, 327680, 1, -65479, 327680, 1, 57, 327680, 1, 65593, 327680, 1, 131129, 327680, 2, 131130, 131072, 1, 131131, 131072, 1, 131132, 131072, 1, 131133, 65536, 1, 131134, 65536, 1, 131135, 65536, 1, 131136, 65536, 1, 131137, 65536, 1, 131138, 65536, 1, 131139, 65536, 1, 131140, 65536, 1, 131073, 131072, 1, 131074, 131072, 1, 131075, 131072, 1, 131076, 131072, 1, 131077, 196608, 1, 131126, 131073, 2, 131078, 0, 2, 131079, 65536, 2, 131080, 65536, 2, 131081, 65536, 2, 131082, 131072, 2, 131083, 131072, 0, 131084, 196608, 0, 131085, 262144, 0, 131092, 131072, 0, 131093, 196608, 0, 131094, 196608, 0, 131095, 196608, 0, 131096, 196608, 0, 131097, 262144, 0, 131086, 196608, 1, 131087, 0, 1, 131088, 65537, 0, 131091, 196609, 0, 196624, 65537, 1, 262160, 65537, 1, 196627, 196609, 1, 262163, 196609, 1, 327699, 196609, 1, 393235, 196609, 3, 393232, 65537, 3, 393233, 131073, 3, 393234, 131073, 3, 327696, 65537, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 65536, 1, 131101, 65536, 1, 131102, 65536, 1, 131103, 65536, 1, 131104, 65536, 1, 131105, 65536, 1, 131106, 65536, 1, 131107, 65536, 1, 131108, 65536, 1, 131109, 65536, 1, 131110, 65536, 1, 131111, 65536, 1, 131112, 65536, 1, 131113, 65536, 1, 131114, 65536, 1, 131115, 65536, 1, 131116, 65536, 1, 131117, 65536, 1, 131118, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 65536, 1, 131119, 65536, 1)

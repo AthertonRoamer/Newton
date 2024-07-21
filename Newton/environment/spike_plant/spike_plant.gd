@@ -2,8 +2,8 @@ class_name SpikePlant
 extends Area2D
 
 static var interlude_time : float = 1.0
-static var fall_on_spike_damage : int = 40
-@export var damage : int = 5
+static var fall_on_spike_damage : int = 100
+@export var damage : int = 10
 @export var damage_type : String = "spike_plant"
 @export var first_damage_type : String = "spike_plant_first"
 

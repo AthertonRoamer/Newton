@@ -1,18 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://b57rx4vddglpo"]
+[gd_scene load_steps=8 format=3 uid="uid://b57rx4vddglpo"]
 
 [ext_resource type="Script" path="res://environment/exploding_plant/exploding_plant.gd" id="1_dcxwo"]
 [ext_resource type="PackedScene" uid="uid://di5cnvba54df5" path="res://environment/exploding_plant/plant_explosion/plant_explosion.tscn" id="2_ph7yx"]
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="3_4geox"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_da5kv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ln4r"]
 atlas = ExtResource("3_4geox")
 region = Rect2(32, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_da5kv"]
+atlas = ExtResource("3_4geox")
+region = Rect2(32, 32, 32, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxayg"]
-size = Vector2(32, 14.125)
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jf0d"]
-size = Vector2(32, 8)
+size = Vector2(32, 10)
 
 [node name="ExplodingPlant" type="StaticBody2D"]
 collision_layer = 4
@@ -21,16 +25,18 @@ script = ExtResource("1_dcxwo")
 explosion_scene = ExtResource("2_ph7yx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_5ln4r")
+
+[node name="new_image" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("AtlasTexture_da5kv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -0.0625)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_fxayg")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
-position = Vector2(0, 12)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_4jf0d")
