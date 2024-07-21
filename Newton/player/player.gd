@@ -55,7 +55,7 @@ var is_jumping : bool = false
 
 @export var max_health : int = 100
 @export var starting_health : int = 100
-@export var starting_lives : int = 1
+@export var starting_lives : int = 5
 var health : int = starting_health:
 	set(v):
 		if v <= 0:

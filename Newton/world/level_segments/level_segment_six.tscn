@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://3oi7gpuqi00o"]
+[gd_scene load_steps=30 format=3 uid="uid://b8vp437e0g1pl"]
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_avp5i"]
 [ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="2_iddbn"]
@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_xpoqm"]
 [ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_xldqn"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="6_4h8jt"]
-[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_ftw0u"]
-[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="8_hy3al"]
-[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="9_n8i4d"]
-[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="10_levt4"]
 [ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="11_o8t1l"]
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="12_r30o4"]
 [ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="13_nxptg"]
@@ -354,18 +350,6 @@ position = Vector2(83, 507)
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
 
-[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_ftw0u")]
-position = Vector2(504, 533)
-
-[node name="GrabbableWindSpell" parent="." instance=ExtResource("8_hy3al")]
-position = Vector2(504, 533)
-
-[node name="GrabbableFireSpell" parent="." instance=ExtResource("9_n8i4d")]
-position = Vector2(504, 533)
-
-[node name="GrabbableLightning" parent="." instance=ExtResource("10_levt4")]
-position = Vector2(504, 533)
-
 [node name="FarmerSpawner" parent="." instance=ExtResource("11_o8t1l")]
 position = Vector2(480, 533)
 
@@ -415,12 +399,12 @@ position = Vector2(4741, -258)
 position = Vector2(7978, -260)
 
 [connection signal="body_entered" from="ground/SpikePlant" to="ground/SpikePlant" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71812" to="ground/@Area2D@71812" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71813" to="ground/@Area2D@71813" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71814" to="ground/@Area2D@71814" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71815" to="ground/@Area2D@71815" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71816" to="ground/@Area2D@71816" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71817" to="ground/@Area2D@71817" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71818" to="ground/@Area2D@71818" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71819" to="ground/@Area2D@71819" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@71820" to="ground/@Area2D@71820" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25843" to="ground/@Area2D@25843" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25844" to="ground/@Area2D@25844" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25845" to="ground/@Area2D@25845" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25846" to="ground/@Area2D@25846" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25847" to="ground/@Area2D@25847" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25848" to="ground/@Area2D@25848" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25849" to="ground/@Area2D@25849" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25850" to="ground/@Area2D@25850" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@25851" to="ground/@Area2D@25851" method="_on_body_entered"]
