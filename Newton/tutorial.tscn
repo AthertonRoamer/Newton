@@ -39,12 +39,14 @@ func do_tutorial() -> void:
 		7:
 			label.text = \"With only your master's wand and a couple years of teaching, you must take on the necromancer's forces yourself.\"
 		8:
-			label.text = \"Good luck.\"
+			label.text = \"Unfortunately, you never were a good student, and you barely understand your power\"
 		9:
-			label.text = \"Controls - WASD to move, mouse to aim/attack.\"
+			label.text = \"Good luck.\"
 		10:
-			label.text = \"Hold mouse to charge spells.\"
+			label.text = \"Controls - WASD to move, mouse to aim/attack.\"
 		11:
+			label.text = \"Hold mouse to charge spells.\"
+		12:
 			label.text = \"Charging spells longer will make them more powerful (in many ways).\"
 			$Button.text = \"Exit tutorial\"
 		_:
