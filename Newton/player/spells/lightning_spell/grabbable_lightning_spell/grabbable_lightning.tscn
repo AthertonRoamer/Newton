@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf3hmusfyhliu"]
+
+[ext_resource type="Texture2D" uid="uid://bcgti3k6ijvfq" path="res://player/spells/lightning_spell/filler_lightning_icon.png" id="1_qsfc8"]
+[ext_resource type="Script" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.gd" id="1_r1tmw"]
+[ext_resource type="PackedScene" uid="uid://1fvnkoy12dye" path="res://player/spells/lightning_spell/lightning_spell.tscn" id="2_a8ft6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2js28"]
+radius = 55.0091
+
+[node name="GrabbableLightning" type="Area2D"]
+script = ExtResource("1_r1tmw")
+spell_scene = ExtResource("2_a8ft6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_qsfc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2js28")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -69.0
+offset_top = -66.0
+offset_right = 69.0
+offset_bottom = -17.0
+text = "E to grab"
+horizontal_alignment = 1
+vertical_alignment = 1
