@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://entities/pig/AnimationPlayer.gd" id="9_ls1x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3t4c"]
-size = Vector2(58, 33)
+size = Vector2(34.4, 23.2)
 
 [sub_resource type="Animation" id="Animation_q8jai"]
 length = 0.001
@@ -133,8 +133,8 @@ color = Color(0.960784, 0.529412, 0.435294, 1)
 polygon = PackedVector2Array(-29, -11, 29, -11, 29, 14, -29, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 5.5)
+position = Vector2(0.399999, 8.39999)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u3t4c")
 
 [node name="EdgeDetector" parent="." instance=ExtResource("3_ne6j1")]

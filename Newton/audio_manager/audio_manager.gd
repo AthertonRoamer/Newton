@@ -18,6 +18,8 @@ func play(sound : AudioStream):
 	if sound != null:
 		queue.append(sound)
 
+func stop():
+	queue.clear()
 
 func _process(_delta):
 	# Play a queued sound if any players are available.

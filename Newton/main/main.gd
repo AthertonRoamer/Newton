@@ -6,15 +6,25 @@ static var world : World
 static var player : Player
 
 @export var menu_scene : PackedScene
+@export var tutorial_scene : PackedScene
 @export var game_scene : PackedScene
 var game : Node
 var menu : Control
+var tutorial : Node2D
 
 
 func _ready() -> void:
 	main = self
 	load_main_menu()
 	
+
+func load_tutorial():
+	tutorial = tutorial_scene.instantiate()
+	add_child(tutorial)
+
+
+
+
 	
 func load_main_menu() -> void:
 	menu = menu_scene.instantiate()
