@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6mx0au142do"]
+
+[ext_resource type="PackedScene" uid="uid://pkkwee0nyv5e" path="res://player/spells/lightning_spell/lightning/lightning.tscn" id="1_fqox2"]
+[ext_resource type="Script" path="res://player/spells/lightning_spell/lightning_storm/lightning_storm.gd" id="1_ofhql"]
+
+[node name="LightningStorm" type="Node2D"]
+script = ExtResource("1_ofhql")
+lightning_scene = ExtResource("1_fqox2")
+
+[node name="Lightning" parent="." instance=ExtResource("1_fqox2")]
+
+[node name="SpawnLightningTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="SpawnLightningTimer" to="." method="_on_spawn_lightning_timer_timeout"]
