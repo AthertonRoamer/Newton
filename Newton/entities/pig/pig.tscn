@@ -13,12 +13,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3t4c"]
 size = Vector2(58, 33)
 
-
-[sub_resource type="Animation" id="Animation_a412l"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
-
+[sub_resource type="Animation" id="Animation_q8jai"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +22,38 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
+[sub_resource type="Animation" id="Animation_w5yrh"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_a412l"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
@@ -37,7 +64,6 @@ tracks/0/keys = {
 resource_name = "walk"
 length = 0.6
 loop_mode = 1
-
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,47 +71,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-
-
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [5, 6, 7, 8, 9, 10]
-}
-
-[sub_resource type="Animation" id="Animation_q8jai"]
-length = 0.001
-
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_w5yrh"]
-resource_name = "die"
-
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [11]
-
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x7vxa"]
@@ -131,9 +120,10 @@ script = ExtResource("5_rbxjr")
 id = "dead"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7, 8)
-scale = Vector2(2, 2)
+position = Vector2(2.84217e-14, 5.96046e-08)
+scale = Vector2(-2, 2)
 texture = ExtResource("6_rnfhu")
+offset = Vector2(3.5, 4)
 hframes = 8
 vframes = 2
 
@@ -161,3 +151,4 @@ script = ExtResource("9_ls1x8")
 goblin = NodePath("..")
 
 [connection signal="timeout" from="PigStateMachine/Pause/Timer" to="PigStateMachine/Pause" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

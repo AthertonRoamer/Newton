@@ -5,7 +5,7 @@ extends Explosion
 
 func _process(delta) -> void:
 	if use_built_in_animation:
-		radius += radius_increase_rate * delta
+		radius += radius_increase_rate * .25 * delta
 		collision_shape.scale.x = radius / starting_radius
 		collision_shape.scale.y = radius / starting_radius
 		if radius > max_radius:

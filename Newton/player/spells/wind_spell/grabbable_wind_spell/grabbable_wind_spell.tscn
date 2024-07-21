@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b16br14mbpfs0"]
+[gd_scene load_steps=6 format=3 uid="uid://b16br14mbpfs0"]
 
 [ext_resource type="Script" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.gd" id="1_tvshy"]
 [ext_resource type="PackedScene" uid="uid://be6g7s4ex5qep" path="res://player/spells/wind_spell/wind_spell.tscn" id="2_2d0jg"]
-[ext_resource type="Texture2D" uid="uid://bcx2i45xpduiy" path="res://player/spells/wind_spell/wind_spell.png" id="3_h6bc5"]
+[ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_2n7y0"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="4_opv4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wywg0"]
 radius = 48.0104
@@ -12,8 +13,11 @@ script = ExtResource("1_tvshy")
 spell_scene = ExtResource("2_2d0jg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("3_h6bc5")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_2n7y0")
+hframes = 8
+vframes = 2
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wywg0")
@@ -24,4 +28,5 @@ offset_left = -35.0
 offset_top = -35.0
 offset_right = 35.0
 offset_bottom = -12.0
+theme = ExtResource("4_opv4x")
 text = "E to grab"

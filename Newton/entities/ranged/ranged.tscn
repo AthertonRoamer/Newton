@@ -77,10 +77,10 @@ tracks/1/path = NodePath("FirePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(37, -6), Vector2(0, 0)]
+"values": [Vector2(37, -6), Vector2(49, -5), Vector2(37, -6), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -89,10 +89,10 @@ tracks/2/path = NodePath("FirePosition:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 0.0]
+"values": [0.0, 0.0, 0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_qmqw5"]
@@ -246,3 +246,4 @@ script = ExtResource("11_e1yw2")
 ranged = NodePath("..")
 
 [connection signal="timeout" from="ProjectileHandler/FireDurationTimer" to="ProjectileHandler" method="_on_fire_duration_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

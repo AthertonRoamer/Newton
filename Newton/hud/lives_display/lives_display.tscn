@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd1lyw45e577q"]
+[gd_scene load_steps=3 format=3 uid="uid://bd1lyw45e577q"]
 
 [ext_resource type="Script" path="res://hud/lives_display/lives_display.gd" id="1_n1jcj"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="2_vogg2"]
 
 [node name="LivesDisplay" type="Control"]
 layout_mode = 3
@@ -14,10 +15,12 @@ layout_mode = 0
 offset_left = 17.0
 offset_right = 124.0
 offset_bottom = 46.0
+theme = ExtResource("2_vogg2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_right = 143.0
 offset_bottom = 46.0
+theme = ExtResource("2_vogg2")
 horizontal_alignment = 1
 vertical_alignment = 1

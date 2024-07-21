@@ -11,7 +11,7 @@ var goblin_dir
 var moving = false
 var took_dmg = false
 var dead = false
-var still = true
+var still = false
 
 
 
@@ -54,31 +54,21 @@ func set_visuals():
 	if dead:
 		play("death",-1,1.5)
 	else:
-				if took_dmg == true:
-					play("death")
-					
-		
-			#if attacking:
-				#if !swinging:
-					#swinging = true
-					#play("attack")
-			
-				if !moving:
-					if !still:
-						play("idle")
-				elif moving:
-					still = false
-					play("walk",-1,0.75)
-					match goblin_dir:
-						Vector2.LEFT:
-							sprite.scale.x = 2
-						Vector2.RIGHT:
-							sprite.scale.x = -2
+		if !moving:
+			if current_animation != "idle":
+				play("idle",-1,0.25)
+		elif moving:
+			play("walk",-1,0.75)
+			match goblin_dir:
+				Vector2.LEFT:
+					sprite.scale.x = 2
+				Vector2.RIGHT:
+					sprite.scale.x = -2
 
-
-func _on_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "damage":
-		took_dmg = false
-	if anim_name == "death":
-		goblin.queue_free()
+#
+#func _on_animation_finished(anim_name: StringName) -> void:
+	#if anim_name == "damage":
+		#took_dmg = false
+	#if anim_name == "death":
+		#goblin.queue_free()
 	

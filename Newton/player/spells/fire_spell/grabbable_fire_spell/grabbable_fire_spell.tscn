@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq4quaef3sdgt"]
+[gd_scene load_steps=6 format=3 uid="uid://cq4quaef3sdgt"]
 
 [ext_resource type="Script" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.gd" id="1_apcjy"]
 [ext_resource type="PackedScene" uid="uid://blcfifxj8ue6e" path="res://player/spells/fire_spell/fire_spell.tscn" id="2_1rxle"]
-[ext_resource type="Texture2D" uid="uid://d2f4u7kfexkj5" path="res://player/spells/fire_spell/filler_fire_spell_icon.png" id="3_nthca"]
+[ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_4u5oy"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="4_1weoi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehiqk"]
 radius = 46.0435
@@ -12,8 +13,11 @@ script = ExtResource("1_apcjy")
 spell_scene = ExtResource("2_1rxle")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("3_nthca")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_4u5oy")
+hframes = 8
+vframes = 2
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ehiqk")
@@ -24,6 +28,7 @@ offset_left = -69.0
 offset_top = -66.0
 offset_right = 69.0
 offset_bottom = -17.0
+theme = ExtResource("4_1weoi")
 text = "E to grab"
 horizontal_alignment = 1
 vertical_alignment = 1
