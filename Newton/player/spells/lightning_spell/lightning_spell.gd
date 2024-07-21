@@ -1,6 +1,7 @@
 class_name LightningSpell
 extends Spell
 
+@export var sound : AudioStream
 @export var lightning_scene : PackedScene
 @export var lightning_storm_scene : PackedScene 
 
@@ -13,6 +14,8 @@ extends Spell
 
 
 func cast() -> void:
+	player.screen_shake(1,5)
+	AudioManager.play(sound)
 	spawn_lightning()
 	super()
 

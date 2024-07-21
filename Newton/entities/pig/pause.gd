@@ -1,5 +1,7 @@
 extends EntityState
 
+
+@export var sound : AudioStream
 @export var timer : Timer
 var min_time : float = 1.0
 var max_time : float = 3.0
@@ -13,5 +15,6 @@ func activate() -> void:
 
 
 func _on_timer_timeout():
+	#AudioManager.play(sound)
 	if not get_entity().dead:
 		state_machine.set_state("wander")

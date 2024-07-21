@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://pkkwee0nyv5e"]
+[gd_scene load_steps=9 format=3 uid="uid://pkkwee0nyv5e"]
 
 [ext_resource type="PackedScene" uid="uid://eoe006s5sgnr" path="res://player/spells/lightning_spell/lightning/lightning_explosion.tscn" id="1_o6d1t"]
 [ext_resource type="Script" path="res://player/spells/lightning_spell/lightning/lightning.gd" id="1_rmhk3"]
+[ext_resource type="AudioStream" uid="uid://ccacxtd5dmd22" path="res://player/sfx/tree-falls-and-burns-down-100283.mp3" id="2_egqs1"]
 [ext_resource type="Texture2D" uid="uid://djbxplv1ae4rw" path="res://player/down-strike.png" id="3_3ee6r"]
 [ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="4_87a7o"]
 
@@ -47,6 +48,7 @@ _data = {
 position = Vector2(0, 6)
 script = ExtResource("1_rmhk3")
 lightning_explosion = NodePath("LightningExplosion")
+sound = ExtResource("2_egqs1")
 
 [node name="LightningExplosion" parent="." instance=ExtResource("1_o6d1t")]
 

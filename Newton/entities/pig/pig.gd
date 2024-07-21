@@ -1,10 +1,14 @@
 class_name Pig
 extends Entity
 
+
+
+@export var sound : AudioStream
 signal deaded
 var dead : bool = false
 
 func die() -> void:
+	AudioManager.play(sound)
 	if not dead:
 		Main.world.level_segment_manager.active_segment.alert_broadcaster.pig_killed.emit(global_position)
 		state_machine.set_state("dead")

@@ -1,16 +1,22 @@
-[gd_scene load_steps=56 format=3 uid="uid://city0pwx48l16"]
+[gd_scene load_steps=62 format=3 uid="uid://city0pwx48l16"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_q0i30"]
 [ext_resource type="Texture2D" uid="uid://c32v47imyoh2a" path="res://player/boy-no-hand-ss.png" id="2_6jsh6"]
+[ext_resource type="AudioStream" uid="uid://ciscvwyurhy3s" path="res://player/ough-47202 (1).wav" id="2_jmaxd"]
+[ext_resource type="AudioStream" uid="uid://bmir8c54neayo" path="res://player/sfx/fire-spell-100276.mp3" id="3_775bh"]
 [ext_resource type="Script" path="res://player/spells/spell_manager/spell_manager.gd" id="3_gwpyy"]
+[ext_resource type="AudioStream" uid="uid://cmjtl8s55xo77" path="res://player/sfx/jumpland.wav" id="4_p13vh"]
 [ext_resource type="Texture2D" uid="uid://bou6u6lk3irln" path="res://player/staff-ss.png" id="4_wmyvf"]
 [ext_resource type="Texture2D" uid="uid://dah5s03eq8hlq" path="res://player/light.png" id="5_5ko0m"]
 [ext_resource type="Script" path="res://player/staff.gd" id="5_omt7o"]
+[ext_resource type="AudioStream" uid="uid://n2kumiamftk3" path="res://player/sfx/male_hurt7-48124.mp3" id="5_p6xrx"]
+[ext_resource type="AudioStream" uid="uid://csymm1dve8g6c" path="res://player/sfx/magical-spell-cast-190272.mp3" id="6_jy0on"]
 [ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="6_xr0eh"]
 [ext_resource type="Script" path="res://player/interactables/interactable_item_detector/interactable_item_detector.gd" id="7_0bawi"]
 [ext_resource type="Script" path="res://player/up_strike.gd" id="8_8hoek"]
 [ext_resource type="Script" path="res://player/WindBurstHolder.gd" id="9_1t8f4"]
 [ext_resource type="Texture2D" uid="uid://cq2aq7tb1071a" path="res://player/up-strike.png" id="10_bhlyq"]
+[ext_resource type="Script" path="res://player/Camera2D.gd" id="14_5scju"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v0p5"]
 radius = 5.14286
@@ -2839,6 +2845,11 @@ scale = Vector2(3, 3)
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_q0i30")
+sound1 = ExtResource("2_jmaxd")
+sound2 = ExtResource("3_775bh")
+sound3 = ExtResource("4_p13vh")
+sound4 = ExtResource("5_p6xrx")
+sound5 = ExtResource("6_jy0on")
 jump_accel = 800
 interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
@@ -2896,6 +2907,7 @@ shape = SubResource("CapsuleShape2D_2v0p5")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -45)
 position_smoothing_enabled = true
+script = ExtResource("14_5scju")
 
 [node name="SpellManager" type="Node" parent="."]
 script = ExtResource("3_gwpyy")
@@ -2933,6 +2945,9 @@ script = ExtResource("9_1t8f4")
 wait_time = 1.5
 one_shot = true
 
+[node name="shake_timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ImmuneToSpikeTimer" to="." method="_on_immune_to_spike_timer_timeout"]
 [connection signal="timeout" from="respawn_timer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="shake_timer" to="Camera2D" method="_on_shake_timer_timeout"]

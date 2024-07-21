@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ciscvwyurhy3s"
+path="res://.godot/imported/ough-47202 (1).wav-c408b4d3785de625e31d1f25fa312307.sample"
+
+[deps]
+
+source_file="res://player/ough-47202 (1).wav"
+dest_files=["res://.godot/imported/ough-47202 (1).wav-c408b4d3785de625e31d1f25fa312307.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

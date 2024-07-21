@@ -200,6 +200,7 @@ _data = {
 script = ExtResource("1_qyimm")
 weapon = NodePath("MeleeWeapon")
 can_attack_timer = NodePath("CanAtttackTimer")
+starting_health = 50
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")
 state_machine = NodePath("FarmerStateMachine")

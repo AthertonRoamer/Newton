@@ -282,7 +282,7 @@ position = Vector2(83, 507)
 position = Vector2(3808, 551)
 
 [node name="Pig2" parent="." node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine") instance=ExtResource("14_6nk4a")]
-position = Vector2(5019, 533)
+position = Vector2(5115, 544)
 edge_detector = NodePath("../Pig/EdgeDetector")
 obstacle_detector = NodePath("../Pig/ObstacleDetector")
 state_machine = NodePath("../Pig/PigStateMachine")
@@ -304,10 +304,16 @@ position = Vector2(356, 542)
 position = Vector2(494, 534)
 
 [node name="FarmerSpawner" parent="." instance=ExtResource("3_it12p")]
-position = Vector2(449, 511)
+position = Vector2(3541, 531)
 
 [node name="FarmerSpawner2" parent="." instance=ExtResource("3_it12p")]
-position = Vector2(1532, 519)
+position = Vector2(4008, 531)
+
+[node name="FarmerSpawner3" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(4920, 543)
+
+[node name="FarmerSpawner4" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(5552, 535)
 
 [node name="Goblin" parent="." instance=ExtResource("6_0hmuu")]
 position = Vector2(3099, 542)

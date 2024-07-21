@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0dum5hcxkbjr"]
+[gd_scene load_steps=6 format=3 uid="uid://c0dum5hcxkbjr"]
 
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/magic_missile_spell.gd" id="1_e2xoc"]
 [ext_resource type="Resource" uid="uid://nfk2guamm5ki" path="res://player/spells/magic_missile_spell/magic_missile_spell.tres" id="2_1ow6r"]
+[ext_resource type="AudioStream" uid="uid://6bnfico08nh7" path="res://player/sfx/magic-spell-6005.mp3" id="2_7lyav"]
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/missile_shooter.gd" id="3_i12b3"]
 [ext_resource type="PackedScene" uid="uid://ciap8p8ysjt5n" path="res://player/spells/magic_missile_spell/magic_missile/magic_missile.tscn" id="4_xhvqn"]
 
 [node name="MagicMissileSpell" type="Node" node_paths=PackedStringArray("missile_shooter", "fire_timer", "damage_player_timer")]
 script = ExtResource("1_e2xoc")
+sound = ExtResource("2_7lyav")
 missile_shooter = NodePath("MissileShooter")
 fire_timer = NodePath("FireTimer")
 damage_player_timer = NodePath("DamagePlayerTimer")
