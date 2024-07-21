@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwsnjtqbugh5m"]
+[gd_scene load_steps=3 format=3 uid="uid://cwsnjtqbugh5m"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xafnf"]
 [ext_resource type="FontFile" uid="uid://bnrlla1vnbk4y" path="res://menu/DigitalDisco.ttf" id="2_qrv7r"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_biy0x"]
-region = Rect2(4.03876, 9.92585, 23.2138, 11.3431)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,30 +17,30 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
+offset_left = -169.0
+offset_top = -134.0
+offset_right = 270.0
+offset_bottom = 158.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Start" type="Button" parent="."]
-texture_filter = 1
+[node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 59.0
+offset_left = -59.0
+offset_top = -26.0
+offset_right = 61.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_qrv7r")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Start"
-icon = SubResource("AtlasTexture_biy0x")
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
@@ -62,4 +59,4 @@ text = "CHAOS APPRENTICE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
