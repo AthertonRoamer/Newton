@@ -55,7 +55,7 @@ var is_jumping : bool = false
 
 @export var max_health : int = 100
 @export var starting_health : int = 100
-@export var starting_lives : int = 2
+@export var starting_lives : int = 1
 var health : int = starting_health:
 	set(v):
 		if v <= 0:
@@ -107,6 +107,7 @@ func _ready() -> void:
 		spawn_states.LOAD_IN:
 			reset_lives()
 		spawn_states.TOTAL_RESPAWN:
+			PlayerData.equipped_spells.clear()
 			reset_lives()
 			load_persistent_player_data()
 	Hud.health_display.health = health

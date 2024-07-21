@@ -15,7 +15,7 @@ func _on_respawn_button_pressed():
 		
 func show_menu() -> void:
 	if total_respawn:
-		$RespawnButton.text = "You have lost all your lives\nRespawn at last major checkpoint"
+		$RespawnButton.text = "You have lost all your lives\nRestart"
 	else:
 		$RespawnButton.text = "Respawn"
 	show()

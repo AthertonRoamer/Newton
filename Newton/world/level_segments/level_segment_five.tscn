@@ -1,4 +1,8 @@
+
 [gd_scene load_steps=35 format=3 uid="uid://vw4goriptg43"]
+
+
+
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_3f5pu"]
 [ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="2_26awl"]
@@ -6,15 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="3_xnrrf"]
 [ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="4_kjqpv"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="5_d75b8"]
+
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="6_ky665"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="7_q01xy"]
 [ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="8_onqu3"]
 [ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="9_vkcg0"]
+
 [ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="10_8b3it"]
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="11_jrt2u"]
 [ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="12_cr464"]
 [ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="13_ymkei"]
 [ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="14_wx4gr"]
+
 [ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="16_rl5vx"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="17_idn5c"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="18_34tkr"]
@@ -356,6 +363,7 @@ position = Vector2(83, 507)
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
 
+
 [node name="GrabbableMagicMissile" parent="." instance=ExtResource("6_ky665")]
 position = Vector2(504, 533)
 
@@ -383,6 +391,7 @@ position = Vector2(4219, 533)
 [node name="FarmerSpawner5" parent="." instance=ExtResource("10_8b3it")]
 position = Vector2(4477, 533)
 
+
 [node name="ground" type="TileMap" parent="."]
 z_index = 18
 texture_filter = 1
@@ -390,6 +399,7 @@ position = Vector2(0, 155)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_dmik0")
 format = 2
+
 layer_0/tile_data = PackedInt32Array(196596, 65536, 1, 196597, 65536, 1, 196598, 65536, 1, 196599, 65536, 1, 196600, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, -393217, 327680, 1, -327681, 327680, 1, -262145, 327680, 1, -196609, 327680, 1, -131073, 327680, 1, -65537, 327680, 1, -1, 327680, 1, 65535, 327680, 1, 131071, 327680, 1, 196607, 327680, 2, 131072, 131072, 1, 131127, 131072, 1, 131128, 131072, 1, -393159, 327680, 1, -327623, 327680, 1, -262087, 327680, 1, -196551, 327680, 1, -131015, 327680, 1, -65479, 327680, 1, 57, 327680, 1, 65593, 327680, 1, 131129, 327680, 2, 131130, 131072, 1, 131131, 131072, 1, 131132, 131072, 1, 131133, 65536, 1, 131134, 65536, 1, 131135, 65536, 1, 131136, 65536, 1, 131137, 65536, 1, 131138, 65536, 1, 131139, 65536, 1, 131140, 65536, 1, 131073, 131072, 1, 131074, 131072, 1, 131075, 131072, 1, 131076, 131072, 1, 131077, 196608, 1, 131126, 131072, 1, 131078, 0, 2, 131079, 65536, 2, 131080, 65536, 2, 131081, 65536, 2, 131082, 131072, 2, 131083, 131072, 0, 131084, 196608, 0, 131085, 262144, 0, 131092, 131072, 0, 131093, 196608, 0, 131094, 196608, 0, 131095, 196608, 0, 131096, 196608, 0, 131097, 262144, 0, 131086, 196608, 1, 131087, 0, 1, 131088, 65537, 0, 131091, 196609, 0, 196624, 65537, 1, 262160, 65537, 1, 196627, 196609, 1, 262163, 196609, 1, 327699, 196609, 1, 393235, 196609, 3, 393232, 65537, 3, 393233, 131073, 3, 393234, 131073, 3, 327696, 65537, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 65536, 1, 131101, 65536, 1, 131102, 65536, 1, 131103, 65536, 1, 131104, 0, 1, 131105, 196608, 1, 131106, 0, 2, 131107, 65536, 2, 131108, 65536, 2, 131109, 65536, 2, 131110, 65536, 2, 131111, 131072, 2, 131112, 0, 3, 131113, 131072, 0, 131114, 196608, 0, 131115, 262144, 0, 131116, 131072, 1, 131117, 131072, 3, 131118, 2, 131072, 131120, 2, 131072, 131121, 2, 131072, 131122, 2, 131072, 131123, 2, 131072, 131125, 131072, 1, 131119, 2, 131072, 131124, 131072, 3, 40, 196608, 4, -65485, 131072, 4, -65492, 196608, 4)
 
 [node name="Ranged" parent="." instance=ExtResource("16_rl5vx")]
@@ -425,3 +435,4 @@ position = Vector2(5879, 529)
 [connection signal="body_entered" from="ground/@Area2D@52815" to="ground/@Area2D@52815" method="_on_body_entered"]
 [connection signal="body_entered" from="ground/@Area2D@52816" to="ground/@Area2D@52816" method="_on_body_entered"]
 [connection signal="body_entered" from="ground/@Area2D@52817" to="ground/@Area2D@52817" method="_on_body_entered"]
+
