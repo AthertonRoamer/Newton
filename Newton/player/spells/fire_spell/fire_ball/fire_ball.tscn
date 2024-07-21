@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/spells/fire_spell/fire_ball/fire_ball.gd" id="1_v68ec"]
 [ext_resource type="PackedScene" uid="uid://c6e46y0d2lvxx" path="res://player/spells/fire_spell/fireball_explosion/fireball_explosion.tscn" id="2_cutgm"]
-[ext_resource type="Texture2D" uid="uid://d2f4u7kfexkj5" path="res://player/spells/fire_spell/filler_fire_spell_icon.png" id="2_htbp1"]
+[ext_resource type="Texture2D" uid="uid://jirolkfewjnx" path="res://player/fireball.png" id="3_drsmk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6erqh"]
 radius = 16.0312
@@ -17,8 +17,10 @@ duration_timer = NodePath("DurationTimer")
 duration = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_htbp1")
+position = Vector2(2, 2)
+scale = Vector2(5, 5)
+texture = ExtResource("3_drsmk")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6erqh")
