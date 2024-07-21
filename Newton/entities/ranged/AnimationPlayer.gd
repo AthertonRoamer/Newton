@@ -68,6 +68,13 @@ func set_visuals():
 				taking_dmg = true
 		else:
 			if attacking:
+				match ranged_dir:
+						Vector2.LEFT:
+							sprite.scale.x = -3.5
+							weapon.scale.x = -3.5
+						Vector2.RIGHT:
+							sprite.scale.x = 3.5
+							weapon.scale.x = 3.5
 				if !swinging:
 					swinging = true
 					play("attack")
