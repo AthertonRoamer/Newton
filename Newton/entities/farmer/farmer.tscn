@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://fa2ybcok776w"]
+[gd_scene load_steps=22 format=3 uid="uid://fa2ybcok776w"]
 
 [ext_resource type="Script" path="res://entities/farmer/farmer.gd" id="1_qyimm"]
-[ext_resource type="Texture2D" uid="uid://1lxdx1vtgmaj" path="res://entities/farmer/filler_farmer.png" id="2_0wmcm"]
+[ext_resource type="Texture2D" uid="uid://dt31kc300vv3w" path="res://entities/Farmer.png" id="2_myuge"]
 [ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_juxnm"]
 [ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="4_vi1jj"]
 [ext_resource type="Script" path="res://entities/farmer/farmer_state_machine.gd" id="5_vl5jl"]
@@ -11,20 +11,219 @@
 [ext_resource type="Script" path="res://entities/farmer/dead.gd" id="9_acuje"]
 [ext_resource type="Script" path="res://entities/farmer/melee_weapon.gd" id="10_324p7"]
 [ext_resource type="Texture2D" uid="uid://c7d6kh1qxiylf" path="res://entities/goblin/art/filler_goblin_weapon.png" id="11_lypjq"]
+[ext_resource type="Script" path="res://entities/farmer/AnimationPlayer.gd" id="12_uhf4e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeau7"]
-radius = 32.0
-height = 96.0
+radius = 19.0
+height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m41cj"]
+radius = 15.0681
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5qj0w"]
 polygon = PackedVector2Array(-4, -36, 6, -36, 10, -32, 16, -7, 8, 27, -7, 27, -16, -6)
 
+[sub_resource type="Animation" id="Animation_dcohh"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeWeapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeWeapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5v887"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeWeapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeWeapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f8vc2"]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeWeapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(67, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeWeapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wlfqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeleeWeapon/Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeWeapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(67, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeleeWeapon:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sp1bu"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeleeWeapon/Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fc0hk"]
+_data = {
+"RESET": SubResource("Animation_wlfqn"),
+"attack": SubResource("Animation_f8vc2"),
+"death": SubResource("Animation_sp1bu"),
+"idle": SubResource("Animation_dcohh"),
+"walk": SubResource("Animation_5v887")
+}
+
 [node name="Farmer" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_qyimm")
 weapon = NodePath("MeleeWeapon")
-attack_delay = 1.0
+attack_delay = 0.3
 can_attack_timer = NodePath("MeleeWeapon/StrikeTimer")
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")
@@ -32,7 +231,9 @@ state_machine = NodePath("FarmerStateMachine")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("2_0wmcm")
+texture = ExtResource("2_myuge")
+hframes = 8
+vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_aeau7")
@@ -81,7 +282,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("strike_timer", "timer", "wielder")]
-position = Vector2(-2, 0)
+position = Vector2(67, 8)
 collision_mask = 5
 script = ExtResource("10_324p7")
 strike_timer = NodePath("StrikeTimer")
@@ -101,10 +302,18 @@ shape = SubResource("CircleShape2D_m41cj")
 one_shot = true
 
 [node name="Timer" type="Timer" parent="MeleeWeapon"]
+wait_time = 0.3
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 occluder = SubResource("OccluderPolygon2D_5qj0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("goblin")]
+libraries = {
+"": SubResource("AnimationLibrary_fc0hk")
+}
+script = ExtResource("12_uhf4e")
+goblin = NodePath("..")
 
 [connection signal="timeout" from="FarmerStateMachine/Initial/Timer" to="FarmerStateMachine/Initial" method="_on_timer_timeout"]

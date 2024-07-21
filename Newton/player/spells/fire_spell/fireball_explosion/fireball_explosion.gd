@@ -1,13 +1,22 @@
 class_name FireBallExplosion
 extends Explosion
 
+
+@onready var firebomb :GPUParticles2D = $firebomb
+@onready var fire_mat : ParticleProcessMaterial = firebomb.process_material
+
 var wielder : Player
+
+func _ready() -> void:
+	$AnimationPlayer.play("explode")
 
 func _process(delta):
 	super(delta)
 	if use_built_in_animation:
 		$Sprite2D.scale.x = radius / starting_radius
 		$Sprite2D.scale.y = radius / starting_radius
+		#fire_mat.scale_max = radius / starting_radius
+		#fire_mat.scale_min = radius / starting_radius
 
 
 func effect_body(body : Node2D) -> void:

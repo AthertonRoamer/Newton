@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cyvbxcx7eoai2"]
+[gd_scene load_steps=29 format=3 uid="uid://cyvbxcx7eoai2"]
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
 [ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_02fqk"]
 [ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="2_efhk4"]
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="3_8s0qq"]
+[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="3_it12p"]
 [ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="4_l1vxq"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="6_0hmuu"]
 [ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_ic40c"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="11_haovp"]
 [ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="12_f03r2"]
 [ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="13_2e5wk"]
+[ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="14_6nk4a"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
 tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1)
@@ -257,6 +259,12 @@ spawn_point = NodePath("SpawnPoint")
 [node name="Node" parent="." instance=ExtResource("2_02fqk")]
 position = Vector2(-1, 2)
 
+[node name="FarmerSpawner" parent="Node" instance=ExtResource("3_it12p")]
+position = Vector2(450, 509)
+
+[node name="FarmerSpawner2" parent="Node" instance=ExtResource("3_it12p")]
+position = Vector2(1533, 517)
+
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(84, 327)
 
@@ -308,3 +316,6 @@ sight_range = 1000
 
 [node name="GrabbableLightning" parent="." instance=ExtResource("13_2e5wk")]
 position = Vector2(494, 534)
+
+[node name="Pig" parent="." instance=ExtResource("14_6nk4a")]
+position = Vector2(871, 294)
