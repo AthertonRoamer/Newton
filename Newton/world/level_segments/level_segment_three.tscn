@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=32 format=3 uid="uid://bx3afxbtcsj02"]
+
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_xr74x"]
 [ext_resource type="PackedScene" uid="uid://dsvh2ek1t1tsq" path="res://world/level_backgrounds/level_backround3.tscn" id="2_k7ilp"]
@@ -6,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_3dev2"]
 [ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_icves"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_2xoqs"]
+
 [ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="11_pebtm"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="12_4jdsx"]
 [ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="12_qkwpw"]
@@ -350,6 +353,7 @@ position = Vector2(83, 507)
 [node name="Teleporter" parent="." instance=ExtResource("7_2xoqs")]
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
+
 
 [node name="GrabbableLightning" parent="." instance=ExtResource("11_pebtm")]
 position = Vector2(504, 533)

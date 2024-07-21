@@ -1,6 +1,10 @@
 class_name MagicMissile
 extends Projectile
 
+func _ready() -> void:
+	super()
+	$GPUParticles2D.rotation = get_parent().rotation
+
 func effect_body(body : Node2D) -> void:
 	var extinguish_triggered : bool = false
 	if body.is_in_group("damageable"):

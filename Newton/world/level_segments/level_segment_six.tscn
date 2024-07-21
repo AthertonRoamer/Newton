@@ -1,26 +1,22 @@
+[gd_scene load_steps=34 format=3 uid="uid://3oi7gpuqi00o"]
 
-[gd_scene load_steps=33 format=3 uid="uid://cyyj5euhdu5h8"]
-
-
-
-[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_rocic"]
-[ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_76cwu"]
-[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="3_rebvu"]
-[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_jho3b"]
-[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_xfpra"]
-[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="6_ym0ky"]
-[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="7_tnbls"]
-
-[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="8_8btgb"]
-[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="9_8iupw"]
-[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="10_7r8mw"]
-[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="11_lcr08"]
-
-[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="12_2uyva"]
-[ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="13_aedv8"]
-[ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="14_h5noo"]
-[ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="15_dkmkw"]
-[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="18_brgx4"]
+[ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_avp5i"]
+[ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="2_iddbn"]
+[ext_resource type="Texture2D" uid="uid://ck412ldhn420c" path="res://world/houses.png" id="3_l7441"]
+[ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_xpoqm"]
+[ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_xldqn"]
+[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="6_4h8jt"]
+[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_ftw0u"]
+[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="8_hy3al"]
+[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="9_n8i4d"]
+[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="10_levt4"]
+[ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="11_o8t1l"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="12_r30o4"]
+[ext_resource type="Texture2D" uid="uid://bxt0qittcx0lr" path="res://world/pits.png" id="13_nxptg"]
+[ext_resource type="PackedScene" uid="uid://djtd7fhmfd8g2" path="res://environment/spike_plant/spike_plant.tscn" id="14_lysbx"]
+[ext_resource type="PackedScene" uid="uid://b57rx4vddglpo" path="res://environment/exploding_plant/exploding_plant.tscn" id="15_q72yh"]
+[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="16_sh73y"]
+[ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="18_78vci"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
 tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1)
@@ -35,7 +31,7 @@ tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65
 tile_data = PackedInt32Array(0, 0, 3, 65536, 0, 4, 1, 65536, 3, 65537, 65536, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bm6ke"]
-texture = ExtResource("3_rebvu")
+texture = ExtResource("3_l7441")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 1:1/0 = 0
@@ -69,7 +65,7 @@ texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7f15l"]
-texture = ExtResource("4_jho3b")
+texture = ExtResource("4_xpoqm")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -93,7 +89,7 @@ pattern_2 = SubResource("TileMapPattern_rfwsy")
 pattern_3 = SubResource("TileMapPattern_3qxqw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xkas"]
-texture = ExtResource("5_xfpra")
+texture = ExtResource("5_xldqn")
 texture_region_size = Vector2i(32, 64)
 0:1/0 = 0
 1:1/0 = 0
@@ -103,7 +99,7 @@ texture_region_size = Vector2i(32, 64)
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6qm2"]
-texture = ExtResource("4_jho3b")
+texture = ExtResource("4_xpoqm")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -137,7 +133,7 @@ sources/2 = SubResource("TileSetAtlasSource_y6qm2")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8f2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xow3h"]
-texture = ExtResource("6_ym0ky")
+texture = ExtResource("12_r30o4")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -253,7 +249,7 @@ texture_region_size = Vector2i(32, 32)
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(17.25, 7.5, 17.75, 16.5, -17.5, 15.75, -17.5, 6.5, -8, 5.25, -7.75, -16.75, 9.75, -16.25, 10.5, 6.25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnqpn"]
-texture = ExtResource("13_aedv8")
+texture = ExtResource("13_nxptg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -313,11 +309,11 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kisu1"]
 resource_name = "spike plant"
-scenes/2/scene = ExtResource("14_h5noo")
+scenes/2/scene = ExtResource("14_lysbx")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wgiv4"]
 resource_name = "bomb plant"
-scenes/1/scene = ExtResource("15_dkmkw")
+scenes/1/scene = ExtResource("15_q72yh")
 
 [sub_resource type="TileSet" id="TileSet_dmik0"]
 tile_size = Vector2i(32, 32)
@@ -329,8 +325,12 @@ sources/2 = SubResource("TileSetScenesCollectionSource_kisu1")
 sources/3 = SubResource("TileSetScenesCollectionSource_wgiv4")
 
 [node name="LevelSegmentOne" type="Node2D" node_paths=PackedStringArray("spawn_point")]
-script = ExtResource("1_rocic")
+script = ExtResource("1_avp5i")
 spawn_point = NodePath("SpawnPoint")
+
+[node name="Node" parent="." instance=ExtResource("2_iddbn")]
+z_index = 1
+position = Vector2(1078, 0)
 
 [node name="houses" type="TileMap" parent="."]
 z_index = -1
@@ -345,27 +345,41 @@ texture_filter = 1
 position = Vector2(2.42857, -14.4286)
 tile_set = SubResource("TileSet_id52a")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65527, 65536, 0, -65528, 0, 0, -65535, 0, 0, -262122, 0, 0, -262114, 65536, 0, 16, 2, 0, -65517, 2, 0, -196586, 65538, 0, -196583, 65538, 0, -196584, 2, 0, -196585, 2, 0, 5, 65538, 0)
+layer_0/tile_data = PackedInt32Array(-589800, 0, 0, -589799, 65536, 0, -262128, 65536, 0, -65529, 65536, 0, -589782, 65536, 0, -589766, 65536, 0, -393142, 65536, 0, -589765, 0, 0, -524217, 0, 0, -65456, 0, 0, -458727, 2, 0, -458728, 2, 0, -458710, 2, 0, -458695, 2, 0, -393144, 2, 0, 81, 2, 0, 80, 65538, 0, -262071, 65538, 0, -458682, 65538, 0, -458694, 65538, 0, -458693, 65538, 0, 6, 65538, 0, 7, 2, 0)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(83, 507)
 
-[node name="Teleporter" parent="." instance=ExtResource("7_tnbls")]
+[node name="Teleporter" parent="." instance=ExtResource("6_4h8jt")]
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
 
+[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_ftw0u")]
+position = Vector2(504, 533)
 
-[node name="FarmerSpawner" parent="." instance=ExtResource("12_2uyva")]
-position = Vector2(3337, 538)
+[node name="GrabbableWindSpell" parent="." instance=ExtResource("8_hy3al")]
+position = Vector2(504, 533)
 
-[node name="FarmerSpawner2" parent="." instance=ExtResource("12_2uyva")]
-position = Vector2(1577, 519)
+[node name="GrabbableFireSpell" parent="." instance=ExtResource("9_n8i4d")]
+position = Vector2(504, 533)
 
-[node name="FarmerSpawner3" parent="." instance=ExtResource("12_2uyva")]
-position = Vector2(6058, 524)
+[node name="GrabbableLightning" parent="." instance=ExtResource("10_levt4")]
+position = Vector2(504, 533)
 
-[node name="FarmerSpawner4" parent="." instance=ExtResource("12_2uyva")]
-position = Vector2(6904, 534)
+[node name="FarmerSpawner" parent="." instance=ExtResource("11_o8t1l")]
+position = Vector2(480, 533)
+
+[node name="FarmerSpawner2" parent="." instance=ExtResource("11_o8t1l")]
+position = Vector2(1985, 537)
+
+[node name="FarmerSpawner3" parent="." instance=ExtResource("11_o8t1l")]
+position = Vector2(3341, 530)
+
+[node name="FarmerSpawner4" parent="." instance=ExtResource("11_o8t1l")]
+position = Vector2(4219, 533)
+
+[node name="FarmerSpawner5" parent="." instance=ExtResource("11_o8t1l")]
+position = Vector2(4477, 533)
 
 [node name="ground" type="TileMap" parent="."]
 z_index = 18
@@ -374,33 +388,39 @@ position = Vector2(0, 155)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_dmik0")
 format = 2
-layer_0/tile_data = PackedInt32Array(196596, 65536, 1, 196597, 65536, 1, 196598, 65536, 1, 196599, 65536, 1, 196600, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, -393217, 327680, 1, -327681, 327680, 1, -262145, 327680, 1, -196609, 327680, 1, -131073, 327680, 1, -65537, 327680, 1, -1, 327680, 1, 65535, 327680, 1, 131071, 327680, 1, 196607, 327680, 2, 131072, 131072, 1, 131127, 131072, 1, 131128, 131072, 1, -393159, 327680, 1, -327623, 327680, 1, -262087, 327680, 1, -196551, 327680, 1, -131015, 327680, 1, -65479, 327680, 1, 57, 327680, 1, 65593, 327680, 1, 131129, 327680, 2, 131130, 131072, 1, 131131, 131072, 1, 131132, 131072, 1, 131133, 65536, 1, 131134, 65536, 1, 131135, 65536, 1, 131136, 65536, 1, 131137, 65536, 1, 131138, 65536, 1, 131139, 65536, 1, 131140, 65536, 1, 131073, 131072, 1, 131074, 131072, 1, 131075, 131072, 1, 131076, 131072, 1, 131077, 131072, 1, 131078, 131072, 1, 131079, 131072, 1, 131080, 131072, 3, 131081, 3, 65536, 131082, 131072, 3, 131083, 131072, 1, 131084, 196609, 2, 65550, 196609, 2, 18, 196609, 2, -65517, 0, 1, 21, 65537, 2, 65558, 65537, 1, 131094, 65537, 1, 196630, 65537, 1, 262166, 65537, 3, 262167, 2, 131072, 262168, 2, 131072, 262169, 2, 131072, 262170, 2, 131072, 262171, 2, 131072, 262172, 2, 131072, 262173, 2, 131072, 262174, 2, 131072, 262175, 2, 131072, 262176, 196609, 3, 262178, 65537, 3, 262179, 2, 131072, 262180, 2, 131072, 262181, 2, 131072, 262182, 2, 131072, 262183, 2, 131072, 262184, 196609, 3, 262186, 65537, 3, 262187, 2, 131072, 262188, 2, 131072, 262189, 2, 131072, 262190, 2, 131072, 262191, 2, 131072, 262192, 196609, 3, 196656, 196609, 1, 131120, 196609, 1, 65584, 196609, 1, 50, 65537, 2, 51, 65537, 0, 65587, 65537, 2, 131124, 65537, 2, 65588, 65537, 0, 131125, 3, 65536, 131126, 131073, 2, -65486, 65537, 0, 48, 196609, 1, -65488, 196609, 0, -65487, 0, 3, 49, 1, 1, 65585, 1, 1, 65586, 1, 1, 131122, 1, 1, 131121, 1, 1, 131123, 1, 1, 19, 1, 1, 20, 1, 1, 65556, 1, 1, 131092, 1, 1, 131093, 1, 1, 65557, 1, 1, 65555, 1, 1, 65554, 1, 1, 65553, 1, 1, 65552, 1, 1, 65551, 1, 1, 131087, 1, 1, 131086, 1, 1, 131085, 1, 1, 131088, 1, 1, 131089, 1, 1, 131090, 1, 1, 131091, 1, 1, 22, 65537, 0, -65516, 0, 3, 17, 196608, 1, 16, 3, 65536, 15, 131072, 1, 65549, 131072, 1, 65548, 196609, 0, 14, 196609, 0, -65518, 196609, 0, -65515, 65537, 0, -65502, 65537, 1, -65504, 196609, 1, 32, 196609, 1, 65568, 196609, 1, 131104, 196609, 1, 196640, 196609, 1, 34, 65537, 1, 65570, 65537, 1, 131106, 65537, 1, 196642, 65537, 1, 42, 65537, 1, -131038, 65537, 1, -196574, 65537, 1, -65494, 65537, 1, -131030, 65537, 1, -196566, 65537, 1, -262102, 65537, 1, 65578, 65537, 1, 131114, 65537, 1, 196650, 65537, 1, -262104, 196609, 1, -196568, 196609, 1, -131032, 196609, 1, -65496, 196609, 1, 40, 196609, 1, 65576, 196609, 1, 131112, 196609, 1, 196648, 196609, 1, -327640, 196609, 0, -327638, 65537, 0, -262110, 65537, 0, -262112, 196609, 0, -196576, 196609, 1, -131040, 196609, 1, 131105, 1, 1, 65569, 1, 1, 33, 1, 1, -65503, 1, 1, -131039, 1, 1, -196575, 1, 1, -262103, 1, 1, -196567, 1, 1, -131031, 1, 1, -65495, 1, 1, 41, 1, 1, 65577, 1, 1, 131113, 1, 1, -262111, 0, 3, -327639, 0, 3, -393185, 131072, 4, -458719, 196608, 4, -393180, 131072, 4, -524247, 131072, 4, -458713, 196608, 4, -393172, 131072, 4, -196588, 131072, 4, -262122, 196608, 4, -262116, 131072, 4, -262118, 196608, 4, -196584, 131072, 4, -327650, 131072, 4, -262098, 196608, 4, -131024, 131072, 4)
+layer_0/tile_data = PackedInt32Array(196596, 65536, 1, 196597, 65536, 1, 196598, 65536, 1, 196599, 65536, 1, 196600, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, -393217, 327680, 1, -327681, 327680, 1, -262145, 327680, 1, -196609, 327680, 1, -131073, 327680, 1, -65537, 327680, 1, -1, 327680, 1, 65535, 327680, 1, 131071, 327680, 1, 196607, 327680, 2, 131072, 131072, 1, 131128, 131072, 1, -393159, 327680, 1, -327623, 327680, 1, -262087, 327680, 1, -196551, 327680, 1, -131015, 327680, 1, -65479, 327680, 1, 57, 327680, 1, 65593, 327680, 1, 131129, 327680, 2, 131130, 131072, 1, 131131, 131072, 1, 131132, 131072, 1, 131133, 65536, 1, 131134, 65536, 1, 131135, 65536, 1, 131136, 65536, 1, 131137, 65536, 1, 131138, 65536, 1, 131139, 65536, 1, 131140, 65536, 1, 131073, 327680, 0, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 3, 131077, 65536, 1, 131078, 131072, 3, 131079, 196609, 2, 65546, 196609, 2, 13, 196609, 2, -65522, 196609, 2, -131057, 196609, 2, -196592, 131073, 2, -196591, 131073, 2, -196590, 131073, 2, -196589, 131073, 2, -196588, 65536, 3, -196587, 131072, 3, -196586, 65536, 3, -196585, 131072, 3, -196584, 65536, 3, -196579, 131073, 2, -196578, 131073, 2, -196577, 131072, 3, -196576, 65536, 3, -196569, 65536, 3, -196568, 131073, 2, -196567, 131073, 2, -196566, 131073, 2, -196558, 131073, 2, -131021, 65537, 2, -65484, 65537, 2, 65589, 65537, 2, 131126, 65537, 2, 65590, 65537, 0, -65483, 65537, 0, -131020, 65537, 0, -196557, 65537, 0, -196565, 65537, 0, -196575, 65537, 0, -196583, 65537, 0, 65544, 131072, 3, 65545, 65536, 3, 12, 262145, 0, 11, 131072, 3, 53, 65537, 1, 65543, 196609, 0, 10, 196609, 0, -65523, 196609, 0, -131058, 196609, 0, -196593, 196609, 0, -131047, 65537, 1, -65511, 65537, 1, 25, 65537, 1, 65561, 65537, 1, 131097, 65537, 1, -131039, 65537, 1, -65503, 65537, 1, 33, 65537, 1, 65569, 65537, 1, 131105, 65537, 1, 196641, 65537, 3, -131029, 65537, 1, -65493, 65537, 1, 43, 65537, 1, 65579, 65537, 1, 131115, 65537, 1, 196651, 65537, 3, -131024, 196609, 1, -65488, 196609, 1, 48, 196609, 1, 65584, 196609, 1, 131120, 196609, 1, 196656, 196609, 3, -196560, 196609, 0, -196559, 262145, 0, 196646, 196609, 3, 196633, 65537, 3, 196636, 196609, 3, 131100, 196609, 1, 65564, 196609, 1, 28, 196609, 1, -65508, 196609, 1, -131044, 196609, 1, -196580, 196609, 0, -196570, 196609, 0, -131034, 196609, 1, -65498, 196609, 1, 38, 196609, 1, 65574, 196609, 1, 131110, 196609, 1, 196634, 2, 131072, 196635, 2, 131072, 196642, 2, 131072, 196643, 2, 131072, 196644, 2, 131072, 196645, 2, 131072, 196652, 2, 131072, 196653, 2, 131072, 196654, 2, 131072, 196655, 2, 131072, 131080, 1, 1, 131081, 1, 1, 131082, 1, 1, 131083, 1, 1, 131084, 1, 1, 131085, 1, 1, 131086, 1, 1, 131087, 1, 1, 131088, 1, 1, 131089, 1, 1, 131090, 1, 1, 131091, 1, 1, 131092, 1, 1, 131093, 1, 1, 131094, 1, 1, 131095, 1, 1, 131096, 1, 1, 65560, 1, 1, 24, 1, 1, -65512, 1, 1, -131048, 1, 1, -131049, 1, 1, -131050, 1, 1, -131051, 1, 1, -131052, 1, 1, -131053, 1, 1, -131054, 1, 1, -131055, 1, 1, -131056, 1, 1, -65520, 1, 1, -65521, 1, 1, 15, 1, 1, 14, 1, 1, 65550, 1, 1, 65549, 1, 1, 65548, 1, 1, 65547, 1, 1, 65551, 1, 1, 65552, 1, 1, 65553, 1, 1, 17, 1, 1, -65519, 1, 1, 16, 1, 1, 18, 1, 1, 19, 1, 1, 20, 1, 1, -65516, 1, 1, -65517, 1, 1, -65518, 1, 1, 65554, 1, 1, 65555, 1, 1, 65556, 1, 1, 21, 1, 1, 22, 1, 1, -65514, 1, 1, -65515, 1, 1, 65557, 1, 1, 65558, 1, 1, 23, 1, 1, -65513, 1, 1, 65559, 1, 1, -131043, 1, 1, -131042, 1, 1, -131041, 1, 1, -131040, 1, 1, -65504, 1, 1, 32, 1, 1, 65568, 1, 1, 131104, 1, 1, 131103, 1, 1, 131102, 1, 1, 131101, 1, 1, 65565, 1, 1, 29, 1, 1, -65507, 1, 1, -65506, 1, 1, 30, 1, 1, 65566, 1, 1, 31, 1, 1, -65505, 1, 1, 65567, 1, 1, -131033, 1, 1, -131032, 1, 1, -131031, 1, 1, -131030, 1, 1, -65494, 1, 1, 42, 1, 1, 65578, 1, 1, 131114, 1, 1, 131113, 1, 1, 131112, 1, 1, 131111, 1, 1, 65575, 1, 1, 39, 1, 1, -65497, 1, 1, -65496, 1, 1, 40, 1, 1, 65576, 1, 1, 65577, 1, 1, 41, 1, 1, -65495, 1, 1, -131023, 1, 1, -131022, 1, 1, -65486, 1, 1, 50, 1, 1, 51, 1, 1, -65485, 1, 1, 52, 1, 1, 65588, 1, 1, 131124, 1, 1, 131125, 1, 1, 131123, 1, 1, 131122, 1, 1, 131121, 1, 1, 65585, 1, 1, 49, 1, 1, -65487, 1, 1, 65586, 1, 1, 65587, 1, 1)
 
-[node name="Node" parent="." instance=ExtResource("2_76cwu")]
-position = Vector2(1891, -387)
-scale = Vector2(1.6, 1.6)
+[node name="Goblin" parent="." instance=ExtResource("18_78vci")]
+position = Vector2(1534, 360)
 
-[node name="Ranged" parent="." instance=ExtResource("18_brgx4")]
-position = Vector2(5361, -463)
-sight_range = 2250
-attack_delay = 2.5
+[node name="Goblin2" parent="." instance=ExtResource("18_78vci")]
+position = Vector2(2728, -262)
 
-[node name="Ranged2" parent="." instance=ExtResource("18_brgx4")]
-position = Vector2(6583, -614)
-sight_range = 2250
-attack_delay = 2.5
+[node name="Goblin3" parent="." instance=ExtResource("18_78vci")]
+position = Vector2(3424, -263)
 
-[node name="Ranged3" parent="." instance=ExtResource("18_brgx4")]
-position = Vector2(3268, -365)
-sight_range = 2250
-attack_delay = 2.5
+[node name="Goblin4" parent="." instance=ExtResource("18_78vci")]
+position = Vector2(3691, -254)
 
-[node name="Ranged4" parent="." instance=ExtResource("18_brgx4")]
-position = Vector2(4231, -531)
-sight_range = 2250
-attack_delay = 2.5
+[node name="Ranged" parent="." instance=ExtResource("16_sh73y")]
+position = Vector2(3144, -267)
 
-[node name="Ranged5" parent="." instance=ExtResource("18_brgx4")]
-position = Vector2(7882, 66)
-sight_range = 2250
-attack_delay = 2.5
+[node name="Ranged2" parent="." instance=ExtResource("16_sh73y")]
+position = Vector2(2276, 51)
+
+[node name="Ranged3" parent="." instance=ExtResource("16_sh73y")]
+position = Vector2(4741, -258)
+
+[node name="Ranged4" parent="." instance=ExtResource("16_sh73y")]
+position = Vector2(7978, -260)
+
+[connection signal="body_entered" from="ground/SpikePlant" to="ground/SpikePlant" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71812" to="ground/@Area2D@71812" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71813" to="ground/@Area2D@71813" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71814" to="ground/@Area2D@71814" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71815" to="ground/@Area2D@71815" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71816" to="ground/@Area2D@71816" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71817" to="ground/@Area2D@71817" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71818" to="ground/@Area2D@71818" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71819" to="ground/@Area2D@71819" method="_on_body_entered"]
+[connection signal="body_entered" from="ground/@Area2D@71820" to="ground/@Area2D@71820" method="_on_body_entered"]
