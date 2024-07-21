@@ -1,16 +1,16 @@
 extends AnimationPlayer
 
 
-@export var ranged : Ranged
+
+@export var goblin : Farmer
 
 @onready var sprite = $"../Sprite2D"
-@onready var weapon = $"../FirePosition"
-@onready var health = ranged.starting_health
+@onready var weapon = $"../MeleeWeapon"
+@onready var health = goblin.starting_health
 
-var ranged_dir
+var goblin_dir
 var moving = false
 var took_dmg = false
-var taking_dmg = false
 var dead = false
 var still = true
 var attacking = false
@@ -21,36 +21,34 @@ func _on_walking_changed(walking : bool):
 
 
 func _on_direction_changed(new_direction : Vector2):
-	ranged_dir = new_direction
-
-
+	goblin_dir = new_direction
+	
+	
 func _on_health_changed(new_health : int):
-	if health > new_health:
+	if health >= new_health:
 		took_dmg = true
-		
+	health = new_health
 
 
 func _on_strike_began():
 	attacking = true
-
-
+	
+	
 func _on_strike_ended() -> void:
 	attacking = false
 	swinging = false
-
+	
 
 func _on_death():
 	dead = true
 
 func _ready() -> void:
-	ranged.walking_changed.connect(_on_walking_changed)
-	ranged.direction_changed.connect(_on_direction_changed)
-	ranged.health_changed.connect(_on_health_changed)
-	ranged.dead.connect(_on_death)
-	ranged.projectile_handler.fire_began.connect(_on_strike_began)
-	ranged.projectile_handler.fire_ended.connect(_on_strike_ended)
-	#ranged.weapon.strike_began.connect(_on_strike_began)
-	#ranged.weapon.strike_ended.connect(_on_strike_ended)
+	goblin.walking_changed.connect(_on_walking_changed)
+	goblin.direction_changed.connect(_on_direction_changed)
+	goblin.health_changed.connect(_on_health_changed)
+	goblin.dead.connect(_on_death)
+	goblin.weapon.strike_began.connect(_on_strike_began)
+	goblin.weapon.strike_ended.connect(_on_strike_ended)
 
 
 
@@ -61,12 +59,12 @@ func _process(_delta: float) -> void:
 func set_visuals():
 	if dead:
 		play("death",-1,1.5)
+		goblin.queue_free()
 	else:
-		if took_dmg == true:
-			if !taking_dmg:
-				play("damage")
-				taking_dmg = true
-		else:
+		
+			#play("damage")
+		
+		
 			if attacking:
 				if !swinging:
 					swinging = true
@@ -74,11 +72,11 @@ func set_visuals():
 			else:
 				if !moving:
 					if !still:
-						play("idle",-1,0.5)
+						play("idle")
 				elif moving:
 					still = false
 					play("walk",-1,0.75)
-					match ranged_dir:
+					match goblin_dir:
 						Vector2.LEFT:
 							sprite.scale.x = -3.5
 							weapon.scale.x = -3.5
@@ -90,9 +88,8 @@ func set_visuals():
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "damage":
 		took_dmg = false
-		taking_dmg = false
 	if anim_name == "death":
-		ranged.queue_free()
+		goblin.queue_free()
 	if anim_name == "attack":
 		swinging = false
 		attacking = false

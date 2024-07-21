@@ -8,6 +8,7 @@ extends Area2D
 @export var damage_type : String = "explosion"
 @export var knockback_force : float = 1000
 @export var collision_shape : CollisionShape2D
+
 @export var use_built_in_animation : bool = true
 
 var starting_radius : float
@@ -37,6 +38,7 @@ func _process(delta) -> void:
 		radius += radius_increase_rate * delta
 		collision_shape.scale.x = radius / starting_radius
 		collision_shape.scale.y = radius / starting_radius
+		
 		if radius > max_radius:
 			queue_free()
 		

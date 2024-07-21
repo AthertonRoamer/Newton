@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ll8lhlcpnn17"]
+[gd_scene load_steps=16 format=3 uid="uid://ll8lhlcpnn17"]
 
 [ext_resource type="Script" path="res://entities/pig/pig.gd" id="1_tokog"]
 [ext_resource type="Script" path="res://entities/pig/pig_state_machine.gd" id="2_7jytu"]
@@ -7,11 +7,86 @@
 [ext_resource type="Script" path="res://entities/pig/pause.gd" id="4_xfiay"]
 [ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="5_866yc"]
 [ext_resource type="Script" path="res://entities/pig/dead.gd" id="5_rbxjr"]
+[ext_resource type="Texture2D" uid="uid://coem1s3a031m" path="res://entities/pig.png" id="6_rnfhu"]
+[ext_resource type="Script" path="res://entities/pig/AnimationPlayer.gd" id="9_ls1x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3t4c"]
 size = Vector2(58, 33)
 
+[sub_resource type="Animation" id="Animation_a412l"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ruo6c"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_q8jai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w5yrh"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7vxa"]
+_data = {
+"RESET": SubResource("Animation_q8jai"),
+"death": SubResource("Animation_w5yrh"),
+"idle": SubResource("Animation_a412l"),
+"walk": SubResource("Animation_ruo6c")
+}
+
 [node name="Pig" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine")]
+scale = Vector2(1.25, 1.25)
 script = ExtResource("1_tokog")
 max_health = 1
 starting_health = 1
@@ -44,11 +119,20 @@ one_shot = true
 script = ExtResource("5_rbxjr")
 id = "dead"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("6_rnfhu")
+hframes = 8
+vframes = 2
+
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.960784, 0.529412, 0.435294, 1)
 polygon = PackedVector2Array(-29, -11, 29, -11, 29, 14, -29, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_u3t4c")
 
@@ -57,5 +141,12 @@ width = 80.0
 
 [node name="ObstacleDetector" parent="." instance=ExtResource("5_866yc")]
 length = 50.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("goblin")]
+libraries = {
+"": SubResource("AnimationLibrary_x7vxa")
+}
+script = ExtResource("9_ls1x8")
+goblin = NodePath("..")
 
 [connection signal="timeout" from="PigStateMachine/Pause/Timer" to="PigStateMachine/Pause" method="_on_timer_timeout"]

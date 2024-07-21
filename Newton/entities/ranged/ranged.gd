@@ -17,7 +17,7 @@ func is_player_attackable() -> bool:
 
 func die():
 	dead.emit()
-	super()
+	
 
 
 func _on_fire_duration_timer_timeout():
