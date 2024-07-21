@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_state_changed() -> void:
 	AudioManager.play(sound)
-	$StateDisplay.text = state_machine.active_state.id
+	#$StateDisplay.text = state_machine.active_state.id
 
 func die():
 	AudioManager.play(sound)
