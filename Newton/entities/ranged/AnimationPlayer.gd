@@ -1,7 +1,7 @@
 extends AnimationPlayer
 
 
-@export var ranged : Entity
+@export var ranged : Ranged
 
 @onready var sprite = $"../Sprite2D"
 @onready var weapon = $"../FirePosition"
@@ -24,9 +24,8 @@ func _on_direction_changed(new_direction : Vector2):
 
 
 func _on_health_changed(new_health : int):
-	if health >= new_health:
+	if health > new_health:
 		took_dmg = true
-	health = new_health
 
 
 func _on_strike_began():
@@ -46,8 +45,10 @@ func _ready() -> void:
 	ranged.direction_changed.connect(_on_direction_changed)
 	ranged.health_changed.connect(_on_health_changed)
 	ranged.dead.connect(_on_death)
-	ranged.weapon.strike_began.connect(_on_strike_began)
-	ranged.weapon.strike_ended.connect(_on_strike_ended)
+	ranged.projectile_handler.fire_began.connect(_on_strike_began)
+	ranged.projectile_handler.fire_ended.connect(_on_strike_ended)
+	#ranged.weapon.strike_began.connect(_on_strike_began)
+	#ranged.weapon.strike_ended.connect(_on_strike_ended)
 
 
 
