@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cyvbxcx7eoai2"]
+[gd_scene load_steps=26 format=3 uid="uid://cyvbxcx7eoai2"]
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
 [ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_02fqk"]
@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_rk6bf"]
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="9_r3uxp"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="10_7txyp"]
-[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="11_haovp"]
-[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="13_2e5wk"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="14_6nk4a"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_d2ein"]
@@ -292,16 +290,10 @@ position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
 
 [node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_rk6bf")]
-position = Vector2(260, 543)
+position = Vector2(381, 525)
 
 [node name="GrabbableWindSpell" parent="." instance=ExtResource("9_r3uxp")]
-position = Vector2(155, 538)
-
-[node name="GrabbableFireSpell" parent="." instance=ExtResource("11_haovp")]
-position = Vector2(356, 542)
-
-[node name="GrabbableLightning" parent="." instance=ExtResource("13_2e5wk")]
-position = Vector2(494, 534)
+position = Vector2(243, 529)
 
 [node name="FarmerSpawner" parent="." instance=ExtResource("3_it12p")]
 position = Vector2(3541, 531)
