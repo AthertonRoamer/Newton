@@ -303,7 +303,7 @@ position = Vector2(8854, 556)
 position = Vector2(356, 542)
 
 [node name="Ranged" parent="." instance=ExtResource("12_f03r2")]
-position = Vector2(4215, 504)
+position = Vector2(1580, 546)
 sight_range = 1000
 
 [node name="GrabbableLightning" parent="." instance=ExtResource("13_2e5wk")]
