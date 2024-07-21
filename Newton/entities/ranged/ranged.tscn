@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://2t1raaq0gfdy"]
+[gd_scene load_steps=22 format=3 uid="uid://2t1raaq0gfdy"]
 
 [ext_resource type="Script" path="res://entities/ranged/ranged.gd" id="1_c0nti"]
 [ext_resource type="Texture2D" uid="uid://ch3m4rxduqgwo" path="res://entities/ranged/ranged.png" id="2_ahys0"]
+[ext_resource type="AudioStream" uid="uid://busij8ybdys8g" path="res://player/sfx/dragon-hurt-47161.mp3" id="2_qtusm"]
+[ext_resource type="AudioStream" uid="uid://cu5dy3cnub0lh" path="res://player/sfx/monster-death-grunt-131480.mp3" id="3_tffy2"]
 [ext_resource type="Script" path="res://entities/ranged/ranged_state_machine.gd" id="3_xh1m8"]
 [ext_resource type="Script" path="res://entities/ranged/states/patrol.gd" id="4_hsuvf"]
 [ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="4_xmslk"]
@@ -173,6 +175,8 @@ _data = {
 
 [node name="Ranged" type="CharacterBody2D" node_paths=PackedStringArray("projectile_handler", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_c0nti")
+sound = ExtResource("2_qtusm")
+sound2 = ExtResource("3_tffy2")
 projectile_handler = NodePath("ProjectileHandler")
 sweet_range = 550
 sight_range = 1750

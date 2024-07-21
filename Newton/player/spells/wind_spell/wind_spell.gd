@@ -1,6 +1,8 @@
 class_name WindSpell
 extends Spell
 
+@export var sound : AudioStream
+
 @export var wind_burst_scene : PackedScene
 @export var base_player_force : float = 2000
 @export var max_player_force : float = 1350
@@ -16,6 +18,8 @@ extends Spell
 
 
 func cast() -> void:
+	player.screen_shake(1,1)
+	AudioManager.play(sound)
 	var real_player_force = base_player_force * charge_time * charge_time
 	var cast_direction : Vector2 = player.staff.cast_direction
 	var knock_back_direction : Vector2 = cast_direction * -1

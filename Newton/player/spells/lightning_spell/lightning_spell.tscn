@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://1fvnkoy12dye"]
+[gd_scene load_steps=9 format=3 uid="uid://1fvnkoy12dye"]
 
 [ext_resource type="Script" path="res://player/spells/lightning_spell/lightning_spell.gd" id="1_nca0d"]
+[ext_resource type="AudioStream" uid="uid://dp6uel0yfeex1" path="res://player/sfx/big-thunder-recorded-in-stereo-with-rain-fall-and-lightning-67697.mp3" id="2_0k23n"]
 [ext_resource type="PackedScene" uid="uid://pkkwee0nyv5e" path="res://player/spells/lightning_spell/lightning/lightning.tscn" id="2_1b7e2"]
 [ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_4ovyv"]
 [ext_resource type="PackedScene" uid="uid://s6mx0au142do" path="res://player/spells/lightning_spell/lightning_storm/lightning_storm.tscn" id="3_thscf"]
@@ -18,6 +19,7 @@ description = "Bolt of lightning"
 
 [node name="LightningSpell" type="Node"]
 script = ExtResource("1_nca0d")
+sound = ExtResource("2_0k23n")
 lightning_scene = ExtResource("2_1b7e2")
 lightning_storm_scene = ExtResource("3_thscf")
 cast_anim_name = "lightning_shoot"

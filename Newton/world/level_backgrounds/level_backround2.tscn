@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://finqeubtyep1"]
 
 [sub_resource type="Gradient" id="Gradient_vw6tl"]
-colors = PackedColorArray(0.715245, 0.461057, 0.278534, 1, 0.93208, 0.7712, 0.788579, 1)
+offsets = PackedFloat32Array(0, 0.535971, 1)
+colors = PackedColorArray(0.715245, 0.461057, 0.278534, 1, 0.804163, 0.588238, 0.487689, 1, 0.93208, 0.7712, 0.788579, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nlfdq"]
 gradient = SubResource("Gradient_vw6tl")
@@ -16,6 +17,8 @@ gradient = SubResource("Gradient_6mbe5")
 [node name="Node" type="Node2D"]
 
 [node name="sky" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 z_index = -2
 position = Vector2(4582.37, -290.072)
 rotation = 1.5708
@@ -23,6 +26,8 @@ scale = Vector2(29.3111, 300)
 texture = SubResource("GradientTexture2D_nlfdq")
 
 [node name="ground2" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 z_index = -1
 position = Vector2(4582.71, 1012.48)
 rotation = -1.5708

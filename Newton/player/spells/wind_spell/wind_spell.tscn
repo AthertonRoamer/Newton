@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://be6g7s4ex5qep"]
+[gd_scene load_steps=8 format=3 uid="uid://be6g7s4ex5qep"]
 
 [ext_resource type="Script" path="res://player/spells/wind_spell/wind_spell.gd" id="1_b05ko"]
+[ext_resource type="AudioStream" uid="uid://h5qo6v5q0gee" path="res://player/sfx/medium-explosion-40472.mp3" id="2_6aaxu"]
 [ext_resource type="PackedScene" uid="uid://ch3kln537qxi1" path="res://player/spells/wind_spell/wind_burst/wind_burst.tscn" id="2_l5cns"]
 [ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_qp4sj"]
 [ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="4_6gx5o"]
@@ -17,6 +18,7 @@ description = "A burst of wind that knoks foes back and knocks you backward"
 
 [node name="WindSpell" type="Node"]
 script = ExtResource("1_b05ko")
+sound = ExtResource("2_6aaxu")
 wind_burst_scene = ExtResource("2_l5cns")
 base_emit_duration = 0.5
 max_emit_duration = 0.75

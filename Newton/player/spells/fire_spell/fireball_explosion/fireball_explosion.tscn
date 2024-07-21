@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6e46y0d2lvxx"]
+[gd_scene load_steps=19 format=3 uid="uid://c6e46y0d2lvxx"]
 
 [ext_resource type="Script" path="res://player/spells/fire_spell/fireball_explosion/fireball_explosion.gd" id="1_i28vb"]
 [ext_resource type="Texture2D" uid="uid://jirolkfewjnx" path="res://player/fireball.png" id="2_k3m7r"]
+[ext_resource type="AudioStream" uid="uid://ckqt4mrvwc2n2" path="res://player/sfx/large-underwater-explosion-190270.mp3" id="2_pfa26"]
 [ext_resource type="PackedScene" uid="uid://bkx515vsl3mk2" path="res://player/spells/firebomb.tscn" id="3_1b8k7"]
 [ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="4_y7lbl"]
 
@@ -93,6 +94,7 @@ _data = {
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_i28vb")
+sound = ExtResource("2_pfa26")
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

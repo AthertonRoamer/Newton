@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cyvbxcx7eoai2"]
+[gd_scene load_steps=28 format=3 uid="uid://cyvbxcx7eoai2"]
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_35eit"]
 [ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_02fqk"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="9_r3uxp"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="10_7txyp"]
 [ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="11_haovp"]
-[ext_resource type="PackedScene" uid="uid://2t1raaq0gfdy" path="res://entities/ranged/ranged.tscn" id="12_f03r2"]
 [ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="13_2e5wk"]
 [ext_resource type="PackedScene" uid="uid://ll8lhlcpnn17" path="res://entities/pig/pig.tscn" id="14_6nk4a"]
 
@@ -256,17 +255,9 @@ sources/0 = SubResource("TileSetAtlasSource_xow3h")
 script = ExtResource("1_35eit")
 spawn_point = NodePath("SpawnPoint")
 
-[node name="Node" parent="." instance=ExtResource("2_02fqk")]
+[node name="bg" parent="." instance=ExtResource("2_02fqk")]
+z_index = 1
 position = Vector2(-1, 2)
-
-[node name="FarmerSpawner" parent="Node" instance=ExtResource("3_it12p")]
-position = Vector2(450, 509)
-
-[node name="FarmerSpawner2" parent="Node" instance=ExtResource("3_it12p")]
-position = Vector2(1533, 517)
-
-[node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(84, 327)
 
 [node name="houses" type="TileMap" parent="."]
 z_index = -1
@@ -275,47 +266,77 @@ position = Vector2(103, 590)
 scale = Vector2(7, 7)
 tile_set = SubResource("TileSet_ndq7v")
 format = 2
-layer_0/tile_data = PackedInt32Array(-131067, 0, 3, -131066, 65536, 3, -131063, 65536, 1, -131062, 131072, 1, -131058, 0, 3, -131071, 262144, 0, -65535, 262144, 1, -131070, 327680, 0, -65534, 327680, 1, -65531, 0, 4, -65530, 65536, 4, -196600, 0, 0, -131064, 0, 1, -65528, 0, 2, -196599, 65536, 0, -65527, 65536, 2, -196598, 131072, 0, -65526, 131072, 2, -196591, 0, 0, -131055, 0, 1, -65519, 0, 2, -196590, 65536, 0, -131054, 65536, 1, -65518, 65536, 2, -196589, 131072, 0, -131053, 131072, 1, -65517, 131072, 2, -131051, 262144, 0, -65515, 262144, 1, -131050, 327680, 0, -65514, 327680, 1, -131049, 0, 3, -65513, 0, 4, -131048, 65536, 3, -65512, 65536, 4, -196578, 0, 0, -131042, 0, 1, -65506, 0, 2, -196577, 65536, 0, -131041, 65536, 1, -65505, 65536, 2, -196576, 131072, 0, -131040, 131072, 1, -65504, 131072, 2, -131039, 262144, 0, -65503, 262144, 1, -131038, 327680, 0, -65502, 327680, 1, -65522, 0, 4, -131057, 65536, 3, -65521, 65536, 4, -131036, 0, 3, -65500, 0, 4, -131035, 65536, 3, -65499, 65536, 4)
+layer_0/tile_data = PackedInt32Array(-131058, 0, 3, -196591, 0, 0, -131055, 0, 1, -65519, 0, 2, -196590, 65536, 0, -131054, 65536, 1, -65518, 65536, 2, -196589, 131072, 0, -131053, 131072, 1, -65517, 131072, 2, -131051, 262144, 0, -65515, 262144, 1, -131050, 327680, 0, -65514, 327680, 1, -131049, 0, 3, -65513, 0, 4, -131048, 65536, 3, -65512, 65536, 4, -196578, 0, 0, -131042, 0, 1, -65506, 0, 2, -196577, 65536, 0, -131041, 65536, 1, -65505, 65536, 2, -196576, 131072, 0, -131040, 131072, 1, -65504, 131072, 2, -131039, 262144, 0, -65503, 262144, 1, -131038, 327680, 0, -65502, 327680, 1, -65522, 0, 4, -131057, 65536, 3, -65521, 65536, 4, -131036, 0, 3, -65500, 0, 4, -131035, 65536, 3, -65499, 65536, 4)
 
 [node name="trees_bushes" type="TileMap" parent="houses"]
 texture_filter = 1
-position = Vector2(0, -5)
+position = Vector2(2.42857, -14.4286)
 tile_set = SubResource("TileSet_id52a")
 format = 2
-layer_0/tile_data = PackedInt32Array(-131072, 0, 0, -131065, 65536, 0, -131058, 65536, 0, -131049, 0, 0, -131033, 0, 0, -131020, 0, 0, -131019, 65536, 0, -131002, 65536, 0, -130996, 0, 0, -131012, 65536, 0, -131064, 0, 0, -131051, 0, 0, -131050, 65536, 0)
+layer_0/tile_data = PackedInt32Array(-131064, 0, 0, 7, 2, 0, 8, 65538, 0, 6, 65538, 0, 9, 2, 0, -131066, 65536, 0, -65533, 0, 0, -65532, 65536, 0, 39, 2, 0, 38, 65538, 0, 45, 65538, 0, 49, 2, 0, 27, 2, 0, 64, 2, 0, 65, 65538, 0, 80, 65538, 0, 81, 65538, 0, 82, 2, 0, 83, 2, 0, 84, 65538, 0, 85, 65538, 0, 86, 65538, 0, -130990, 65536, 0, -130988, 0, 0, -65460, 65536, 0, -65480, 65536, 0, -65479, 0, 0, 52, 65538, 0, -131020, 65536, 0, 32, 65538, 0, 33, 2, 0, 29, 131074, 1, 28, 131074, 1, 26, 131074, 1)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(83, 507)
+
+[node name="Pig" parent="." instance=ExtResource("14_6nk4a")]
+position = Vector2(3808, 551)
+
+[node name="Pig2" parent="." node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine") instance=ExtResource("14_6nk4a")]
+position = Vector2(5115, 544)
+edge_detector = NodePath("../Pig/EdgeDetector")
+obstacle_detector = NodePath("../Pig/ObstacleDetector")
+state_machine = NodePath("../Pig/PigStateMachine")
+
+[node name="Teleporter" parent="." instance=ExtResource("10_7txyp")]
+position = Vector2(8880, 556)
+scale = Vector2(2.5, 2.5)
+
+[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_rk6bf")]
+position = Vector2(260, 543)
+
+[node name="GrabbableWindSpell" parent="." instance=ExtResource("9_r3uxp")]
+position = Vector2(155, 538)
+
+[node name="GrabbableFireSpell" parent="." instance=ExtResource("11_haovp")]
+position = Vector2(356, 542)
+
+[node name="GrabbableLightning" parent="." instance=ExtResource("13_2e5wk")]
+position = Vector2(494, 534)
+
+[node name="FarmerSpawner" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(3541, 531)
+
+[node name="FarmerSpawner2" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(4008, 531)
+
+[node name="FarmerSpawner3" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(4920, 543)
+
+[node name="FarmerSpawner4" parent="." instance=ExtResource("3_it12p")]
+position = Vector2(5552, 535)
+
+[node name="Goblin" parent="." instance=ExtResource("6_0hmuu")]
+position = Vector2(3099, 542)
+sight_range = 400
+max_walk_speed = 300
+wander_range = 150
+
+[node name="Goblin2" parent="." instance=ExtResource("6_0hmuu")]
+position = Vector2(5824, 545)
+
+[node name="Goblin3" parent="." node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine") instance=ExtResource("6_0hmuu")]
+position = Vector2(7996, 540)
+weapon = NodePath("../Goblin2/MeleeWeapon")
+can_attack_timer = NodePath("../Goblin2/CanAtttackTimer")
+edge_detector = NodePath("../Goblin2/EdgeDetector")
+obstacle_detector = NodePath("../Goblin2/ObstacleDetector")
+state_machine = NodePath("../Goblin2/EntityStateMachine")
 
 [node name="ground" type="TileMap" parent="."]
+z_index = 10
 texture_filter = 1
 position = Vector2(0, 155)
 scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_dmik0")
 format = 2
-layer_0/tile_data = PackedInt32Array(131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 131072, 1, 131076, 65536, 0, 131077, 65536, 1, 131078, 65536, 1, 131079, 196608, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 131083, 65536, 1, 131084, 65536, 1, 131085, 131072, 0, 131086, 196608, 0, 131087, 196608, 0, 131088, 262144, 0, 131089, 65536, 1, 131090, 65536, 1, 196607, 327680, 2, 131091, 65536, 1, 131092, 65536, 1, 131093, 65536, 1, 131094, 65536, 1, 131095, 65536, 0, 131096, 65536, 1, 131097, 65536, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 131072, 1, 131101, 131072, 1, 131102, 65536, 1, 131103, 131072, 1, 131104, 131072, 1, 131105, 65536, 0, 131106, 65536, 1, 131107, 65536, 1, 131108, 65536, 1, 131109, 131072, 0, 131110, 196608, 0, 131111, 262144, 0, 131112, 131072, 1, 131113, 131072, 1, 131114, 131072, 1, 131115, 65536, 1, 131116, 65536, 1, 131117, 0, 0, 131118, 65536, 0, 131119, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 131072, 1, 131126, 131072, 1, 131127, 131072, 1, 131128, 65536, 1, 131129, 327680, 2, 131071, 327680, 1, 65535, 327680, 1, -1, 327680, 1, -65537, 327680, 1, -131073, 327680, 1, -196609, 327680, 1, -262145, 327680, 1, -327681, 327680, 1, -393217, 327680, 1, 65593, 327680, 1, 57, 327680, 1, -65479, 327680, 1, -131015, 327680, 1, -196551, 327680, 1, -262087, 327680, 1, -327623, 327680, 1, -393159, 327680, 1)
-
-[node name="Goblin" parent="." instance=ExtResource("6_0hmuu")]
-position = Vector2(3304, 389)
-
-[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_rk6bf")]
-position = Vector2(260, 543)
-
-[node name="Goblin2" parent="." instance=ExtResource("6_0hmuu")]
-position = Vector2(8122, 515)
-
-[node name="GrabbableWindSpell" parent="." instance=ExtResource("9_r3uxp")]
-position = Vector2(155, 538)
-
-[node name="Teleporter" parent="." instance=ExtResource("10_7txyp")]
-position = Vector2(8854, 556)
-
-[node name="GrabbableFireSpell" parent="." instance=ExtResource("11_haovp")]
-position = Vector2(356, 542)
-
-[node name="Ranged" parent="." instance=ExtResource("12_f03r2")]
-position = Vector2(1580, 546)
-sight_range = 1000
-
-[node name="GrabbableLightning" parent="." instance=ExtResource("13_2e5wk")]
-position = Vector2(494, 534)
-
-[node name="Pig" parent="." instance=ExtResource("14_6nk4a")]
-position = Vector2(871, 294)
+layer_0/tile_data = PackedInt32Array(131072, 327680, 0, 131073, 65536, 1, 131074, 131072, 1, 131075, 131072, 1, 131076, 131072, 1, 131079, 131072, 1, 131080, 131072, 1, 131081, 131072, 1, 131082, 65536, 1, 131083, 65536, 1, 131084, 65536, 1, 131085, 131072, 0, 131086, 196608, 0, 131087, 196608, 0, 196607, 327680, 2, 131093, 65536, 1, 131094, 131072, 1, 131095, 131072, 1, 131096, 131072, 1, 131097, 65536, 1, 131098, 65536, 1, 131099, 65536, 1, 131100, 131072, 1, 131101, 131072, 1, 131102, 65536, 1, 131103, 131072, 1, 131104, 131072, 1, 131105, 65536, 1, 131106, 65536, 1, 131107, 65536, 1, 131108, 65536, 1, 131109, 131072, 0, 131110, 196608, 0, 131111, 262144, 0, 131112, 131072, 1, 131113, 131072, 1, 131114, 131072, 1, 131115, 65536, 1, 131116, 65536, 1, 131117, 65536, 1, 131118, 65536, 1, 131119, 65536, 1, 131120, 65536, 1, 131121, 65536, 1, 131122, 65536, 1, 131123, 65536, 1, 131124, 65536, 1, 131125, 131072, 1, 131126, 131072, 1, 131127, 131072, 1, 131128, 131072, 1, 131129, 327680, 2, 131071, 327680, 1, 65535, 327680, 1, -1, 327680, 1, -65537, 327680, 1, -131073, 327680, 1, -196609, 327680, 1, -262145, 327680, 1, -327681, 327680, 1, -393217, 327680, 1, 65593, 327680, 1, 57, 327680, 1, -65479, 327680, 1, -131015, 327680, 1, -196551, 327680, 1, -262087, 327680, 1, -327623, 327680, 1, -393159, 327680, 1, 196606, 65536, 1, 196605, 65536, 1, 196604, 65536, 1, 196603, 65536, 1, 196602, 65536, 1, 196601, 65536, 1, 196600, 65536, 1, 196599, 65536, 1, 196598, 65536, 1, 196597, 65536, 1, 196596, 65536, 1, 131078, 131072, 1, 131077, 131072, 1, 131088, 262144, 0, 131089, 65536, 1, 131090, 131072, 1, 131091, 65536, 1, 131092, 65536, 1, 131130, 131072, 1, 131131, 131072, 1, 131132, 131072, 1, 131133, 131072, 1, 131134, 131072, 1)

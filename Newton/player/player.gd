@@ -1,6 +1,14 @@
 class_name Player
 extends CharacterBody2D
 
+
+@export var sound1 : AudioStream
+@export var sound2 : AudioStream
+@export var sound3 : AudioStream
+@export var sound4 : AudioStream
+@export var sound5 : AudioStream
+
+
 @export var walk_accel : int = 100
 @export var friction : int = 40
 @export var max_walk_speed : int = 400
@@ -21,6 +29,8 @@ var effective_max_speed : int
 @export var staff_end_node : Node2D
 @export var staff : Staff
 @export var wind_burst_holder : Node2D
+
+@onready var cam = $Camera2D
 
 var walking = false
 var jumping = false
@@ -101,8 +111,12 @@ func _ready() -> void:
 	Hud.show()
 	interactable_item_detector.player = self
 	Main.player = self
-	
-	
+
+
+func screen_shake(time,amount):
+	cam.shake(time,amount)
+
+
 func reset_lives() -> void:
 	lives = starting_lives
 	PlayerData.lives = lives
@@ -353,6 +367,7 @@ func player_animations():
 		if !died:
 			if anim_p.current_animation != "death":
 				anim_p.play("death")
+				AudioManager.play(sound4)
 	else:
 		if hurt:
 			if !hurting:
@@ -378,6 +393,7 @@ func player_animations():
 				else:
 					anim_p.play("hurt")
 				hurting = true
+				AudioManager.play(sound1)
 		else:
 			if !shooting:
 				if charging:
@@ -394,7 +410,7 @@ func player_animations():
 									anim_p.play("charging")
 						else:
 							anim_p.play("charging")
-							
+						#AudioManager.play(sound4)
 				else:
 					if is_on_floor():
 						if walking:
@@ -453,6 +469,7 @@ func player_animations():
 											anim_p.play("jump",-1,0.75)
 							else:
 								anim_p.play("jump",-1,0.75)
+							AudioManager.play(sound3)
 							jumping = false
 						if falling == true:
 							if is_instance_valid(spell_manager.selected_spell):

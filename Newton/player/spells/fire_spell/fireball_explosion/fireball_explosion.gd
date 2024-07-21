@@ -4,11 +4,14 @@ extends Explosion
 
 @onready var firebomb :GPUParticles2D = $firebomb
 @onready var fire_mat : ParticleProcessMaterial = firebomb.process_material
-
+#@onready var player = Main.world.Player
+@export var sound : AudioStream
 var wielder : Player
 
 func _ready() -> void:
 	super()
+	wielder.screen_shake(.75,8)
+	AudioManager.play(sound)
 	$AnimationPlayer.play("explode",-1,3.0)
 
 func _process(delta):

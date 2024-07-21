@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://crs5n2j5sil7s"]
+[gd_scene load_steps=25 format=3 uid="uid://crs5n2j5sil7s"]
 
 [ext_resource type="Script" path="res://entities/goblin/goblin.gd" id="1_glrm0"]
 [ext_resource type="Texture2D" uid="uid://f1erxpw83siy" path="res://world/zombie.png" id="2_cio0n"]
+[ext_resource type="AudioStream" uid="uid://busij8ybdys8g" path="res://player/sfx/dragon-hurt-47161.mp3" id="2_isi5e"]
 [ext_resource type="PackedScene" uid="uid://b25ocklxmlo8i" path="res://entities/edge_detector/edge_detector.tscn" id="3_b6hqv"]
+[ext_resource type="AudioStream" uid="uid://cu5dy3cnub0lh" path="res://player/sfx/monster-death-grunt-131480.mp3" id="3_fi37s"]
 [ext_resource type="PackedScene" uid="uid://cuv6l4g0b6sea" path="res://entities/entity_state_machine/entity_state_machine.tscn" id="4_etnwo"]
 [ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="4_tt073"]
 [ext_resource type="Script" path="res://entities/goblin/states/patrol.gd" id="5_wj7n0"]
@@ -228,6 +230,8 @@ _data = {
 
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_glrm0")
+sound = ExtResource("2_isi5e")
+sound2 = ExtResource("3_fi37s")
 weapon = NodePath("MeleeWeapon")
 sight_range = 1000
 attack_range = 70

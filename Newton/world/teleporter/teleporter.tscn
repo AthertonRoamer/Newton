@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2o234hsvd7y0"]
+[gd_scene load_steps=6 format=3 uid="uid://b2o234hsvd7y0"]
 
 [ext_resource type="Script" path="res://world/teleporter/teleporter.gd" id="1_qwdy7"]
-[ext_resource type="Texture2D" uid="uid://76cwdkgwqcko" path="res://world/teleporter/filler_teleporter.png" id="2_cav4k"]
+[ext_resource type="Texture2D" uid="uid://nljxtsag58lv" path="res://world/farm-decor2.png" id="2_pc50i"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="3_g1iif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh4ab"]
+atlas = ExtResource("2_pc50i")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d6tk"]
 radius = 38.2099
@@ -10,7 +15,8 @@ radius = 38.2099
 script = ExtResource("1_qwdy7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cav4k")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_rh4ab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2d6tk")
@@ -21,4 +27,5 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -41.0
+theme = ExtResource("3_g1iif")
 text = "E to teleport"

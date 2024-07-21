@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ll8lhlcpnn17"]
+[gd_scene load_steps=17 format=3 uid="uid://ll8lhlcpnn17"]
 
 [ext_resource type="Script" path="res://entities/pig/pig.gd" id="1_tokog"]
 [ext_resource type="Script" path="res://entities/pig/pig_state_machine.gd" id="2_7jytu"]
@@ -7,11 +7,12 @@
 [ext_resource type="Script" path="res://entities/pig/pause.gd" id="4_xfiay"]
 [ext_resource type="PackedScene" uid="uid://bk1s87ecljx8c" path="res://entities/obstacle_detector/obstacle_detector.tscn" id="5_866yc"]
 [ext_resource type="Script" path="res://entities/pig/dead.gd" id="5_rbxjr"]
+[ext_resource type="AudioStream" uid="uid://cua1e276nh13y" path="res://player/sfx/pig-oink-47167.mp3" id="6_8blq3"]
 [ext_resource type="Texture2D" uid="uid://coem1s3a031m" path="res://entities/pig.png" id="6_rnfhu"]
 [ext_resource type="Script" path="res://entities/pig/AnimationPlayer.gd" id="9_ls1x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3t4c"]
-size = Vector2(58, 33)
+size = Vector2(34.4, 23.2)
 
 [sub_resource type="Animation" id="Animation_q8jai"]
 length = 0.001
@@ -88,6 +89,7 @@ _data = {
 [node name="Pig" type="CharacterBody2D" node_paths=PackedStringArray("edge_detector", "obstacle_detector", "state_machine")]
 scale = Vector2(1.25, 1.25)
 script = ExtResource("1_tokog")
+sound = ExtResource("6_8blq3")
 max_health = 1
 starting_health = 1
 walk_accel = 35
@@ -109,6 +111,7 @@ first_active_state = true
 
 [node name="Pause" type="Node" parent="PigStateMachine" node_paths=PackedStringArray("timer")]
 script = ExtResource("4_xfiay")
+sound = ExtResource("6_8blq3")
 timer = NodePath("Timer")
 id = "pause"
 
@@ -117,6 +120,7 @@ one_shot = true
 
 [node name="Dead" type="Node" parent="PigStateMachine"]
 script = ExtResource("5_rbxjr")
+sound = ExtResource("6_8blq3")
 id = "dead"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -133,8 +137,8 @@ color = Color(0.960784, 0.529412, 0.435294, 1)
 polygon = PackedVector2Array(-29, -11, 29, -11, 29, 14, -29, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 5.5)
+position = Vector2(0.399999, 8.39999)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u3t4c")
 
 [node name="EdgeDetector" parent="." instance=ExtResource("3_ne6j1")]

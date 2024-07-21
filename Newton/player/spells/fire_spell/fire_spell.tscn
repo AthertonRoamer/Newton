@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://blcfifxj8ue6e"]
+[gd_scene load_steps=9 format=3 uid="uid://blcfifxj8ue6e"]
 
 [ext_resource type="Script" path="res://player/spells/fire_spell/fire_spell.gd" id="1_nufmj"]
 [ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_jlikx"]
+[ext_resource type="AudioStream" uid="uid://bmir8c54neayo" path="res://player/sfx/fire-spell-100276.mp3" id="2_pdwis"]
 [ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_icm4n"]
 [ext_resource type="Script" path="res://player/spells/fire_spell/fire_spell_projectile_manager.gd" id="4_r8vbk"]
 [ext_resource type="PackedScene" uid="uid://bbuxwc6oc8ajo" path="res://player/spells/fire_spell/fire_ball/fire_ball.tscn" id="5_dao0b"]
@@ -19,6 +20,7 @@ description = "Massive blast of cleansing fire"
 [node name="FireSpell" type="Node" node_paths=PackedStringArray("projectile_manager")]
 script = ExtResource("1_nufmj")
 projectile_manager = NodePath("FireSpellProjectileManager")
+sound = ExtResource("2_pdwis")
 staff_frame_id = 49
 recharge_time = 0.1
 menu_data = SubResource("Resource_ov2ab")

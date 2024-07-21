@@ -1,6 +1,7 @@
 class_name MagicMissileSpell
 extends Spell
 
+@export var sound : AudioStream
 @export var missile_shooter : MagicMissileShooter
 @export var starting_fire_wait_time : float = 0.2
 @export var fire_wait_time_deaccel : float = 0.005
@@ -35,6 +36,8 @@ func cast() -> void:
 
 
 func _on_fire_timer_timeout():
+	player.screen_shake(.25,1)
+	AudioManager.play(sound)
 	if not player.dead:
 		missile_shooter.fire()
 	fire_timer.wait_time -= fire_wait_time_deaccel
