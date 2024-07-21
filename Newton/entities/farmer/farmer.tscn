@@ -223,8 +223,7 @@ _data = {
 [node name="Farmer" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_qyimm")
 weapon = NodePath("MeleeWeapon")
-attack_delay = 0.3
-can_attack_timer = NodePath("MeleeWeapon/StrikeTimer")
+can_attack_timer = NodePath("CanAtttackTimer")
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")
 state_machine = NodePath("FarmerStateMachine")
@@ -281,12 +280,12 @@ offset_bottom = -19.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("strike_timer", "timer", "wielder")]
+[node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("timer", "wielder")]
 position = Vector2(67, 8)
 collision_mask = 5
 script = ExtResource("10_324p7")
-strike_timer = NodePath("StrikeTimer")
 timer = NodePath("Timer")
+strike_time = 0.3
 wielder = NodePath("..")
 metadata/_edit_group_ = true
 
@@ -297,9 +296,6 @@ texture = ExtResource("11_lypjq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeWeapon"]
 position = Vector2(0.931934, 3)
 shape = SubResource("CircleShape2D_m41cj")
-
-[node name="StrikeTimer" type="Timer" parent="MeleeWeapon"]
-one_shot = true
 
 [node name="Timer" type="Timer" parent="MeleeWeapon"]
 wait_time = 0.3
