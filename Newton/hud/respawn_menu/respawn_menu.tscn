@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bavso5emg78ns"]
+[gd_scene load_steps=3 format=3 uid="uid://bavso5emg78ns"]
 
 [ext_resource type="Script" path="res://hud/respawn_menu/respawn_menu.gd" id="1_0yjcy"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="2_85b6d"]
 
 [node name="RespawnMenu" type="Control"]
 layout_mode = 3
@@ -22,6 +23,7 @@ offset_left = -85.0
 offset_top = -47.16
 offset_right = 86.696
 offset_bottom = 48.192
+theme = ExtResource("2_85b6d")
 text = "Respawn"
 
 [connection signal="pressed" from="RespawnButton" to="." method="_on_respawn_button_pressed"]

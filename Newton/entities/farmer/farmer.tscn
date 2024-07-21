@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://entities/farmer/AnimationPlayer.gd" id="12_uhf4e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeau7"]
-radius = 19.0
+radius = 16.0
 height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m41cj"]
@@ -28,46 +28,34 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeleeWeapon/Sprite2D:visible")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("MeleeWeapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(67, 8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MeleeWeapon:position")
+tracks/2/path = NodePath("MeleeWeapon:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(67, 8)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeleeWeapon:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -116,18 +104,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_sp1bu"]
 resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeleeWeapon/Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_dcohh"]
 resource_name = "idle"
@@ -223,14 +199,13 @@ _data = {
 [node name="Farmer" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "can_attack_timer", "edge_detector", "obstacle_detector", "state_machine")]
 script = ExtResource("1_qyimm")
 weapon = NodePath("MeleeWeapon")
-
 can_attack_timer = NodePath("CanAtttackTimer")
-
 edge_detector = NodePath("EdgeDetector")
 obstacle_detector = NodePath("ObstacleDetector")
 state_machine = NodePath("FarmerStateMachine")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("2_myuge")
 hframes = 8
@@ -275,6 +250,7 @@ script = ExtResource("9_acuje")
 id = "dead"
 
 [node name="StateDisplay" type="Label" parent="."]
+visible = false
 offset_left = -39.0
 offset_top = -86.0
 offset_right = 40.0
@@ -282,9 +258,7 @@ offset_bottom = -19.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-
 [node name="MeleeWeapon" type="Area2D" parent="." node_paths=PackedStringArray("timer", "wielder")]
-
 position = Vector2(67, 8)
 collision_mask = 5
 script = ExtResource("10_324p7")
@@ -302,7 +276,6 @@ position = Vector2(0.931934, 3)
 shape = SubResource("CircleShape2D_m41cj")
 
 [node name="Timer" type="Timer" parent="MeleeWeapon"]
-wait_time = 0.3
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
@@ -317,3 +290,4 @@ script = ExtResource("12_uhf4e")
 goblin = NodePath("..")
 
 [connection signal="timeout" from="FarmerStateMachine/Initial/Timer" to="FarmerStateMachine/Initial" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

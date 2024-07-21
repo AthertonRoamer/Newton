@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://xsaah1ecfkyj"]
+[gd_scene load_steps=5 format=3 uid="uid://xsaah1ecfkyj"]
 
 [ext_resource type="Script" path="res://entities/ranged/projectile/ranged_projectile.gd" id="1_wsbch"]
-[ext_resource type="Texture2D" uid="uid://b31n1omlx3vt" path="res://entities/ranged/projectile/filler_projectile_art.png" id="2_yma0u"]
+[ext_resource type="Texture2D" uid="uid://b4xyam2o88uih" path="res://entities/ranged/projectile_ranged.png" id="2_661av"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="3_slca0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ns4c1"]
-radius = 17.0
+radius = 9.05539
 
 [node name="RangedProjectile" type="Area2D" node_paths=PackedStringArray("duration_timer")]
 collision_layer = 8
@@ -18,9 +19,14 @@ duration_timer = NodePath("DurationTimer")
 duration = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yma0u")
+scale = Vector2(2, 2)
+texture = ExtResource("2_661av")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ns4c1")
 
 [node name="DurationTimer" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("3_slca0")
+texture_scale = 0.02

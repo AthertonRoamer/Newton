@@ -12,7 +12,6 @@ var goblin_dir
 var moving = false
 var took_dmg = false
 var dead = false
-var still = true
 var attacking = false
 var swinging = false
 
@@ -71,10 +70,8 @@ func set_visuals():
 					play("attack")
 			else:
 				if !moving:
-					if !still:
 						play("idle")
 				elif moving:
-					still = false
 					play("walk",-1,0.75)
 					match goblin_dir:
 						Vector2.LEFT:

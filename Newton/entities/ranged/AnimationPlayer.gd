@@ -60,7 +60,9 @@ func _process(_delta: float) -> void:
 
 func set_visuals():
 	if dead:
-		play("death",-1,1.5)
+		if current_animation != "death":
+			play("death")
+			print("death")
 	else:
 		if took_dmg == true:
 			if !taking_dmg:
@@ -77,7 +79,7 @@ func set_visuals():
 							weapon.scale.x = 3.5
 				if !swinging:
 					swinging = true
-					play("attack")
+					play("attack",-1,2.5)
 			else:
 				if !moving:
 					if !still:
@@ -99,6 +101,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		took_dmg = false
 		taking_dmg = false
 	if anim_name == "death":
+		print("yo")
 		ranged.queue_free()
 	if anim_name == "attack":
 		swinging = false

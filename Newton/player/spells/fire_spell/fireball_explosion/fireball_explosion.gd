@@ -8,7 +8,8 @@ extends Explosion
 var wielder : Player
 
 func _ready() -> void:
-	$AnimationPlayer.play("explode")
+	super()
+	$AnimationPlayer.play("explode",-1,3.0)
 
 func _process(delta):
 	super(delta)

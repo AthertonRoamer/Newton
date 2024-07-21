@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciap8p8ysjt5n"]
+[gd_scene load_steps=9 format=3 uid="uid://ciap8p8ysjt5n"]
 
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/magic_missile/magic_missile.gd" id="1_cd6uj"]
 [ext_resource type="Texture2D" uid="uid://chp0uqml1dabb" path="res://player/m-m.png" id="2_oiflj"]
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/magic_missile/AnimationPlayer.gd" id="3_gf3ot"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="4_p3tmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mqtj"]
 size = Vector2(18.6667, 6)
@@ -73,3 +74,11 @@ libraries = {
 "": SubResource("AnimationLibrary_s7msh")
 }
 script = ExtResource("3_gf3ot")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(5.86667, -0.66667)
+scale = Vector2(1.17204, 1.90042)
+color = Color(1, 0.603922, 0.756863, 1)
+energy = 0.75
+texture = ExtResource("4_p3tmh")
+texture_scale = 0.01

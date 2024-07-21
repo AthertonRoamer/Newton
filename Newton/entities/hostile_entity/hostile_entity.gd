@@ -57,3 +57,4 @@ func register_attack() -> void:
 
 func _on_can_attack_timer_timeout() -> void:
 	can_attack = true
+	print("wowo")

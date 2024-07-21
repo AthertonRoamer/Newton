@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5i6jq0j1qily"]
+[gd_scene load_steps=7 format=3 uid="uid://c5i6jq0j1qily"]
 
 [ext_resource type="Script" path="res://hud/spell_display/spell_display.gd" id="1_0x56n"]
 [ext_resource type="Texture2D" uid="uid://duxl2eo07rqk5" path="res://hud/spell_display/filler_spell_display_background.png" id="1_yo8ts"]
-[ext_resource type="Texture2D" uid="uid://36huirvj3ldi" path="res://hud/spell_display/filler_spell_display_background_selected.png" id="3_c5ipw"]
+[ext_resource type="Texture2D" uid="uid://h6stvujpky4k" path="res://player/ui.png" id="3_koj20"]
+[ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="4_ifx7y"]
 
-[sub_resource type="FontVariation" id="FontVariation_jn5ch"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa2b5"]
+atlas = ExtResource("3_koj20")
+region = Rect2(103, 4, 17, 17)
 
-[sub_resource type="Theme" id="Theme_fdpws"]
-default_font = SubResource("FontVariation_jn5ch")
-default_font_size = 14
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ucbm"]
+atlas = ExtResource("3_koj20")
+region = Rect2(71, 4, 17, 17)
 
 [node name="SpellDisplay" type="TextureRect"]
 custom_minimum_size = Vector2(40, 40)
@@ -25,10 +28,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_yo8ts")
 script = ExtResource("1_0x56n")
-spell_selected_background = ExtResource("3_c5ipw")
-spell_deselected_background = ExtResource("1_yo8ts")
+spell_selected_background = SubResource("AtlasTexture_pa2b5")
+spell_deselected_background = SubResource("AtlasTexture_5ucbm")
 spell_available_modulate = Color(1, 1, 1, 1)
-spell_unavailable_modulate = Color(0.278343, 0.278344, 0.269464, 1)
+spell_unavailable_modulate = Color(0.278431, 0.278431, 0.270588, 1)
 
 [node name="SpellTextureHolder" type="TextureRect" parent="."]
 layout_mode = 0
@@ -46,6 +49,6 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-theme = SubResource("Theme_fdpws")
+theme = ExtResource("4_ifx7y")
 horizontal_alignment = 1
 vertical_alignment = 1

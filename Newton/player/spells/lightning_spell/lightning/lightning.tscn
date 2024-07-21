@@ -1,15 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://pkkwee0nyv5e"]
+[gd_scene load_steps=8 format=3 uid="uid://pkkwee0nyv5e"]
 
 [ext_resource type="PackedScene" uid="uid://eoe006s5sgnr" path="res://player/spells/lightning_spell/lightning/lightning_explosion.tscn" id="1_o6d1t"]
 [ext_resource type="Script" path="res://player/spells/lightning_spell/lightning/lightning.gd" id="1_rmhk3"]
-[ext_resource type="Texture2D" uid="uid://bcgti3k6ijvfq" path="res://player/spells/lightning_spell/filler_lightning_icon.png" id="3_8qvfu"]
+[ext_resource type="Texture2D" uid="uid://djbxplv1ae4rw" path="res://player/down-strike.png" id="3_3ee6r"]
+[ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="4_87a7o"]
+
+[sub_resource type="Animation" id="Animation_bsv4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lightning_cloud:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5niod"]
+resource_name = "strike"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lightning_cloud:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t802b"]
+_data = {
+"RESET": SubResource("Animation_bsv4g"),
+"strike": SubResource("Animation_5niod")
+}
 
 [node name="Lightning" type="Node2D" node_paths=PackedStringArray("lightning_explosion")]
+position = Vector2(0, 6)
 script = ExtResource("1_rmhk3")
 lightning_explosion = NodePath("LightningExplosion")
 
 [node name="LightningExplosion" parent="." instance=ExtResource("1_o6d1t")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(15, 15)
-texture = ExtResource("3_8qvfu")
+[node name="lightning_cloud" type="Sprite2D" parent="."]
+position = Vector2(3, -316)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_3ee6r")
+hframes = 8
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t802b")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3.99998, -196)
+scale = Vector2(12.2984, 24.8005)
+energy = 3.0
+texture = ExtResource("4_87a7o")
+texture_scale = 0.02
