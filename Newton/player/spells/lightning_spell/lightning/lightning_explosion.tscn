@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://eoe006s5sgnr"]
+
+[ext_resource type="Script" path="res://player/spells/lightning_spell/lightning/lightning_explosion.gd" id="1_ci1yq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6h0a"]
+
+[node name="LightningExplosion" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+script = ExtResource("1_ci1yq")
+max_radius = 125
+damage = 100.0
+knockback_force = 1500.0
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a6h0a")

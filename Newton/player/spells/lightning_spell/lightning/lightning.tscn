@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://pkkwee0nyv5e"]
+
+[ext_resource type="PackedScene" uid="uid://eoe006s5sgnr" path="res://player/spells/lightning_spell/lightning/lightning_explosion.tscn" id="1_o6d1t"]
+[ext_resource type="Script" path="res://player/spells/lightning_spell/lightning/lightning.gd" id="1_rmhk3"]
+[ext_resource type="Texture2D" uid="uid://bcgti3k6ijvfq" path="res://player/spells/lightning_spell/filler_lightning_icon.png" id="3_8qvfu"]
+
+[node name="Lightning" type="Node2D" node_paths=PackedStringArray("lightning_explosion")]
+script = ExtResource("1_rmhk3")
+lightning_explosion = NodePath("LightningExplosion")
+
+[node name="LightningExplosion" parent="." instance=ExtResource("1_o6d1t")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(15, 15)
+texture = ExtResource("3_8qvfu")

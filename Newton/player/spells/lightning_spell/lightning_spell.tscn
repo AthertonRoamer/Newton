@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://1fvnkoy12dye"]
+[gd_scene load_steps=7 format=3 uid="uid://1fvnkoy12dye"]
 
 [ext_resource type="Script" path="res://player/spells/lightning_spell/lightning_spell.gd" id="1_nca0d"]
+[ext_resource type="PackedScene" uid="uid://pkkwee0nyv5e" path="res://player/spells/lightning_spell/lightning/lightning.tscn" id="2_1b7e2"]
 [ext_resource type="Script" path="res://player/spells/spell_menu_data.gd" id="2_4ovyv"]
 [ext_resource type="Texture2D" uid="uid://bcgti3k6ijvfq" path="res://player/spells/lightning_spell/filler_lightning_icon.png" id="3_sfmy6"]
+[ext_resource type="PackedScene" uid="uid://s6mx0au142do" path="res://player/spells/lightning_spell/lightning_storm/lightning_storm.tscn" id="3_thscf"]
 
 [sub_resource type="Resource" id="Resource_wedh8"]
 script = ExtResource("2_4ovyv")
@@ -12,6 +14,8 @@ description = "Bolt of lightning"
 
 [node name="LightningSpell" type="Node"]
 script = ExtResource("1_nca0d")
-recharge_time = 3.0
+lightning_scene = ExtResource("2_1b7e2")
+lightning_storm_scene = ExtResource("3_thscf")
+recharge_time = 4.0
 menu_data = SubResource("Resource_wedh8")
 id = "lightning_spell"

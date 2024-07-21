@@ -14,3 +14,4 @@ func activate() -> void:
 func _on_fire_ended() -> void:
 	get_entity().register_attack()
 	state_machine.set_state("pursue")
+	print("attack ended")
