@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd0rnr7t4bbnn"]
+
+[ext_resource type="Script" path="res://world/level_test_world/prep_level/prep_level.gd" id="1_paxtj"]
+[ext_resource type="PackedScene" uid="uid://fs6myl3u0kt5" path="res://test_world/block.tscn" id="2_ddpo3"]
+[ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="3_nugx1"]
+[ext_resource type="PackedScene" uid="uid://b16br14mbpfs0" path="res://player/spells/wind_spell/grabbable_wind_spell/grabbable_wind_spell.tscn" id="4_xvjl0"]
+[ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="5_ft1f4"]
+[ext_resource type="PackedScene" uid="uid://cf3hmusfyhliu" path="res://player/spells/lightning_spell/grabbable_lightning_spell/grabbable_lightning.tscn" id="6_6todg"]
+[ext_resource type="PackedScene" uid="uid://cvl5k81wk4ncv" path="res://player/spells/magic_missile_spell/grabbable_magic_missile/grabbable_magic_missile.tscn" id="7_1i708"]
+
+[node name="PrepLevel" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_paxtj")
+spawn_point = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(164, 496)
+
+[node name="Block" parent="." instance=ExtResource("2_ddpo3")]
+position = Vector2(339, 574)
+
+[node name="Teleporter" parent="." instance=ExtResource("3_nugx1")]
+position = Vector2(529, 532)
+
+[node name="GrabbableWindSpell" parent="." instance=ExtResource("4_xvjl0")]
+position = Vector2(210, 500)
+
+[node name="GrabbableFireSpell" parent="." instance=ExtResource("5_ft1f4")]
+position = Vector2(203, 500)
+
+[node name="GrabbableLightning" parent="." instance=ExtResource("6_6todg")]
+position = Vector2(208, 498)
+
+[node name="GrabbableMagicMissile" parent="." instance=ExtResource("7_1i708")]
+position = Vector2(208, 500)

@@ -26,3 +26,5 @@ cast_anim_name = "wind_fire"
 staff_frame_id = 12
 menu_data = SubResource("Resource_2tavj")
 id = "wind_spell"
+select_input_action = &"select_wind"
+select_input_action_label = "E"

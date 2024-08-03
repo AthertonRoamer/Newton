@@ -28,4 +28,4 @@ offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -41.0
 theme = ExtResource("3_g1iif")
-text = "E to teleport"
+text = "R to teleport"

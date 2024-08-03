@@ -16,6 +16,8 @@ staff_frame_id = 32
 recharge_time = 2.0
 menu_data = ExtResource("2_1ow6r")
 id = "magic_missile"
+select_input_action = &"select_missile"
+select_input_action_label = "Q"
 
 [node name="MissileShooter" type="Node" parent="." node_paths=PackedStringArray("magic_missile_spell")]
 script = ExtResource("3_i12b3")

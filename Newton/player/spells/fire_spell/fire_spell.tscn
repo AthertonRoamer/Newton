@@ -25,6 +25,8 @@ staff_frame_id = 50
 recharge_time = 0.1
 menu_data = SubResource("Resource_ov2ab")
 id = "fire_spell"
+select_input_action = &"select_fire"
+select_input_action_label = "C"
 
 [node name="FireSpellProjectileManager" type="Node" parent="." node_paths=PackedStringArray("fire_spell")]
 script = ExtResource("4_r8vbk")

@@ -30,7 +30,7 @@ offset_top = -66.0
 offset_right = 69.0
 offset_bottom = -17.0
 theme = ExtResource("4_2hcgs")
-text = "E to grab"
+text = "R to grab"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -11,6 +11,7 @@ var spell : Spell
 
 func _ready() -> void:
 	$SpellTextureHolder.texture = spell.menu_data.texture
+	$SpellKeyDisplay.text = spell.select_input_action_label
 	
 	spell.selected_changed.connect(_on_spell_selected_changed)
 	spell.available_changed.connect(_on_spell_available_changed)
