@@ -17,6 +17,10 @@ var player : Player
 
 @export var fire_duration_timer : Timer
 
+@export var select_input_action : StringName
+@export var select_input_action_label : String = ""
+
+
 var charge_time : float = 0
 var current_recharge_time : float = 0
 
@@ -83,6 +87,13 @@ func _process(delta) -> void:
 				end_recharge()
 			else:
 				time_till_available = recharge_time - current_recharge_time
+				
+				
+func _input(event) -> void:
+	if InputMap.has_action(select_input_action):
+		if event.is_action_pressed(select_input_action) and not event.is_echo():
+			#select self
+			player.spell_manager.select_spell_by_num(get_index())
 	
 	
 

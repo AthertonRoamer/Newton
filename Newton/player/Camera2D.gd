@@ -9,7 +9,7 @@ func _ready():
 	set_process(false)
 	randomize()
 
-func _process(delta):
+func _process(_delta):
 	offset = Vector2(randf_range(-1, 1) * shake_amount, randf_range(-1, 1) * shake_amount)
 
 func shake(time, amount):

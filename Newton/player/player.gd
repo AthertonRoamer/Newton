@@ -243,8 +243,13 @@ func begin_charging_spell() -> void:
 
 
 func cast_spell() -> void:
-	if is_instance_valid(spell_manager.selected_spell) and spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
-		spell_manager.selected_spell.cast()
+	#if is_instance_valid(spell_manager.selected_spell) and spell_manager.selected_spell.available and spell_manager.selected_spell.state == Spell.state_options.CHARGING:
+		#spell_manager.selected_spell.cast()
+	#instead of firing only the selected spell, fire the charged spell
+	for spell in spell_manager.get_children():
+		spell = spell as Spell
+		if spell.state == Spell.state_options.CHARGING:
+			spell.cast()
 
 
 

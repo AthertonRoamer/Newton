@@ -26,3 +26,5 @@ cast_anim_name = "lightning_shoot"
 recharge_time = 4.0
 menu_data = SubResource("Resource_wedh8")
 id = "lightning_spell"
+select_input_action = &"select_lightning"
+select_input_action_label = "X"

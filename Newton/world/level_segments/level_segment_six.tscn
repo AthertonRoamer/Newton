@@ -397,14 +397,3 @@ position = Vector2(4741, -258)
 
 [node name="Ranged4" parent="." instance=ExtResource("16_sh73y")]
 position = Vector2(7978, -260)
-
-[connection signal="body_entered" from="ground/SpikePlant" to="ground/SpikePlant" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25843" to="ground/@Area2D@25843" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25844" to="ground/@Area2D@25844" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25845" to="ground/@Area2D@25845" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25846" to="ground/@Area2D@25846" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25847" to="ground/@Area2D@25847" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25848" to="ground/@Area2D@25848" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25849" to="ground/@Area2D@25849" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25850" to="ground/@Area2D@25850" method="_on_body_entered"]
-[connection signal="body_entered" from="ground/@Area2D@25851" to="ground/@Area2D@25851" method="_on_body_entered"]
