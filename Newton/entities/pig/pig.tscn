@@ -138,7 +138,6 @@ polygon = PackedVector2Array(-29, -11, 29, -11, 29, 14, -29, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.399999, 8.39999)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u3t4c")
 
 [node name="EdgeDetector" parent="." instance=ExtResource("3_ne6j1")]

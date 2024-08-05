@@ -2,6 +2,7 @@ extends EntityState
 
 @export var sound : AudioStream
 
-func _ready() -> void:
+func activate() -> void:
+	super()
 	AudioManager.play(sound)
 

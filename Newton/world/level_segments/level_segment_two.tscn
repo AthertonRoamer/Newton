@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=31 format=3 uid="uid://v2nrh83p8ea"]
-
 
 [ext_resource type="Script" path="res://world/level_segments/level_segment_one.gd" id="1_owf5u"]
 [ext_resource type="PackedScene" uid="uid://bw4b6wnkimlbq" path="res://world/level_backgrounds/level_backround1.tscn" id="2_8so27"]
@@ -8,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1x20ari5bib" path="res://world/farm-decor.png" id="4_xurs5"]
 [ext_resource type="Texture2D" uid="uid://dohfn4ynbc1nx" path="res://world/trees.png" id="5_6q567"]
 [ext_resource type="PackedScene" uid="uid://b2o234hsvd7y0" path="res://world/teleporter/teleporter.tscn" id="6_do2vn"]
-
 [ext_resource type="PackedScene" uid="uid://cq4quaef3sdgt" path="res://player/spells/fire_spell/grabbable_fire_spell/grabbable_fire_spell.tscn" id="9_krfhv"]
-
 [ext_resource type="PackedScene" uid="uid://dpny5jgpehprp" path="res://entities/farmer/farmer_spawner/farmer_spawner.tscn" id="11_0rag4"]
 [ext_resource type="PackedScene" uid="uid://crs5n2j5sil7s" path="res://entities/goblin/goblin.tscn" id="12_4jdsx"]
 [ext_resource type="PackedScene" uid="uid://finqeubtyep1" path="res://world/level_backgrounds/level_backround2.tscn" id="13_xlqrp"]
@@ -350,7 +346,6 @@ position = Vector2(83, 507)
 [node name="Teleporter" parent="." instance=ExtResource("6_do2vn")]
 position = Vector2(8880, 556)
 scale = Vector2(2.5, 2.5)
-
 
 [node name="GrabbableFireSpell" parent="." instance=ExtResource("9_krfhv")]
 position = Vector2(504, 533)

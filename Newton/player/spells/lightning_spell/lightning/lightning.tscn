@@ -44,13 +44,15 @@ _data = {
 "strike": SubResource("Animation_5niod")
 }
 
-[node name="Lightning" type="Node2D" node_paths=PackedStringArray("lightning_explosion")]
+[node name="Lightning" type="Node2D" node_paths=PackedStringArray("lightning_explosion", "ground_finder")]
 position = Vector2(0, 6)
 script = ExtResource("1_rmhk3")
 lightning_explosion = NodePath("LightningExplosion")
 sound = ExtResource("2_egqs1")
+ground_finder = NodePath("GroundFinder")
 
 [node name="LightningExplosion" parent="." instance=ExtResource("1_o6d1t")]
+radius_increase_rate = 800.0
 
 [node name="lightning_cloud" type="Sprite2D" parent="."]
 position = Vector2(3, -316)
@@ -70,3 +72,7 @@ scale = Vector2(12.2984, 24.8005)
 energy = 3.0
 texture = ExtResource("4_87a7o")
 texture_scale = 0.02
+
+[node name="GroundFinder" type="RayCast2D" parent="."]
+position = Vector2(0, -1338)
+target_position = Vector2(0, 4000)

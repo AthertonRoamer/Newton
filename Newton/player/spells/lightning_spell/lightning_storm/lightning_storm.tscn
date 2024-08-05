@@ -9,8 +9,6 @@ lightning_scene = ExtResource("1_fqox2")
 strike_count = 15
 max_distance = 1000
 
-[node name="Lightning" parent="." instance=ExtResource("1_fqox2")]
-
 [node name="SpawnLightningTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true

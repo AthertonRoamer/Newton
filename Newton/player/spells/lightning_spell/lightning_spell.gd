@@ -9,8 +9,8 @@ extends Spell
 @export var max_damage : float = 200
 @export var min_damage : float = 10
 
-@export var base_strike_count : int = 3
-@export var max_strike_count : int = 10
+@export var base_strike_count : int = 4
+@export var max_strike_count : int = 14
 
 
 func cast() -> void:
@@ -24,6 +24,7 @@ func spawn_lightning() -> void:
 	var damage : int = max(min(base_damage * charge_time * charge_time, max_damage), min_damage)
 	var strike_count : int = min(round(base_strike_count * charge_time * charge_time), max_strike_count)
 	print("lightning damage: " + str(damage))
+	print("strike count: " + str(strike_count))
 	
 	var storm : LightningStorm = lightning_storm_scene.instantiate()
 	storm = storm as LightningStorm
