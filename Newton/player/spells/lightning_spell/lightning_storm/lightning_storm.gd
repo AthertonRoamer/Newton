@@ -12,7 +12,8 @@ extends Node2D
 var lightning_damage : int = 100
 
 func _ready() -> void:
-	($Lightning as Lightning).lightning_explosion.damage = lightning_damage
+	spawn_first_lightning()
+	#($Lightning as Lightning).lightning_explosion.damage = lightning_damage
 
 
 func _on_spawn_lightning_timer_timeout():
@@ -35,7 +36,16 @@ func spawn_random_lightning() -> void:
 	lightning = lightning as Lightning
 	lightning.global_position = global_position + offset
 	lightning.lightning_explosion.damage = lightning_damage
-	print("internal damage " + str(lightning_damage))
+	#print("internal damage " + str(lightning_damage))
+	Main.world.object_holder.add_child(lightning)
+	
+	
+func spawn_first_lightning() -> void:
+	var lightning : Lightning = lightning_scene.instantiate()
+	lightning = lightning as Lightning
+	lightning.global_position = global_position
+	lightning.lightning_explosion.damage = lightning_damage
+	#print("internal damage " + str(lightning_damage))
 	Main.world.object_holder.add_child(lightning)
 
 

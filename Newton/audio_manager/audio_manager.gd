@@ -1,7 +1,7 @@
 class_name AudioManagerClass
 extends Node
 
-@export var audio_player_count : int = 10
+@export var audio_player_count : int = 20
 
 var audio_players : Array[AudioStreamPlayer] = []  # The available players.
 var queue : Array = []  # The queue of sounds to play.
@@ -14,9 +14,13 @@ func _ready():
 		audio_players.append(p)
 		
 
-func play(sound : AudioStream):
+func play(sound : AudioStream, volume_db : float = 0.0):
 	if sound != null:
-		queue.append(sound)
+		var sound_data : SoundData = SoundData.new()
+		sound_data.sound = sound
+		sound_data.volume_db = volume_db
+		queue.append(sound_data)
+		
 
 func stop():
 	queue.clear()
@@ -27,7 +31,9 @@ func _process(_delta):
 		var available_players : Array[AudioStreamPlayer] = audio_players.filter(is_stream_stopped)
 		if not available_players.is_empty():
 			var player = available_players.pop_back()
-			player.stream = queue.pop_front()
+			var sound_data = queue.pop_front()
+			player.stream = sound_data.sound
+			player.volume_db = sound_data.volume_db
 			player.play()
 
 

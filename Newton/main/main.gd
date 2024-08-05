@@ -22,9 +22,6 @@ func load_tutorial():
 	tutorial = tutorial_scene.instantiate()
 	add_child(tutorial)
 
-
-
-
 	
 func load_main_menu() -> void:
 	menu = menu_scene.instantiate()

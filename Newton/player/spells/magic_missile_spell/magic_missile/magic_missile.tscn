@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciap8p8ysjt5n"]
+[gd_scene load_steps=14 format=3 uid="uid://ciap8p8ysjt5n"]
 
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/magic_missile/magic_missile.gd" id="1_cd6uj"]
 [ext_resource type="Texture2D" uid="uid://chp0uqml1dabb" path="res://player/m-m.png" id="2_oiflj"]
 [ext_resource type="Script" path="res://player/spells/magic_missile_spell/magic_missile/AnimationPlayer.gd" id="3_gf3ot"]
 [ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="4_p3tmh"]
+[ext_resource type="AudioStream" uid="uid://6bnfico08nh7" path="res://player/sfx/magic-spell-6005.mp3" id="5_wja82"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_65o41"]
 particles_animation = true
@@ -118,3 +119,8 @@ color = Color(1, 0.603922, 0.756863, 1)
 energy = 0.75
 texture = ExtResource("4_p3tmh")
 texture_scale = 0.01
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wja82")
+volume_db = -10.0
+autoplay = true

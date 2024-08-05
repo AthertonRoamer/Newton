@@ -37,7 +37,6 @@ func cast() -> void:
 
 func _on_fire_timer_timeout():
 	player.screen_shake(.25,1)
-	AudioManager.play(sound)
 	if not player.dead:
 		missile_shooter.fire()
 	fire_timer.wait_time -= fire_wait_time_deaccel

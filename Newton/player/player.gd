@@ -63,7 +63,6 @@ var health : int = starting_health:
 			die()
 		else:
 			health = v
-		hurt = true
 		Hud.health_display.health = health
 		PlayerData.health = health
 		
@@ -104,17 +103,26 @@ func _ready() -> void:
 		spawn_states.RESPAWN:
 			load_persistent_player_data()
 			respawn_reset()
+			restart_audio()
 		spawn_states.LOAD_IN:
 			reset_lives()
+			restart_audio()
 		spawn_states.TOTAL_RESPAWN:
 			PlayerData.equipped_spells.clear()
 			reset_lives()
 			load_persistent_player_data()
+			restart_audio()
 	Hud.health_display.health = health
 	Hud.show()
 	interactable_item_detector.player = self
 	Main.player = self
 
+
+func restart_audio() -> void:
+	if is_instance_valid(Main.main):
+		if Main.main.game is MainWorld:
+			(Main.main.game as MainWorld).audio_player.play_from_start()
+		
 
 func screen_shake(time,amount):
 	cam.shake(time,amount)
@@ -143,6 +151,8 @@ func respawn_reset() -> void:
 
 
 func take_damage(damage : int, damage_type : String = "none", _damager : Node = null) -> void:
+	if damage > 0:
+		hurt = true
 	if !immune:
 		if damage_type == "spike_plant_first":
 			if not is_on_floor() and velocity.y > 0:
@@ -172,6 +182,16 @@ func die() -> void:
 		lives -= 1
 		PlayerData.lives = lives
 		Hud.lives_display.lives = lives
+		#add camera to world where player was
+		#in future, the camera instead of being a child of the player should follow the player to avoid this 
+		var dead_cam = Camera2D.new()
+		dead_cam.enabled = true
+		dead_cam.global_position = $Camera2D.global_position
+		Main.world.object_holder.add_child(dead_cam)
+		#stop music
+		if is_instance_valid(Main.main):
+			if Main.main.game is MainWorld:
+				(Main.main.game as MainWorld).audio_player.stop()
 	
 
 
@@ -402,6 +422,7 @@ func player_animations():
 				else:
 					anim_p.play("hurt")
 				hurting = true
+				shooting = false
 				AudioManager.play(sound1)
 		else:
 			if !shooting:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyp8rgucuve24"]
+[gd_scene load_steps=11 format=3 uid="uid://cyp8rgucuve24"]
 
 [ext_resource type="Script" path="res://world/main_world/main_world.gd" id="1_njpno"]
+[ext_resource type="AudioStream" uid="uid://bqb0lv2rxj0wx" path="res://Main Theme Heritic.mp3" id="2_o121t"]
 [ext_resource type="Script" path="res://world/main_world/level_segment_manager.gd" id="2_simgt"]
 [ext_resource type="PackedScene" uid="uid://cyvbxcx7eoai2" path="res://world/level_segments/level_segment_one.tscn" id="3_h4u5m"]
 [ext_resource type="PackedScene" uid="uid://v2nrh83p8ea" path="res://world/level_segments/level_segment_two.tscn" id="3_hp3f2"]
@@ -8,12 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://bx3afxbtcsj02" path="res://world/level_segments/level_segment_three.tscn" id="3_pnvjp"]
 [ext_resource type="PackedScene" uid="uid://vw4goriptg43" path="res://world/level_segments/level_segment_five.tscn" id="7_7052l"]
 [ext_resource type="PackedScene" uid="uid://b8vp437e0g1pl" path="res://world/level_segments/level_segment_six.tscn" id="8_j4l3u"]
+[ext_resource type="Script" path="res://world/main_world/main_theme_player.gd" id="10_41ntd"]
 
-[node name="MainWorld" type="Node2D" node_paths=PackedStringArray("object_holder", "level_segment_manager")]
+[node name="MainWorld" type="Node2D" node_paths=PackedStringArray("audio_player", "object_holder", "level_segment_manager") groups=["main_world"]]
 script = ExtResource("1_njpno")
+audio_player = NodePath("MainThemePlayer")
 object_holder = NodePath(".")
 level_segment_manager = NodePath("LevelSegmentManager")
 
 [node name="LevelSegmentManager" type="Node2D" parent="."]
 script = ExtResource("2_simgt")
 level_segment_list = Array[PackedScene]([ExtResource("3_h4u5m"), ExtResource("3_hp3f2"), ExtResource("3_pnvjp"), ExtResource("3_ik8l0"), ExtResource("7_7052l"), ExtResource("8_j4l3u")])
+
+[node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o121t")
+script = ExtResource("10_41ntd")
+
+[connection signal="finished" from="MainThemePlayer" to="MainThemePlayer" method="_on_finished"]
