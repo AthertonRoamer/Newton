@@ -24,6 +24,10 @@ var player : Player
 var charge_time : float = 0
 var current_recharge_time : float = 0
 
+@export var vibrate_on_charge : bool = true
+@export var base_vibration_distance : float = 0.4 #amount reached after one second of charging
+@export var max_vibration_distance : float = 1.0
+
 var selected : bool = false:
 	set(v):
 		if v != selected:
@@ -48,6 +52,7 @@ var state : int = state_options.IDLE
 
 func begin_charge() -> void:
 	state = state_options.CHARGING
+	player.spell_manager.charging_spell_id = id
 	
 
 func cast() -> void:
@@ -60,6 +65,9 @@ func cast() -> void:
 		state = state_options.FIRING
 	else:
 		begin_recharge()
+	player.spell_manager.charging_spell_id = ""
+	if vibrate_on_charge:
+		player.set_vibration_distance(0)
 		
 		
 func _on_fire_duration_timer_timeout() -> void:
@@ -81,6 +89,10 @@ func _process(delta) -> void:
 	match state:
 		state_options.CHARGING:
 			charge_time += delta
+			if vibrate_on_charge:
+				var vibration_distance : float = base_vibration_distance * charge_time * charge_time
+				vibration_distance = min(vibration_distance, max_vibration_distance)
+				player.set_vibration_distance(vibration_distance)
 		state_options.RECHARGING:
 			current_recharge_time += delta
 			if current_recharge_time >= recharge_time:

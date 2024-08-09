@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwsnjtqbugh5m"]
+[gd_scene load_steps=7 format=3 uid="uid://cwsnjtqbugh5m"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xafnf"]
 [ext_resource type="Theme" uid="uid://cpi07ggflsyl5" path="res://NEWTON_THEME.tres" id="2_d516e"]
 [ext_resource type="FontFile" uid="uid://bnrlla1vnbk4y" path="res://menu/DigitalDisco.ttf" id="2_qrv7r"]
 [ext_resource type="Texture2D" uid="uid://ch3m4rxduqgwo" path="res://entities/ranged/ranged.png" id="4_3i6xh"]
 [ext_resource type="Texture2D" uid="uid://qmeho47pu8l7" path="res://world/light.png" id="5_106ir"]
+[ext_resource type="Script" path="res://menu/version_display.gd" id="6_4nh2j"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_d516e")
 script = ExtResource("1_xafnf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -20,25 +22,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -169.0
-offset_top = -134.0
-offset_right = 270.0
-offset_bottom = 158.0
+offset_left = -208.0
+offset_top = -138.0
+offset_right = 231.0
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.802
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -26.0
-offset_right = 61.0
-offset_bottom = 24.0
+anchor_bottom = 0.802
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_d516e")
@@ -49,13 +51,15 @@ text = "Start"
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -275.0
-offset_top = 70.0
+offset_top = -380.0
 offset_right = 289.0
-offset_bottom = 272.0
+offset_bottom = -44.0
 grow_horizontal = 2
 theme = ExtResource("2_d516e")
 theme_override_fonts/font = ExtResource("2_qrv7r")
@@ -63,6 +67,22 @@ theme_override_font_sizes/font_size = 60
 text = "CHAOS APPRENTICE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Label"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.37
+anchor_right = 0.5
+anchor_bottom = 0.37
+offset_left = -7.0
+offset_top = 95.26
+offset_right = -7.0
+offset_bottom = 95.26
+
+[node name="PointLight2D" type="PointLight2D" parent="Label/Control"]
+energy = 1.39
+texture = ExtResource("5_106ir")
+texture_scale = 0.27
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -72,10 +92,18 @@ texture = ExtResource("4_3i6xh")
 hframes = 8
 vframes = 6
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(573, 247)
-energy = 1.39
-texture = ExtResource("5_106ir")
-texture_scale = 0.27
+[node name="VersionDisplay" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -56.0
+offset_right = 144.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Version: 1.0.1"
+vertical_alignment = 2
+script = ExtResource("6_4nh2j")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
