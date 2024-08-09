@@ -171,7 +171,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("staff/StaffEndPosition/up_strike:visible")
+tracks/12/path = NodePath("staff/StaffEndPosition/Node/up_strike:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -183,7 +183,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("staff/StaffEndPosition/up_strike:frame")
+tracks/13/path = NodePath("staff/StaffEndPosition/Node/up_strike:frame")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1170,7 +1170,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("staff/StaffEndPosition/up_strike:visible")
+tracks/1/path = NodePath("staff/StaffEndPosition/Node/up_strike:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1365,7 +1365,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("staff/StaffEndPosition/up_strike:visible")
+tracks/1/path = NodePath("staff/StaffEndPosition/Node/up_strike:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1377,7 +1377,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("staff/StaffEndPosition/up_strike:frame")
+tracks/2/path = NodePath("staff/StaffEndPosition/Node/up_strike:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2876,7 +2876,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_savv0"]
 radius = 16.0312
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "spell_manager") groups=["damageable", "knockable"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interactable_item_detector", "staff_end_node", "staff", "wind_burst_holder", "camera", "spell_manager") groups=["damageable", "knockable"]]
 scale = Vector2(3, 3)
 collision_layer = 9
 collision_mask = 9
@@ -2891,6 +2891,7 @@ interactable_item_detector = NodePath("InteractableItemDetector")
 staff_end_node = NodePath("staff/StaffEndPosition")
 staff = NodePath("staff")
 wind_burst_holder = NodePath("WindBurstHolder")
+camera = NodePath("Camera2D")
 spell_manager = NodePath("SpellManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -2929,14 +2930,18 @@ scale = Vector2(0.0209627, 0.0133858)
 color = Color(1, 1, 1, 0.815686)
 texture = ExtResource("6_xr0eh")
 
-[node name="up_strike" type="Sprite2D" parent="staff/StaffEndPosition"]
+[node name="Node" type="Node" parent="staff/StaffEndPosition"]
+
+[node name="up_strike" type="Sprite2D" parent="staff/StaffEndPosition/Node" node_paths=PackedStringArray("staff_end_node")]
 visible = false
-position = Vector2(-1.6667, 33.3333)
+position = Vector2(39, 48)
+scale = Vector2(3, 3)
 texture = ExtResource("10_bhlyq")
 hframes = 8
 script = ExtResource("8_8hoek")
+staff_end_node = NodePath("../..")
 
-[node name="PointLight2D" type="PointLight2D" parent="staff/StaffEndPosition/up_strike"]
+[node name="PointLight2D" type="PointLight2D" parent="staff/StaffEndPosition/Node/up_strike"]
 position = Vector2(-5.33333, -509)
 scale = Vector2(1, 7.18976)
 energy = 10.0

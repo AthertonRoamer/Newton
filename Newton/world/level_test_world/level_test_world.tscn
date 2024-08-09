@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://world/level_test_world/level_test_world.gd" id="1_ugv5w"]
 [ext_resource type="Script" path="res://world/level_test_world/level_test_segment_manager.gd" id="2_4fnrj"]
-[ext_resource type="PackedScene" uid="uid://v2nrh83p8ea" path="res://world/level_segments/level_segment_two.tscn" id="3_e2gq1"]
+[ext_resource type="PackedScene" uid="uid://cyvbxcx7eoai2" path="res://world/level_segments/level_segment_one.tscn" id="3_dvi68"]
 [ext_resource type="PackedScene" uid="uid://bd0rnr7t4bbnn" path="res://world/level_test_world/prep_level/prep_level.tscn" id="4_vb4fp"]
 
 [node name="LevelTestWorld" type="Node2D" node_paths=PackedStringArray("level_segment_manager")]
@@ -11,5 +11,5 @@ level_segment_manager = NodePath("LevelTestSegmentManager")
 
 [node name="LevelTestSegmentManager" type="Node2D" parent="."]
 script = ExtResource("2_4fnrj")
-level_to_test = ExtResource("3_e2gq1")
+level_to_test = ExtResource("3_dvi68")
 level_segment_list = Array[PackedScene]([ExtResource("4_vb4fp")])

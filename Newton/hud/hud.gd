@@ -8,3 +8,7 @@ extends CanvasLayer
 
 func _ready():
 	hide()
+	
+	
+func set_lives_active(active : bool) -> void:
+	lives_display.visible = active

@@ -23,8 +23,8 @@ func cast() -> void:
 func spawn_lightning() -> void:
 	var damage : int = max(min(base_damage * charge_time * charge_time, max_damage), min_damage)
 	var strike_count : int = min(round(base_strike_count * charge_time * charge_time), max_strike_count)
-	print("lightning damage: " + str(damage))
-	print("strike count: " + str(strike_count))
+	#print("lightning damage: " + str(damage))
+	#print("strike count: " + str(strike_count))
 	
 	var storm : LightningStorm = lightning_storm_scene.instantiate()
 	storm = storm as LightningStorm

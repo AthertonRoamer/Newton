@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwnnqril5qef7" path="res://entities/necromancer.png" id="3_j5lib"]
 
 [sub_resource type="GDScript" id="GDScript_5si8y"]
-script/source = "extends Node2D
+script/source = "extends Control
 
 
 
@@ -16,7 +16,7 @@ script/source = "extends Node2D
 
 var step : int = 1
 func _ready():
-		$necro/AnimationPlayer.play(\"zap\")
+		$Control/necro/AnimationPlayer.play(\"zap\")
 		#AudioManager.play(music)
 		do_tutorial()
 
@@ -29,7 +29,7 @@ func do_tutorial() -> void:
 			label.text = \"He had taught you all you know.\"
 		3:
 			label.text = \"He was murdered by the all-powerful necromancer\"
-			$necro.visible = true
+			$Control/necro.visible = true
 		4:
 			label.text = \"You must seek out the revival stone.\"
 		5:
@@ -108,28 +108,36 @@ _data = {
 "zap": SubResource("Animation_ka05v")
 }
 
-[node name="tutorial" type="Node2D"]
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = SubResource("GDScript_5si8y")
 music = ExtResource("2_2ab3i")
 music2 = ExtResource("2_q1deo")
 
 [node name="bg" type="ColorRect" parent="."]
-offset_left = -2919.0
-offset_top = -2741.0
-offset_right = 6780.0
-offset_bottom = 6149.0
+layout_mode = 0
+offset_left = -2866.0
+offset_top = -2681.0
+offset_right = 6833.0
+offset_bottom = 6209.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -567.0
-offset_top = -143.0
-offset_right = 568.0
-offset_bottom = -2.0
+offset_left = -568.0
+offset_top = -300.0
+offset_right = 567.0
+offset_bottom = -114.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_futub")
@@ -138,34 +146,50 @@ text = "tutorial asdffffff asdfa af as afdsf as asd asdf asdf as asdf asdf asdf 
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 100)
-
-[node name="necro" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(2.38419e-07, 173)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("3_j5lib")
-hframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="necro"]
-libraries = {
-"": SubResource("AnimationLibrary_5fprn")
-}
-
 [node name="Button" type="Button" parent="."]
-offset_left = -49.0
-offset_top = 345.0
-offset_right = 42.0
-offset_bottom = 396.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.802
+anchor_right = 0.5
+anchor_bottom = 0.802
+offset_left = -50.0
+offset_top = -25.592
+offset_right = 50.0
+offset_bottom = 25.408
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_futub")
 theme_override_font_sizes/font_size = 50
-text = "skip"
+text = "Next"
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_2ab3i")
 autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.527
+anchor_right = 0.5
+anchor_bottom = 0.527
+offset_top = -0.264038
+offset_bottom = -0.264038
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="necro" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(0, -8.26404)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_j5lib")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/necro"]
+libraries = {
+"": SubResource("AnimationLibrary_5fprn")
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

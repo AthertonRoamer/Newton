@@ -11,11 +11,6 @@ extends Node2D
 
 var lightning_damage : int = 100
 
-func _ready() -> void:
-	spawn_first_lightning()
-	#($Lightning as Lightning).lightning_explosion.damage = lightning_damage
-
-
 func _on_spawn_lightning_timer_timeout():
 	strike_count -= 1
 	if strike_count > 0:
@@ -49,3 +44,6 @@ func spawn_first_lightning() -> void:
 	Main.world.object_holder.add_child(lightning)
 
 
+func _on_start_timer_timeout():
+	spawn_first_lightning()
+	$SpawnLightningTimer.start()

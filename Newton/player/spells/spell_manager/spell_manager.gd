@@ -1,6 +1,7 @@
 class_name SpellManager
 extends Node
 
+var charging_spell_id : String = ""
 var selected_spell : Spell
 var selected_spell_num : int = 0:
 	set(v):

@@ -21,5 +21,11 @@ func effect_body(body : Node2D) -> void:
 		extinguish()
 
 
+func _on_body_entered(body : Node2D) -> void:
+	if not hit_entities.has(body):
+		effect_body(body)
+	if extinguish_on_impact:
+			extinguish()
+
 
 

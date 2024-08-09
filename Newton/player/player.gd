@@ -21,6 +21,8 @@ var effective_max_speed : int
 @export var continued_jump_accel : float = 29.5
 @export var max_jump_time : float = 0.3
 
+@export var using_lives : bool = false
+
 @export var gravity : int = PhysicsData.gravity_acceleration
 
 @export var death_altitude : int = PhysicsData.death_altitude
@@ -30,7 +32,7 @@ var effective_max_speed : int
 @export var staff : Staff
 @export var wind_burst_holder : Node2D
 
-@onready var cam = $Camera2D
+@export var camera : ShakeableCamera
 
 var walking = false
 var jumping = false
@@ -43,6 +45,7 @@ var immune = true
 
 var hurt = false
 var hurting = false
+var hurt_by_magic_overload : bool = false
 
 var dead = false
 var died = false
@@ -74,7 +77,6 @@ var lives : int = starting_lives
 
 
 @onready var respawn_timer = $respawn_timer
-@onready var player_cam = $Camera2D
 @onready var player_sprite = $Sprite2D
 @onready var staff_sprite = $staff
 @onready var anim_p : AnimationPlayer = $AnimationPlayer
@@ -95,6 +97,7 @@ func play_cast_anim(anim_name : String) -> void:
 
 func _ready() -> void:
 	$ImmuneToSpikeTimer.wait_time = SpikePlant.interlude_time
+	Hud.set_lives_active(using_lives)
 	Hud.spell_display_manager.clear_spells()
 	match spawn_state:
 		spawn_states.LEVEL_TRANSFER:
@@ -125,7 +128,12 @@ func restart_audio() -> void:
 		
 
 func screen_shake(time,amount):
-	cam.shake(time,amount)
+	camera.shake(time,amount)
+	
+	
+func set_vibration_distance(distance) -> void:
+	if not dead:
+		camera.set_vibration_distance(distance)
 
 
 func reset_lives() -> void:
@@ -153,6 +161,7 @@ func respawn_reset() -> void:
 func take_damage(damage : int, damage_type : String = "none", _damager : Node = null) -> void:
 	if damage > 0:
 		hurt = true
+		hurt_by_magic_overload = damage_type == "magic_overload"
 	if !immune:
 		if damage_type == "spike_plant_first":
 			if not is_on_floor() and velocity.y > 0:
@@ -177,11 +186,13 @@ func take_knockback(knock : Vector2) -> void:
 
 func die() -> void:
 	if !dead:
+		camera.set_vibration_distance(0)
 		dead = true
 		respawn_timer.start()
-		lives -= 1
-		PlayerData.lives = lives
-		Hud.lives_display.lives = lives
+		if using_lives:
+			lives -= 1
+			PlayerData.lives = lives
+			Hud.lives_display.lives = lives
 		#add camera to world where player was
 		#in future, the camera instead of being a child of the player should follow the player to avoid this 
 		var dead_cam = Camera2D.new()
@@ -403,7 +414,7 @@ func player_animations():
 				if is_instance_valid(spell_manager.selected_spell):
 					match spell_manager.selected_spell.id:
 									"magic_missile":
-										if charging:
+										if hurt_by_magic_overload:
 											anim_p.play("mm_hurt")
 										else:
 											anim_p.play("mm_hurt2")
@@ -429,7 +440,7 @@ func player_animations():
 				if charging:
 					if !charged:
 						if is_instance_valid(spell_manager.selected_spell):
-							match spell_manager.selected_spell.id:
+							match spell_manager.charging_spell_id:
 								"magic_missile":
 									anim_p.play("mm_charging",-1,0.4)
 								"fire_spell":
@@ -547,6 +558,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "mm_hurt":
 		hurt = false
 		hurting = false
+		hurt_by_magic_overload = false
 		anim_p.play("mm_charged")
 	elif anim_name == "mm_hurt2":
 		hurt = false
@@ -573,7 +585,7 @@ func _on_immune_to_spike_timer_timeout():
 
 
 func _on_respawn_timer_timeout() -> void:
-	if lives <= 0:
+	if lives <= 0 and using_lives:
 		total_death()
 	else:
 		print("You have died")

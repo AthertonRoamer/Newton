@@ -10,7 +10,7 @@ static var player : Player
 @export var game_scene : PackedScene
 var game : Node
 var menu : Control
-var tutorial : Node2D
+var tutorial : Control
 
 
 func _ready() -> void:
@@ -28,9 +28,14 @@ func load_main_menu() -> void:
 	add_child(menu)
 	
 	
+func close_menu() -> void:
+	if is_instance_valid(menu):
+		menu.queue_free()
+	
+	
 func load_game() -> void:
 	if game_scene != null:
-		menu.queue_free()
+		close_menu()
 		game = game_scene.instantiate()
 		add_child(game)
 		
