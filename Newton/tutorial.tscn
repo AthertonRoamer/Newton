@@ -45,7 +45,7 @@ func do_tutorial() -> void:
 		10:
 			label.text = \"Controls - WASD to move, mouse to aim/attack.\"
 		11:
-			label.text = \"Hold mouse to charge spells.\"
+			label.text = \"Hold left mouse button to charge spells, and release it to release them.\"
 		12:
 			label.text = \"Charging spells longer will make them more powerful (in many ways).\"
 			$Button.text = \"Exit tutorial\"
