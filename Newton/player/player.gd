@@ -408,124 +408,125 @@ func player_animations():
 			if anim_p.current_animation != "death":
 				anim_p.play("death")
 				AudioManager.play(sound4)
-	else:
-		if hurt:
-			if !hurting:
-				if is_instance_valid(spell_manager.selected_spell):
-					match spell_manager.selected_spell.id:
-									"magic_missile":
-										if hurt_by_magic_overload:
-											anim_p.play("mm_hurt")
-										else:
-											anim_p.play("mm_hurt2")
-									"fire_spell":
-										if charging:
-											anim_p.play("fire_hurt")
-										else:
-											anim_p.play("fire_hurt2")
-									"wind_spell":
-										if charging:
-											anim_p.play("wind_hurt")
-										else:
-											anim_p.play("wind_hurt2")
-									_:
-										anim_p.play("hurt")
-				else:
-					anim_p.play("hurt")
-				hurting = true
-				shooting = false
-				AudioManager.play(sound1)
-		else:
-			if !shooting:
-				if charging:
-					if !charged:
-						if is_instance_valid(spell_manager.selected_spell):
-							match spell_manager.charging_spell_id:
+		return
+
+	if hurt:
+		if !hurting:
+			if is_instance_valid(spell_manager.selected_spell):
+				match spell_manager.selected_spell.id:
 								"magic_missile":
-									anim_p.play("mm_charging",-1,0.4)
+									if hurt_by_magic_overload:
+										anim_p.play("mm_hurt")
+									else:
+										anim_p.play("mm_hurt2")
 								"fire_spell":
-									anim_p.play("fire_charging")
+									if charging:
+										anim_p.play("fire_hurt")
+									else:
+										anim_p.play("fire_hurt2")
 								"wind_spell":
-									anim_p.play("wind_charging")
+									if charging:
+										anim_p.play("wind_hurt")
+									else:
+										anim_p.play("wind_hurt2")
 								_:
-									anim_p.play("charging")
-						else:
-							anim_p.play("charging")
-						#AudioManager.play(sound4)
-				else:
-					if is_on_floor():
-						if walking:
-							if direction == Vector2.RIGHT:
-								if is_instance_valid(spell_manager.selected_spell):
-									match spell_manager.selected_spell.id:
-										"magic_missile":
-											anim_p.play("mm_walk_right")
-										"fire_spell":
-											anim_p.play("fire_walk_right")
-										"wind_spell":
-											anim_p.play("wind_walk_right")
-										_:
-											anim_p.play("walk_right")
-								else:
-									anim_p.play("walk_right")
-							
-							elif direction == Vector2.LEFT:
-								if is_instance_valid(spell_manager.selected_spell):
-									match spell_manager.selected_spell.id:
-										"magic_missile":
-											anim_p.play("mm_walk_left")
-										"fire_spell":
-											anim_p.play("fire_walk_left")
-										"wind_spell":
-											anim_p.play("wind_walk_left")
-										_:
-											anim_p.play("walk_left")
-								else:
-									anim_p.play("walk_left")
-						else:
-							if is_instance_valid(spell_manager.selected_spell):
-								match spell_manager.selected_spell.id:
-										"magic_missile":
-											anim_p.play("mm_idle",-1,0.75)
-										"fire_spell":
-											anim_p.play("fire_idle",-1,0.75)
-										"wind_spell":
-											anim_p.play("wind_idle",-1,0.75)
-										_:
-											anim_p.play("idle",-1,0.75)
-							else:
-								anim_p.play("idle",-1,0.75)
-							
+									anim_p.play("hurt")
+			else:
+				anim_p.play("hurt")
+			hurting = true
+			shooting = false
+			AudioManager.play(sound1)
+	else:
+		if !shooting:
+			if charging:
+				if !charged:
+					if is_instance_valid(spell_manager.selected_spell):
+						match spell_manager.charging_spell_id:
+							"magic_missile":
+								anim_p.play("mm_charging",-1,0.4)
+							"fire_spell":
+								anim_p.play("fire_charging")
+							"wind_spell":
+								anim_p.play("wind_charging")
+							_:
+								anim_p.play("charging")
 					else:
-						if jumping == true:
-							if is_instance_valid(spell_manager.selected_spell):
-								match spell_manager.selected_spell.id:
-										"magic_missile":
-											anim_p.play("mm_jump",-1,0.75)
-										"fire_spell":
-											anim_p.play("fire_jump",-1,0.75)
-										"wind_spell":
-											anim_p.play("wind_jump",-1,0.75)
-										_:
-											anim_p.play("jump",-1,0.75)
-							else:
-								anim_p.play("jump",-1,0.75)
-							AudioManager.play(sound3)
-							jumping = false
-						if falling == true:
+						anim_p.play("charging")
+					#AudioManager.play(sound4)
+			else:
+				if is_on_floor():
+					if walking:
+						if direction == Vector2.RIGHT:
 							if is_instance_valid(spell_manager.selected_spell):
 								match spell_manager.selected_spell.id:
 									"magic_missile":
-										anim_p.play("mm_fall")
+										anim_p.play("mm_walk_right")
 									"fire_spell":
-										anim_p.play("fire_fall")
+										anim_p.play("fire_walk_right")
 									"wind_spell":
-										anim_p.play("wind_fall")
+										anim_p.play("wind_walk_right")
 									_:
-										anim_p.play("fall")
+										anim_p.play("walk_right")
 							else:
-								anim_p.play("fall")
-							falling = false
+								anim_p.play("walk_right")
+						
+						elif direction == Vector2.LEFT:
+							if is_instance_valid(spell_manager.selected_spell):
+								match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_walk_left")
+									"fire_spell":
+										anim_p.play("fire_walk_left")
+									"wind_spell":
+										anim_p.play("wind_walk_left")
+									_:
+										anim_p.play("walk_left")
+							else:
+								anim_p.play("walk_left")
+					else:
+						if is_instance_valid(spell_manager.selected_spell):
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_idle",-1,0.75)
+									"fire_spell":
+										anim_p.play("fire_idle",-1,0.75)
+									"wind_spell":
+										anim_p.play("wind_idle",-1,0.75)
+									_:
+										anim_p.play("idle",-1,0.75)
+						else:
+							anim_p.play("idle",-1,0.75)
+						
+				else:
+					if jumping == true:
+						if is_instance_valid(spell_manager.selected_spell):
+							match spell_manager.selected_spell.id:
+									"magic_missile":
+										anim_p.play("mm_jump",-1,0.75)
+									"fire_spell":
+										anim_p.play("fire_jump",-1,0.75)
+									"wind_spell":
+										anim_p.play("wind_jump",-1,0.75)
+									_:
+										anim_p.play("jump",-1,0.75)
+						else:
+							anim_p.play("jump",-1,0.75)
+						AudioManager.play(sound3)
+						jumping = false
+					if falling == true:
+						if is_instance_valid(spell_manager.selected_spell):
+							match spell_manager.selected_spell.id:
+								"magic_missile":
+									anim_p.play("mm_fall")
+								"fire_spell":
+									anim_p.play("fire_fall")
+								"wind_spell":
+									anim_p.play("wind_fall")
+								_:
+									anim_p.play("fall")
+						else:
+							anim_p.play("fall")
+						falling = false
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
